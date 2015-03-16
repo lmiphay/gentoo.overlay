@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>lmiphay</name>
+    <description>lmiphay gentoo overlay</description>
+    <homepage>http://github.com/lmiphay/gentoo.overlay</homepage>
+    <owner>
+      <email></email>
+      <name>Paul Healy</name>
+    </owner>
+    <source type="git">git://github.com/lmiphay/gentoo.overlay.git</source>
+    <source type="git">https://github.com/lmiphay/gentoo.overlay.git</source>
+  </repo>
+</repositories>
