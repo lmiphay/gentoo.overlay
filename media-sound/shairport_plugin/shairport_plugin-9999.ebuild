@@ -1,20 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="5"
 
-inherit eutils
+inherit eutils git-r3
 
 DESCRIPTION="ShairPort Squeezebox Server Plugin - airTunes for Squeezebox clients"
 HOMEPAGE="https://github.com/StuartUSA/shairport_plugin/"
-
-if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/StuartUSA/shairport_plugin.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/StuartUSA/shairport_plugin/archive/master.zip"
-fi
+EGIT_REPO_URI="git://github.com/StuartUSA/shairport_plugin.git"
 
 LICENSE="MIT"
 SLOT="0"
