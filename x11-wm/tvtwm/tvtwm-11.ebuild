@@ -8,7 +8,7 @@ XORG_STATIC=no
 inherit xorg-2
 
 DESCRIPTION="tvtwm X11 window manager"
-HOMEPAGE="http://www.x.org/releases/X11R6/Manifest.PS"
+HOMEPAGE="http://ftp.x.org/contrib/window_managers"
 SRC_URI="http://ftp.x.org/contrib/window_managers/tvtwm.pl11.tar.gz"
 
 KEYWORDS="amd64 x86"
