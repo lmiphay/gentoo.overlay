@@ -8,7 +8,6 @@ inherit elisp
 
 DESCRIPTION="A Brief emulator for Emacs"
 HOMEPAGE="http://xpt.sourceforge.net/tools/brief-mode/"
-#SRC_URI="http://sourceforge.net/projects/xpt/files/brief-mode/brief-mode-1.1/brief-mode-1.1.tgz/download"
 SRC_URI="mirror://sourceforge/xpt/${P}.tgz"
 RESTRICT="mirror"
 
