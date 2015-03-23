@@ -40,6 +40,7 @@ src_install() {
 	doins AIRPLAY.pm Plugin.pm install.xml public.xml strings.txt
 	fowners logitechmediaserver:logitechmediaserver ${INSTALL_DIR} -R
 	dodoc README.md
+	dobin ${FILESDIR}/airplayservers
 }
 
 pkg_postinst() {
@@ -50,7 +51,8 @@ pkg_postinst() {
 	elog "       avahi-browse -tv _raop._tcp"
 	elog " 4. LMS will log connections and launching decoders to /var/log/logitechmediaserver/server.log"
 	elog ""
-	elog "For verbose debug set: defaultLevel to DEBUG in /var/lib/logitechmediaserver/Plugins/ShairTunes/Plugin.pm"
+	elog "For verbose debug set: Debug logging via the Web-Interface->Settings>Advanced->Logging->plugin.shairtunes"
+	elog "    (or just change defaultLevel to DEBUG in /var/lib/logitechmediaserver/Plugins/ShairTunes/Plugin.pm)"
 	elog ""
 	elog "Support thread at: http://forums.slimdevices.com/showthread.php?100379-Announce-ShairTunes-Plugin"
 }
