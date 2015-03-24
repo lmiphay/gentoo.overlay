@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+description="emulates an AirPort Express to stream music from i-devices"
+start_stop_daemon_args="
+	--background 
+	--make-pidfile
+	--pidfile /run/shairport.pid
+	--user shairport:audio
+"
+
+command="/usr/bin/shairport"
+command_args="
+	--log=/var/log/shairport.log
+	--name=$HOSTNAME/shairport 
+	$shairport_opts
+"
+
+depend() {
+    need net
+    use avahi-daemon
+}

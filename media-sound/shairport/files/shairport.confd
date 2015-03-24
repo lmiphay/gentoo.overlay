@@ -1,0 +1,9 @@
+# /etc/conf.d/shairport: config file for /etc/init.d/shairport
+
+# default shairport options:
+#shairport_opts=""
+#
+# 'shairport --help' for available options e.g.
+# 
+#shairport_opts="--output=pulse --mdns=avahi"
+#
