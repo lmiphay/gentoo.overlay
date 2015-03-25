@@ -3,13 +3,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+user="shairport:audio"
+
 description="emulates an AirPort Express to stream music from i-devices"
-start_stop_daemon_args="
-	--background 
-	--make-pidfile
-	--pidfile /run/shairport.pid
-	--user shairport:audio
-"
+start_stop_daemon_args="--user $user"
 
 command=/usr/bin/shairport
 command_args="
@@ -18,9 +15,14 @@ command_args="
 	$shairport_opts
 "
 command_background=yes
+pidfile=/run/shairport.pid
 
 depend() {
     need localmount net
     use avahi-daemon
     after bootmisc
+}
+
+start_pre() {
+    checkpath --file --owner $user --mode 0775 /var/log/shairport.log
 }
