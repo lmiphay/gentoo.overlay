@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
@@ -11,14 +11,16 @@ start_stop_daemon_args="
 	--user shairport:audio
 "
 
-command="/usr/bin/shairport"
+command=/usr/bin/shairport
 command_args="
 	--log=/var/log/shairport.log
 	--name=$HOSTNAME/shairport 
 	$shairport_opts
 "
+command_background=yes
 
 depend() {
-    need net
+    need localmount net
     use avahi-daemon
+    after bootmisc
 }
