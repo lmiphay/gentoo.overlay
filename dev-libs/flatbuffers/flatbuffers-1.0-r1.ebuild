@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/google/flatbuffers.git"
 
 LICENSE="Apache"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+doc +examples +java"
 
 RDEPEND="java? ( virtual/jdk )"

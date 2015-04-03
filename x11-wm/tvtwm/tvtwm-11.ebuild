@@ -10,8 +10,10 @@ inherit xorg-2
 DESCRIPTION="tvtwm X11 window manager"
 HOMEPAGE="http://ftp.x.org/contrib/window_managers"
 SRC_URI="http://ftp.x.org/contrib/window_managers/tvtwm.pl11.tar.gz"
+RESTRICT="mirror"
+LICENSE="tvtwm"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="sys-devel/m4

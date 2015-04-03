@@ -11,10 +11,11 @@ HOMEPAGE="http://acme.com/software/xphoon/"
 
 MY_PV="14Aug2014"
 SRC_URI="http://acme.com/software/${PN}/${PN}_${MY_PV}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11

@@ -1,0 +1,19 @@
+;; @Author: SUN, Tong  <suntong@users.sourceforge.net>
+;; @Copyright (c) 1999-2001, Tong Sun, all right reserved
+;; @Version: $Date: 2003/03/25 17:34:30 $ $Revision: 1.10 $
+;; @Keywords: brief emulation
+;;
+;; This program is dedicated to
+;;  Kai Groﬂjohann <Kai.Grossjohann@CS.Uni-Dortmund.DE>
+;; Without his generous help, my program would never exist.
+;;
+;; This program is based on the LCD Archive Entry:
+;; brief|Alex Rezinsky|alexr@msil.sps.mot.com|
+;; Copyright (C) 1994 Alexander Rezinsky <alexr@msil.sps.mot.com>
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+
+;; Freely distribute and modification. For personal use only.
+;; Illegal to use for commercial purposes or in companies.

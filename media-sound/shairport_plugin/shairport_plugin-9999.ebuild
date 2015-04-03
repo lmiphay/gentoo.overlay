@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://github.com/StuartUSA/shairport_plugin.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # require dbus use flag on avahi to have the avahi-browse binary built

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>lmiphay</name>
+    <description>lmiphay gentoo overlay</description>
+    <homepage>https://gitweb.gentoo.org/user/lmiphay.git/about/</homepage>
+    <owner>
+      <email></email>
+      <name>Paul Healy</name>
+    </owner>
+    <source type="git">git://anongit.gentoo.org/user/lmiphay.git</source>
+    <source type="git">http://anongit.gentoo.org/git/user/lmiphay.git</source>
+    <source type="git">git+ssh://git@git.gentoo.org/user/lmiphay.git</source>
+  </repo>
+</repositories>
+
+

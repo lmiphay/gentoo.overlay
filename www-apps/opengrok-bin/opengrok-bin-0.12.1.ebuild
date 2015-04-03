@@ -9,10 +9,11 @@ inherit eutils user
 DESCRIPTION="Fast source code search and cross reference engine"
 HOMEPAGE="http://opengrok.github.io/OpenGrok/"
 SRC_URI="http://java.net/projects/opengrok/downloads/download/opengrok-${PV}.tar.gz"
+RESTRICT="mirror"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 # || (tomcat glassfish)

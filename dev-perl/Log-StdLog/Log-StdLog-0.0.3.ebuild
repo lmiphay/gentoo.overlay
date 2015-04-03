@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A simple log file via a special filehandle"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -21,3 +21,4 @@ DEPEND="
 "
 
 SRC_TEST="skip"
+RESTRICT="mirror"

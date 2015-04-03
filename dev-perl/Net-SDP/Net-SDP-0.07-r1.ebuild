@@ -11,10 +11,11 @@ DESCRIPTION="Perl extension for SDP"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
 DEPEND="virtual/perl-Module-Build ${RDEPEND}"
 
 SRC_TEST="skip"
+RESTRICT="mirror"

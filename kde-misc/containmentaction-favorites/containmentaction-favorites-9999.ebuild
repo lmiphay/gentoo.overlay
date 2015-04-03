@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://anongit.kde.org/scratch/cfeck/containmentaction-favorites.g
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

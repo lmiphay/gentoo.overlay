@@ -13,7 +13,7 @@ RESTRICT="mirror"
 
 LICENSE="brief-mode"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DOCS="brief-mode.htm brief-mode.news"
 
