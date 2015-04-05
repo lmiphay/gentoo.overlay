@@ -5,6 +5,8 @@ This overlay contains ebuilds I have either created or updated from various sour
 
 See http://gentoo-overlays.zugaina.org/lmiphay/ for an overview of the available ebuilds.
 
+Browse the overlay here: http://gpo.zugaina.org/Overlays/lmiphay/
+
 Adding the Overlay
 =======================
 
