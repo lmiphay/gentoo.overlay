@@ -21,9 +21,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
-src_install() {
-	dobin rdumpfs-rota
-	dodoc README.md
-	insinto /etc
-	doins rdumpfs-rota.conf
-}
+DOCS="README.md"
