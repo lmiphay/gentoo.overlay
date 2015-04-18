@@ -10,7 +10,11 @@ Browse the overlay here: http://gpo.zugaina.org/Overlays/lmiphay/
 Adding the Overlay
 =======================
 
-Using layman to add this as an overlay - either:
+This overlay is in layman, you can add this overlay by:
+
+layman -a lmiphay
+
+Prior to that it could be added by either:
 
 layman -f -a lmiphay -o 'https://gitweb.gentoo.org/user/lmiphay.git/plain/gentoo-overlay.xml'
 
