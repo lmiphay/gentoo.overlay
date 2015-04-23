@@ -8,7 +8,7 @@ inherit eutils git-r3
 
 DESCRIPTION="A utility to clean up old backup files of a pdumpfs archive"
 HOMEPAGE="https://github.com/lmiphay/pdumpfs-clean"
-EGIT_REPO_URI="https://github.com/lmiphay/pdumpfs-clean.git"
+EGIT_REPO_URI="https://github.com/lmiphay/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,5 +19,5 @@ DEPEND="
 "
 
 src_install() {
-	dobin pdumpfs-clean
+	dobin ${PN}
 }
