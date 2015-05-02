@@ -12,7 +12,7 @@ Adding the Overlay
 
 This overlay is in layman, you can add this overlay by:
 
-layman -a lmiphay
+layman -L && layman -a lmiphay
 
 Prior to that it could be added by either:
 
