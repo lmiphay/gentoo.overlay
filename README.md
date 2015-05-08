@@ -14,7 +14,7 @@ This overlay is in layman, you can add this overlay by:
 
 layman -L && layman -a lmiphay
 
-Prior to that it could be added by either:
+Prior to being in layman it could have been added by either:
 
 layman -f -a lmiphay -o 'https://gitweb.gentoo.org/user/lmiphay.git/plain/gentoo-overlay.xml'
 

@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND="
 	app-portage/eix
+	sys-apps/moreutils
 "
 DEPEND="${RDEPEND}
 "
