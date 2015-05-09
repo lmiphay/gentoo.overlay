@@ -16,7 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	app-admin/logrotate
 	app-portage/eix
+	app-text/multitail
+	dev-lang/perl
 	sys-apps/moreutils
 "
 DEPEND="${RDEPEND}
