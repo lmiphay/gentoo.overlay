@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	app-admin/logrotate
 	app-portage/eix
+	app-portage/genlop
 	app-portage/gentoolkit
 	app-text/multitail
 	dev-lang/perl
