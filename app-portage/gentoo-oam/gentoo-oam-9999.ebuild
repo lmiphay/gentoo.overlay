@@ -23,6 +23,7 @@ RDEPEND="
 	app-text/multitail
 	dev-lang/perl
 	sys-apps/moreutils[perl]
+	sys-fs/inotify-tools
 "
 DEPEND="${RDEPEND}
 "
