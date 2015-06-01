@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	app-admin/eclean-kernel
 	app-admin/logrotate
 	app-portage/eix
 	app-portage/genlop
