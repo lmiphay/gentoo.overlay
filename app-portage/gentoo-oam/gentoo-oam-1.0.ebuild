@@ -22,6 +22,7 @@ RDEPEND="
 	app-portage/eix
 	app-portage/genlop
 	app-portage/gentoolkit
+	app-portage/portage-utils
 	app-text/multitail
 	dev-lang/perl
 	sys-apps/moreutils[perl]
