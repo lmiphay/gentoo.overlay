@@ -13,10 +13,11 @@ EGIT_REPO_URI="https://github.com/lmiphay/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+lnav"
 
 RDEPEND="
 	app-admin/eclean-kernel
+	lnav? ( app-admin/lnav )
 	app-admin/logrotate
 	app-portage/eix
 	app-portage/genlop
