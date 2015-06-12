@@ -23,6 +23,7 @@ RDEPEND="
 "
 DEPEND="
 	dev-util/cmake
+	java? ( dev-java/maven-bin )
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 	${RDEPEND}
 "
@@ -32,9 +33,7 @@ src_compile() {
 	emake
 
 	if use java ; then
-	   (cd java && \
-		javac com/google/flatbuffers/*.java && \
-		jar cf flatbuffers.jar com/google/flatbuffers/*.class)
+		cd java && mvn package
 	fi
 }
 
@@ -53,12 +52,11 @@ src_install() {
 	fi
 
 	if use java ; then
-	   insinto /usr/share/${PN}
-	   doins java/flatbuffers.jar
+		insinto /usr/share/${PN}
+		doins java/target/flatbuffers*.jar
 	fi
 
 	if use python ; then
-		cd python
-		distutils-r1_src_install
+		cd python && distutils-r1_src_install
 	fi
 }
