@@ -40,6 +40,6 @@ src_install() {
 
 	if use java ; then
 		insinto /usr/lib/${PN}
-		doins java/target/rocksdbjni-${PV}-linux$(getconf LONG_BIT).jar
+		doins java/target/rocksdbjni-*-linux$(getconf LONG_BIT).jar
 	fi
 }
