@@ -33,7 +33,12 @@ src_compile() {
 	emake
 
 	if use java ; then
-		cd java && mvn package
+		# fixme
+		# repo=$T/mvnrepository
+		repo=/var/cache/maven
+		addwrite $repo
+		[ ! -d $repo ] && mkdir -p $repo
+		cd java && mvn -Dmaven.repo.local=$repo package
 	fi
 }
 
