@@ -19,6 +19,7 @@ RDEPEND="
 	app-admin/eclean-kernel
 	lnav? ( app-admin/lnav )
 	app-admin/logrotate
+	app-crypt/johntheripper
 	ranger? ( app-misc/ranger )
 	app-portage/eix
 	app-portage/genlop
