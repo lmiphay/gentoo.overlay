@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+lnav +ranger"
 
+# >=bash-4.3 is needed for 'local -n / declare -n'
 RDEPEND="
 	app-admin/eclean-kernel
 	lnav? ( app-admin/lnav )
@@ -24,6 +25,7 @@ RDEPEND="
 	app-portage/genlop
 	app-portage/gentoolkit
 	app-portage/portage-utils
+	>=app-shells/bash-4.3
 	app-text/multitail
 	dev-lang/perl
 	sys-apps/moreutils[perl]
