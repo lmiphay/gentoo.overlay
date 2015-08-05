@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="
 	${RDEPEND}
-	virtual/perl-Module-Build
+	dev-perl/Module-Build
 "
 
 SRC_TEST="skip"

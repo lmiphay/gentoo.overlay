@@ -22,7 +22,7 @@ DEPEND="
 	dev-perl/IO-Interface
 	dev-perl/Log-StdLog
 	dev-perl/Term-Shell
-	virtual/perl-Module-Build
+	dev-perl/Module-Build
 "
 
 SRC_TEST="skip"

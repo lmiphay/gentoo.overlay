@@ -17,7 +17,7 @@ RDEPEND=""
 DEPEND="
 	${RDEPEND}
 	net-wireless/bluez
-	virtual/perl-Module-Build
+	dev-perl/Module-Build
 "
 
 SRC_TEST="skip"
