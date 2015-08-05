@@ -23,7 +23,7 @@ S="${WORKDIR}/${P}/shairport_helper/src"
 src_prepare() {
 	sed -i -e 's;CFLAGS;MYCFLAGS;g' "Makefile.default"
 	sed -i -e 's;-Wall -O2 -fPIC;$(CFLAGS);' "Makefile.default"
-	sed -i -e 's;LDFLAGS;MYLDFLAGS;' "Makefile.default"
+	sed -i -e 's;LDFLAGS;MYLDFLAGS;g' "Makefile.default"
 	sed -i -e 's;-static;$(LDFLAGS);' "Makefile.default"
 	# remove references to libao - not used
 	sed -i '/cflags ao/d' "Makefile.default"
