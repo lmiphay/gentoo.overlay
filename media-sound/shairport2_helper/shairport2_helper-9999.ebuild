@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/openssl
-	media-libs/libao"
+DEPEND="dev-libs/openssl"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/shairport_helper/src"
