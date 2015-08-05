@@ -19,11 +19,13 @@ DEPEND="dev-libs/openssl
 	media-libs/libao"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${P}/${PN}/src"
+S="${WORKDIR}/${P}/shairport_helper/src"
 
 src_prepare() {
-	sed -i -e 's;CFLAGS  += -Wall -O2 -fPIC;CFLAGS  +=$(CFLAGS);' "Makefile.default"
-	sed -i -e 's;LDFLAGS += -lm -lpthread -static;LDFLAGS += -lm -lpthread -static $(LDFLAGS);' "Makefile.default"
+	sed -i -e 's;CFLAGS;MYCFLAGS;g' "Makefile.default"
+	sed -i -e 's;-Wall -O2 -fPIC;$(CFLAGS);' "Makefile.default"
+	sed -i -e 's;LDFLAGS;MYLDFLAGS;' "Makefile.default"
+	sed -i -e 's;-static;$(LDFLAGS);' "Makefile.default"
 	epatch_user
 }
 
