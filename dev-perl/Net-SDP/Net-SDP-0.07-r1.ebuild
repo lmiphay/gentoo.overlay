@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
-DEPEND="virtual/perl-Module-Build ${RDEPEND}"
+DEPEND="dev-perl/Module-Build ${RDEPEND}"
 
 SRC_TEST="skip"
 RESTRICT="mirror"
