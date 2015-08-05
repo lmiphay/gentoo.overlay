@@ -39,13 +39,13 @@ src_install() {
 	insinto ${INSTALL_DIR}
 	doins AIRPLAY.pm Plugin.pm Utils.pm install.xml public.xml strings.txt
 	fowners logitechmediaserver:logitechmediaserver ${INSTALL_DIR} -R
-	dodoc README.md
+	dodoc README.md ${FILESDIR}/avahi-daemon.conf.patch
 	newbin ${FILESDIR}/airplayservers showairplayservers
 }
 
 pkg_postinst() {
-	elog "ShairTunes plugin has been installed to ${INSTALL_DIR} - now:"
-	elog " 1. configure/restart avahi-daemon as per avahi-daemon section in /usr/share/doc/${P}/"
+	elog "ShairTunes2 has been installed to ${INSTALL_DIR} - now:"
+	elog " 1. configure and then restart avahi-daemon as described in /usr/share/doc/${P}/"
 	elog " 2. restart logitechmediaserver, check /var/log/logitechmediaserver/server.log"
 	elog " 3. confirm services are being advertised using avahi-browse (dbus daemon must be running):"
 	elog "       avahi-browse -tv _raop._tcp"
