@@ -28,7 +28,6 @@ DEPEND="dev-perl/Crypt-OpenSSL-RSA
 
 RDEPEND="${DEPEND}"
 
-# or /opt/logitechmediaserver/Plugins
 INSTALL_DIR="/var/lib/logitechmediaserver/Plugins/ShairTunes2"
 
 src_prepare() {
