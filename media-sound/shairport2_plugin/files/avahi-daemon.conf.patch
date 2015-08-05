@@ -1,0 +1,26 @@
+--- avahi-daemon.conf   2015-08-05 22:25:06.289836459 +0100
++++ avahi-daemon.conf.nur       2015-04-05 11:42:59.000000000 +0100
+@@ -21,10 +21,10 @@
+ [server]
+ #host-name=foo
+ #domain-name=local
+-browse-domains=0pointer.de, zeroconf.org
++#browse-domains=0pointer.de, zeroconf.org
+ use-ipv4=yes
+ use-ipv6=yes
+-#allow-interfaces=eth0
++allow-interfaces=br0
+ #deny-interfaces=eth1
+ #check-response-ttl=no
+ #use-iff-running=no
+@@ -52,7 +52,10 @@
+ #publish-dns-servers=192.168.50.1, 192.168.50.2
+ #publish-resolv-conf-dns-servers=yes
+ #publish-aaaa-on-ipv4=yes
++# CHANGE - PH
+ #publish-a-on-ipv6=no
++#publish-a-on-ipv6=yes
++# CHANGE - PH
+ 
+ [reflector]
+ #enable-reflector=no
