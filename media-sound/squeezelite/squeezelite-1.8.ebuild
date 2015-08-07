@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic git-r3
+inherit eutils user flag-o-matic git-r3
 
 DESCRIPTION="Squeezelite is a small headless Squeezebox emulator for Linux using ALSA audio output"
 HOMEPAGE="https://code.google.com/p/squeezelite"
