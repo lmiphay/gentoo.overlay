@@ -14,11 +14,11 @@ start() {
     start-stop-daemon \
 	--start \
 	--exec /usr/bin/squeezelite \
-	--pidfile /var/run/squeezelite.pid \
+	--pidfile /run/squeezelite.pid \
 	--make-pidfile \
 	--user ${SL_USER} \
 	--background \
-	${SL_OPTS} ${SL_SERVERIP}
+	-- ${SL_OPTS} ${SL_SERVERIP}
     eend $?
 }
 
@@ -27,6 +27,6 @@ stop() {
     start-stop-daemon \
 	--stop \
 	--exec /usr/bin/squeezelite \
-	--pidfile /var/run/squeezelite.pid
+	--pidfile /run/squeezelite.pid
   eend $?
 }
