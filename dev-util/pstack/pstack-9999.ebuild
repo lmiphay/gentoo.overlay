@@ -14,3 +14,8 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+src_prepare() {
+	epatch "${FILESDIR}/${PN}.ignore-linux-vdso.patch"
+	epatch_user
+}

@@ -1,0 +1,13 @@
+diff --git a/pstack.c b/pstack.c
+index 25c14d6..e13cba7 100644
+--- a/pstack.c
++++ b/pstack.c
+@@ -479,7 +479,7 @@ static Symbols loadSyms(const char *fname)
+   int fd;
+   Symbols syms;
+ 
+-  if (*fname == '\0')
++  if (*fname == '\0' || strcmp(fname, "linux-vdso.so.1")==0)
+     return (Symbols) 0;
+   syms = newSyms(fname);
+   if ((fd = open(fname, O_RDONLY)) < 0)
