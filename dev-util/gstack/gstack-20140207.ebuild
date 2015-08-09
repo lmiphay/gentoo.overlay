@@ -12,11 +12,13 @@ HOMEPAGE="https://admin.fedoraproject.org/pkgdb/package/gdb/"
 # the patch file has been updated a number of times since 20050411 without
 # changing the file name.
 patchfile="gdb-6.3-${PN}-20050411.patch"
+patchhash="2c55a5441d00bc3f00df01ed3184da81461c6cb2"
 manpage="gdb-${PN}.man"
+manhash="08593f1932ecb3f18c9531a6e35317dcea7a67e4"
 
 SRC_URI="
-	http://pkgs.fedoraproject.org/cgit/gdb.git/plain/${patchfile} -> ${patchfile}_${PV}
-	http://pkgs.fedoraproject.org/cgit/gdb.git/plain/${manpage} -> ${manpage}_${PV}
+	http://pkgs.fedoraproject.org/cgit/gdb.git/plain/${patchfile}?id=${patchhash} -> ${patchfile}_${PV}
+	http://pkgs.fedoraproject.org/cgit/gdb.git/plain/${manpage}?id=${manhash} -> ${manpage}_${PV}
 "
 RESTRICT="mirror"
 
