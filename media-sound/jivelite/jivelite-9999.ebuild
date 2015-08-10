@@ -20,6 +20,9 @@ IUSE=""
 
 DEPEND="
 	dev-lang/luajit
+	dev-lua/lua-cjson
+	dev-lua/luacrypto
+	dev-lua/luaexpat
 	dev-lua/luafilesystem
 	dev-lua/luasocket
 	media-libs/libsdl
