@@ -10,15 +10,12 @@ DESCRIPTION="Squeezelite is a small headless Squeezebox emulator for Linux using
 HOMEPAGE="https://code.google.com/p/squeezelite"
 
 EGIT_REPO_URI="https://code.google.com/p/squeezelite"
-GIT_ECLASS="git-r3"
 EGIT_COMMIT="8b8dfe6918ebe45ade5f3d9b68d453d7b8128d99"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="aac dsd ffmpeg flac mad mpg123 resample visexport vorbis"
-
-# ToDo: visexport use flag needs jivelite - add ebuild for https://code.google.com/p/jivelite/
 
 # ffmpeg provides alac and wma codecs
 DEPEND="media-libs/alsa-lib
@@ -29,6 +26,7 @@ DEPEND="media-libs/alsa-lib
 		mpg123? ( media-sound/mpg123 )
 		aac? ( media-libs/faad2 )
 		resample? ( media-libs/soxr )
+		visexport? ( media-sound/jivelite )
 "
 RDEPEND="${DEPEND}
 		 media-sound/alsa-utils"
