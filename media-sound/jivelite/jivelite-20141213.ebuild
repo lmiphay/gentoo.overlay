@@ -10,10 +10,9 @@ DESCRIPTION="Experimental squeezebox and derivative control application"
 HOMEPAGE="https://code.google.com/p/jivelite/"
 
 EGIT_REPO_URI="https://code.google.com/p/jivelite/"
-GIT_ECLASS="git-r3"
 EGIT_COMMIT="de07c79a717fa678d8ae8d87f5ef41d16357949b"
 
-LICENSE="BSD"
+LICENSE="jivelite"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -34,11 +33,12 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i -e 's;-lpthread;-lpthread -lrt;' "src/Makefile"
+	sed -i -e 's;"arp ";"/sbin/arp ";' "share/jive/jive/net/NetworkThread.lua"
 	epatch_user
 }
 
 src_compile() {
-	emake PREFIX=/usr
+	emake -C src PREFIX=/usr
 }
 
 src_install() {
