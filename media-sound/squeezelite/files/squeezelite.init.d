@@ -1,7 +1,23 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
+description="A headless Squeezebox emulator using ALSA audio output"
+
+user="squeezelite:audio"
+logfile="/var/log/squeezelite.log"
+
+start_stop_daemon_args="--user $user"
+
+command="/usr/bin/squeezelite"
+command_args="
+        -f $logfile
+        ${SL_OPTS}
+"
+
+command_background=yes
+pidfile=/run/squeezelite.pid
 
 depend() {
     need net
@@ -9,24 +25,6 @@ depend() {
     after bootmisc
 }
 
-start() {
-    ebegin "Starting squeezelite"
-    start-stop-daemon \
-	--start \
-	--exec /usr/bin/squeezelite \
-	--pidfile /run/squeezelite.pid \
-	--make-pidfile \
-	--user ${SL_USER} \
-	--background \
-	-- ${SL_OPTS} ${SL_SERVERIP}
-    eend $?
-}
-
-stop() {
-    ebegin "Stopping squeezelite"
-    start-stop-daemon \
-	--stop \
-	--exec /usr/bin/squeezelite \
-	--pidfile /run/squeezelite.pid
-  eend $?
+start_pre() {
+    checkpath --file --owner $user --mode 0644 $logfile
 }
