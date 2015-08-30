@@ -30,6 +30,7 @@ RDEPEND="
 	dev-lang/perl
 	sys-apps/moreutils[perl]
 	sys-fs/inotify-tools
+	sys-process/mussh
 "
 DEPEND="${RDEPEND}
 "
