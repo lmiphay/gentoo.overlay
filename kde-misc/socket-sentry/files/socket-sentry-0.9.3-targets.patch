@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 504da65..ef01c70 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,6 +15,7 @@
+ 
+ project (SocketSentry)
+ cmake_minimum_required (VERSION 2.6.4)
++cmake_policy(SET CMP0002 OLD)
+ enable_testing()
+ 
+ # Initialize project version
