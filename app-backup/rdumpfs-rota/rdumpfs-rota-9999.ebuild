@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND="
 	app-backup/rdumpfs
+	virtual/cron
 "
 DEPEND="${RDEPEND}
 "
