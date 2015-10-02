@@ -27,3 +27,9 @@ src_compile() {
 	./configure --prefix=/usr
 	emake
 }
+
+src_install() {
+	dobin kafkacat
+	doman kafkacat.1
+	dodoc README.md
+}
