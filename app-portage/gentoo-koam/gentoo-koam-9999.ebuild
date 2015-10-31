@@ -21,6 +21,7 @@ RDEPEND="
 	app-portage/gentoo-oam
 	dev-python/PyQt4
 	kde? ( dev-util/plasmate kde-base/plasma-workspace[python] kde-base/pykde4 )
+	virtual/ssh
 "
 DEPEND="${RDEPEND}
 "
