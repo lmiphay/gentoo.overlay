@@ -29,7 +29,7 @@ depend() {
 }
 
 start_pre() {
-    checkpath --pipe --owner $user --mode 0664 $cmdpipe
+    checkpath --pipe --owner $user --mode 0660 $cmdpipe
     checkpath --file --owner $user --mode 0644 $logfile
     
     [ -c /dev/uinput ] || modprobe -q uinput
