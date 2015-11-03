@@ -19,7 +19,9 @@ DEPEND="
 	dev-libs/boost
 	dev-libs/libusb
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	media-gfx/imagemagick
+"
 
 pkg_pretend() {
 	CONFIG_CHECK="~INPUT_UINPUT"
@@ -35,6 +37,7 @@ pkg_setup() {
 
 src_prepare () {
 	sed -i -e 's:/tmp/:/run/:' "g13.h"
+	sed -i -e 's:g++:$(CXX) $(CXXFLAGS) $(LDFLAGS):' "Makefile"
 	epatch_user
 }
 
@@ -43,7 +46,8 @@ src_compile() {
 }
 
 src_install() {
-	dosbin g13d pbm2lpbm
+	dosbin g13d
+	dobin pbm2lpbm ${FILESDIR}/g13writelcd
 	dodoc README.org *.bind ${FILESDIR}/keys.txt
 	insinto /usr/share/${PN}
 	doins *.lpbm ${FILESDIR}/92-uinput-g13.rules

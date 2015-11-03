@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo -e "$*" | pbmtext -builtin fixed | convert -resize 160x43! - - | pbm2lpbm >/run/g13-0
+
+exit 0

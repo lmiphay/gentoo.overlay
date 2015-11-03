@@ -22,13 +22,15 @@ pidfile=/run/g13.pid
 
 stopsig="SIGINT"
  
-depend() {
+depend()
+{
     need localmount
     after bootmisc
     provide g13
 }
 
-start_pre() {
+start_pre()
+{
     checkpath --pipe --owner $user --mode 0660 $cmdpipe
     checkpath --file --owner $user --mode 0644 $logfile
     
@@ -37,4 +39,9 @@ start_pre() {
        eerror "No uinput support available in kernel"
        return 1
     fi
+}
+
+start_post()
+{
+    g13writelcd "$G13_LCDMSG"
 }
