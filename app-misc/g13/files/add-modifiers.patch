@@ -1,0 +1,314 @@
+diff --git a/91-g13.rules b/91-g13.rules
+index 7926d4e..b4cbb0f 100644
+--- a/91-g13.rules
++++ b/91-g13.rules
+@@ -1 +1,2 @@
+-SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c21c", MODE="0666"
+\ No newline at end of file
++SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c21c", MODE="0666"
++
+diff --git a/Makefile b/Makefile
+index ee53160..df3aeff 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,10 @@
+ all: g13d pbm2lpbm
+ 
+-g13d: g13.h g13.cc
+-	g++ -o g13d -std=c++0x g13.cc -lusb-1.0
++g13d: g13.h g13.cc g13map.o
++	g++ -o g13d -std=c++0x g13.cc g13map.o -lusb-1.0
++
++g13map.o: g13map.cc g13map.h
++	g++ -c -o g13map.o -std=c++0x g13map.cc
+ 
+ pbm2lpbm: pbm2lpbm.c
+ 	g++ -o pbm2lpbm pbm2lpbm.c
+@@ -13,4 +16,4 @@ package:
+ 	tar cjf g13-userspace.tbz2 g13-userspace
+ 	rm -Rf g13-userspace
+ clean: 
+-	rm -f g13 pbm2lpbm
+\ No newline at end of file
++	rm -f g13d g13map.o pbm2lpbm
+diff --git a/README.org b/README.org
+index f4f5adb..a05fd06 100644
+--- a/README.org
++++ b/README.org
+@@ -12,13 +12,13 @@ If you want to run the daemon as user, put the file 91-g13.rules into /etc/udev/
+ Connect your device, then run ./g13, it should automatically find your device.
+ 
+ If you see output like
+-
++```
+ Known keys on G13:
+ BD DOWN G1 G10 G11 G12 G13 G14 G15 G16 G17 G18 G19 G2 G20 G21 G22 G3 G4 G5 G6 G7 G8 G9 L1 L2 L3 L4 LEFT LIGHT LIGHT_STATE M1 M2 M3 MR TOP STICK_LEFT STICK_RIGHT STICK_UP STICK_DOWN 
+ Known keys to map to:
+ KEY_0 KEY_1 KEY_2 KEY_3 KEY_4 KEY_5 KEY_6 KEY_7 KEY_8 KEY_9 KEY_A KEY_APOSTROPHE KEY_B KEY_BACKSLASH KEY_BACKSPACE KEY_C KEY_CAPSLOCK KEY_COMMA KEY_D KEY_DOT KEY_DOWN KEY_E KEY_ENTER KEY_EQUAL KEY_ESC KEY_F KEY_F1 KEY_F10 KEY_F2 KEY_F3 KEY_F4 KEY_F5 KEY_F6 KEY_F7 KEY_F8 KEY_F9 KEY_G KEY_GRAVE KEY_H KEY_I KEY_J KEY_K KEY_KP0 KEY_KP1 KEY_KP2 KEY_KP3 KEY_KP4 KEY_KP5 KEY_KP6 KEY_KP7 KEY_KP8 KEY_KP9 KEY_KPASTERISK KEY_KPDOT KEY_KPMINUS KEY_KPPLUS KEY_L KEY_LEFT KEY_LEFTALT KEY_LEFTBRACE KEY_LEFTCTRL KEY_LEFTSHIFT KEY_M KEY_MINUS KEY_N KEY_NUMLOCK KEY_O KEY_P KEY_Q KEY_R KEY_RIGHT KEY_RIGHTBRACE KEY_RIGHTSHIFT KEY_S KEY_SCROLLLOCK KEY_SEMICOLON KEY_SLASH KEY_SPACE KEY_T KEY_TAB KEY_U KEY_UP KEY_V KEY_W KEY_X KEY_Y KEY_Z 
+ Found 1 G13s
+-
++```
+ that is good. This also shows you which name the keys on the G13 have, and what keys you can bind them to.
+ 
+ ** Commands
+@@ -38,6 +38,17 @@ would set M1, M3 and MR, and unset M2).
+ 
+ This binds a key. The possible values of <keyname> are shown upon startup (e.g. G1), same for <binding> (e.g. KEY_LEFTSHIFT).
+ 
++A single G13 key press can be mapped to multiple key events using this syntax:
++```
++bind G1 KEY_LEFTCTRL KEY_F
++bind G2 KEY_LEFTSHIFT KEY_G
++bind G3 KEY_LEFTALT KEY_H
++bind G4 KEY_LEFTCTRL KEY_LEFTSHIFT KEY_I
++bind G5 KEY_LEFTCTRL KEY_LEFTSHIFT KEY_LEFTALT KEY_J
++bind G6 KEY_LEFTCTRL KEY_LEFTSHIFT KEY_LEFTALT KEY_K # this is a comment
++```
++This is useful in the case of modifiers.
++
+ *** Stick mode
+ 
+ The stick can be used as an absolute input device or can send key events. Right now there is no command for this, you need to edit the source (file g13.cc, around line 622, this->stick_mode = STICK_KEYS, change to this->stick_mode = STICK_ABSOLUTE).
+@@ -50,4 +61,4 @@ Use pbm2lpbm to convert a pbm image to the correct format, then just cat that in
+ The pbm file must be 160x43 pixels.
+ 
+ * License
+-This code is placed in the public domain. Do with it whatever you want.
+\ No newline at end of file
++This code is placed in the public domain. Do with it whatever you want.
+diff --git a/g13.cc b/g13.cc
+index d428bce..9a0e057 100644
+--- a/g13.cc
++++ b/g13.cc
+@@ -142,8 +142,14 @@ void g13_parse_key(int key, unsigned char *byte, g13_keypad *g13) {
+   unsigned char actual_byte = byte[key / 8];
+   unsigned char mask = 1 << (key % 8);
+   if(bool value = g13->update(key, actual_byte & mask)) {
+-//    cout << g13->mapping(key) << ": " << g13->is_set(key) << endl;
+-    send_event(g13->uinput_file, EV_KEY, g13->mapping(key), g13->is_set(key));
++
++    const std::list<int>& keys = g13->keymap->mapping(key);
++
++    for (std::list<int>::const_iterator it = keys.begin(); it!= keys.end(); it++) {
++       // std::cout << *it << ": " << g13->is_set(key) << std::endl;
++       send_event(g13->uinput_file, EV_KEY, *it, g13->is_set(key));
++    }
++
+   }
+ }
+ void g13_parse_keys(unsigned char *buf, g13_keypad *g13) {
+@@ -395,6 +401,7 @@ void cleanup(int n = 0) {
+     g13_destroy_uinput(g13s[i]);
+     g13_destroy_fifo(g13s[i]);
+     g13_deregister(g13s[i]);
++    delete g13s[i]->keymap;
+     delete g13s[i];
+   }
+   libusb_exit(ctx);
+@@ -654,23 +661,11 @@ g13_keypad::g13_keypad(libusb_device_handle *handle, int id) {
+     uinput_file = -1;
+     for(int i = 0; i < sizeof(keys); i++)
+       keys[i] = false;
+-    for(int i = 0; i < G13_NUM_KEYS; i++)
+-      map[i] = KEY_A;
+-    /*      map = { KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G, KEY_H,
+-              KEY_I, KEY_J, KEY_K, KEY_L, KEY_M, KEY_N, KEY_O, KEY_P,
+-              KEY_Q, KEY_R, KEY_S, KEY_T, KEY_U, KEY_V, 0, 0,
+-              KEY_W, KEY_X, KEY_Y, KEY_Z, KEY_1, KEY_2, KEY_3, KEY_4,
+-              KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_F1, KEY_F2 };*/
+-    // starcraft 2
+-    // map = { KEY_5, KEY_3, KEY_1, KEY_0, KEY_2, KEY_4, KEY_6,
+-    //         KEY_V, KEY_F, KEY_E, KEY_C, KEY_B, KEY_G, KEY_I,
+-    //         KEY_LEFTSHIFT, KEY_M, KEY_T, KEY_L, KEY_H,
+-    //         KEY_A, KEY_S, KEY_LEFTCTRL, 0, 0,
+-    //         KEY_F1, KEY_N, KEY_R, KEY_P, KEY_K, KEY_D, KEY_X, KEY_Y,
+-    // 	    KEY_Z, KEY_TAB, KEY_W, KEY_BACKSPACE, 0, 0, 0, 0};
+-    }
+ 
+-    void g13_keypad::command(char const *str) {
++    keymap = new g13map(G13_NUM_KEYS);
++}
++
++void g13_keypad::command(char const *str) {
+     int red, green, blue, mod;
+     char keyname[256];
+     char binding[256];
+@@ -684,7 +679,9 @@ g13_keypad::g13_keypad(libusb_device_handle *handle, int id) {
+         int bind = input_name_to_key[binding];
+         if(name_to_key.find(keyname) != name_to_key.end()) {
+           int key = name_to_key[keyname];
+-          map[key] = bind;
++
++          keymap->bind(key, str, input_name_to_key);
++
+         } else if(key_name == "STICK_LEFT") {
+           this->stick_keys[STICK_LEFT] = bind;
+         } else if(key_name == "STICK_RIGHT") {
+diff --git a/g13.h b/g13.h
+index 4eb7b5a..9e4e1ad 100644
+--- a/g13.h
++++ b/g13.h
+@@ -1,5 +1,6 @@
+ #include <string>
+ #include <map>
++#include "g13map.h"
+ 
+ #define null 0
+ 
+@@ -23,15 +24,9 @@ struct g13_keypad {
+   stick_mode_t stick_mode;
+   int stick_keys[4];
+   g13_keypad(libusb_device_handle *handle, int id);
+-  int map[G13_NUM_KEYS];
+ 
+-  void set_mapping(int mapping[G13_NUM_KEYS]) {
+-    for(int i = 0; i < G13_NUM_KEYS; i++)
+-      map[i] = mapping[i];
+-  }
+-  int mapping(int key) {
+-    return map[key];
+-  }
++  g13map* keymap;
++
+   bool keys[G13_NUM_KEYS];
+   bool is_set(int key) {
+     return keys[key];
+diff --git a/g13map.cc b/g13map.cc
+new file mode 100644
+index 0000000..9b43526
+--- /dev/null
++++ b/g13map.cc
+@@ -0,0 +1,63 @@
++#include <iostream>
++#include <boost/algorithm/string.hpp>
++#include <cassert>
++#include <linux/uinput.h>
++#include "g13map.h"
++
++g13map::g13map(const int g13_num_keys) :
++   m_bind(g13_num_keys),
++   m_keya(1)
++{
++   std::cout << "g13map ctor"<< std::endl;
++   m_keya.push_back(KEY_A); // from <linux/uinput.h>
++}
++
++g13map::~g13map()
++{
++   std::cout << "g13map dtor"<< std::endl;
++}
++
++bool
++g13map::bind(const int g13key, const char* cmd,
++             const std::map<std::string, int>& lut)
++{
++   assert(g13key>=0);
++   assert(g13key<m_bind.size());
++
++   m_bind[g13key].clear();
++
++   std::vector<std::string> tok;
++
++   boost::split(tok, cmd, boost::is_any_of(" "));
++
++   for (int i=2; i<tok.size(); i++) {
++      std::cout << "g13map::bind " << i << " <" << tok[i] << ">" << std::endl;
++
++      if (tok[i].size() < 1 || tok[i][0] == '#')
++         break;
++      else if (lut.count(tok[i])==1)
++         m_bind[g13key].push_back(lut.at(tok[i]));
++      else {
++         std::cerr << "Keyboard key not found for: " << tok[i] << std::endl;
++         return false;
++      }
++   }
++
++   return true;
++}
++
++const std::list<int>&
++g13map::mapping(const int g13key) const
++{
++   if ((g13key>=0) && (g13key<m_bind.size()))
++
++      if (m_bind[g13key].size()<1)
++         return m_keya;
++      else
++         return m_bind[g13key];
++
++   else {
++      std::cerr << "Bad G13 key: " << g13key << std::endl;
++      return m_keya;
++   }
++}
+diff --git a/g13map.h b/g13map.h
+new file mode 100644
+index 0000000..03c5aec
+--- /dev/null
++++ b/g13map.h
+@@ -0,0 +1,47 @@
++#ifndef _g13map_
++#define _g13map_ 1
++#include <map>
++#include <string>
++#include <vector>
++#include <list>
++
++/** This class maps between a single key pressed on the G13 and one or
++ *  key presses which will be generated for passing via the uinput
++ *  interface.
++ */
++class g13map {
++public:
++
++  // ctor: create a map capable of holding g13_num_keys number of mappings
++  g13map(const int g13_num_keys);
++
++  // dtor
++  virtual ~g13map();
++
++  // add a mapping between g13key and the to-be decoded normal keyboard
++  // mappings in cmd (cmd holds the full bind command line, e.g.
++  // 'bind G12 KEY_U') - use the look up table lut to map between the strings
++  // found in cmd and key numbers
++  virtual bool bind(const int g13key, const char* cmd,
++                    const std::map<std::string, int>& lut);
++
++  // return the current mapping for the G13 key g13key as a list of one or
++  // more keys
++  virtual const std::list<int>& mapping(const int g13key) const;
++
++private:
++
++  // the mapping between the G13 key and a list of one or more key codes
++  // for each g13key
++  std::vector<std::list<int> > m_bind;
++
++  // a list to return when the mapping has not been set for a key
++  // (contains KEY_A)
++  std::list<int> m_keya;
++
++  // disabled
++  g13map();
++
++};
++
++#endif // _g13map_
+diff --git a/modifiertest.bind b/modifiertest.bind
+new file mode 100644
+index 0000000..0a2006c
+--- /dev/null
++++ b/modifiertest.bind
+@@ -0,0 +1,11 @@
++bind G1 KEY_LEFTCTRL KEY_F
++bind G2 KEY_LEFTSHIFT KEY_G
++bind G3 KEY_LEFTALT KEY_H
++bind G4 KEY_LEFTCTRL KEY_LEFTSHIFT KEY_I
++bind G5 KEY_LEFTCTRL KEY_LEFTSHIFT KEY_LEFTALT KEY_J
++bind G6 KEY_LEFTCTRL KEY_LEFTSHIFT KEY_LEFTALT KEY_K # this is a comment
++bind G7 KEY_L
++bind G7 KEY_M #another comment
++bind G8
++bind G9 FOO
++bind G10 BAR #comment
