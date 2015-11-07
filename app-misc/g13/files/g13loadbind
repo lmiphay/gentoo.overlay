@@ -3,10 +3,7 @@
 cmdpipe=/run/g13-0
 
 if [ -p "$cmdpipe" ] ; then
-    echo -e "$*" | \
-	pbmtext -builtin fixed | \
-	convert -resize 160x43! - - | \
-	pbm2lpbm >/$cmdpipe
+    cat "$*" >$cmdpipe
     exit 0
 else
     echo "$(basename $0): $cmdpipe not found - is the g13 service running?"
