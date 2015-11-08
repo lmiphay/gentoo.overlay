@@ -44,4 +44,5 @@ start_pre()
 start_post()
 {
     g13writelcd "$G13_LCDMSG"
+    [ -f "$G13_BINDFILE" ] && g13loadbind "$G13_BINDFILE"
 }

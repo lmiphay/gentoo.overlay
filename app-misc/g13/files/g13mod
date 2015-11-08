@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cmdpipe=/run/g13-0
+
+declare -A MVAL=( [M1]=1 [M2]=2 [M3]=4 [MR]=8 [M4]=8 )
+
+if [ -p "$cmdpipe" ] ; then
+    sum=0
+
+    for i in $@ ; do
+	(( sum+=${MVAL[${i^^}]} ))
+    done
+
+    echo $sum >/$cmdpipe
+
+    exit 0
+else
+    echo "$(basename $0): $cmdpipe not found - is the g13 service running?"
+    exit 1
+fi

@@ -49,7 +49,8 @@ src_compile() {
 
 src_install() {
 	dosbin g13d
-	dobin pbm2lpbm ${FILESDIR}/g13writelcd ${FILESDIR}/g13loadbind
+	dobin pbm2lpbm
+	dobin ${FILESDIR}/g13writelcd ${FILESDIR}/g13loadbind ${FILESDIR}/g13mod
 	dodoc README.org *.bind ${FILESDIR}/keys.txt
 	insinto /usr/share/${PN}
 	doins *.lpbm ${FILESDIR}/99-uinput-g13.rules

@@ -6,3 +6,6 @@ G13_ARGS="/usr/share/g13/logo.lpbm"
 
 # Message to be written to the G13 LCD on startup
 G13_LCDMSG="Welcome to\n  Gentoo"
+
+# Default key bindings to be sent to the G13 on startup
+#G13_BINDFILE="/etc/g13.bind"
