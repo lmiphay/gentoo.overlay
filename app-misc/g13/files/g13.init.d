@@ -21,7 +21,7 @@ command_background=yes
 pidfile=/run/g13.pid
 
 stopsig="SIGINT"
- 
+
 depend()
 {
     need localmount
@@ -43,8 +43,13 @@ start_pre()
 
 start_post()
 {
-    g13writelcd "$G13_LCDMSG"
+    # the parse is racey - only do either:
+    #   1. the load bind or
+    #   2. the lcd msg write
+    # for the moment.
     if [ -f "$G13_BINDFILE" ] ; then
        g13loadbind "$G13_BINDFILE"
+    elif [ -n "$G13_LCDMSG" ] ; then
+       g13writelcd "$G13_LCDMSG"
     fi
 }

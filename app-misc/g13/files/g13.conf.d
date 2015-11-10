@@ -4,6 +4,12 @@
 #
 G13_ARGS="/usr/share/g13/logo.lpbm"
 
+###
+#   Note that only one of either writing a message to the LCD or
+#   loading default bindings can be done at startup due to a race
+#   in the parser.
+###
+
 # Message to be written to the G13 LCD on startup
 G13_LCDMSG="Welcome to\n  Gentoo"
 
