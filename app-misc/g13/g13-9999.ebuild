@@ -38,8 +38,8 @@ pkg_setup() {
 
 src_prepare () {
 	epatch "${FILESDIR}/add-modifiers.patch"
+	epatch "${FILESDIR}/add-logging.patch"
 	sed -i -e 's:/tmp/:/run/:' "g13.h"
-	sed -i -e 's:g++:$(CXX) $(CXXFLAGS) $(LDFLAGS):' "Makefile"
 	sed -i '/MODE/G' "91-g13.rules"
 	epatch_user
 }
