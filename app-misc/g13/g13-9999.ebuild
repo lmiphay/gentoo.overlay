@@ -21,6 +21,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-gfx/imagemagick
+	sys-apps/coreutils
 "
 
 pkg_pretend() {

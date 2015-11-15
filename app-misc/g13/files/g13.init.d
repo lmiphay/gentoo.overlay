@@ -7,7 +7,6 @@ description="libusb driver for the g13"
 
 user="g13:plugdev"
 
-cmdpipe="/run/g13-0"
 logfile="/var/log/g13.log"
 
 start_stop_daemon_args="--user $user --stdout $logfile --stderr $logfile"
@@ -31,7 +30,6 @@ depend()
 
 start_pre()
 {
-    checkpath --pipe --owner $user --mode 0660 $cmdpipe
     checkpath --file --owner $user --mode 0644 $logfile
     
     [ -c /dev/uinput ] || modprobe -q uinput
@@ -48,8 +46,8 @@ start_post()
     #   2. the lcd msg write
     # for the moment.
     if [ -f "$G13_BINDFILE" ] ; then
-       g13loadbind "$G13_BINDFILE"
+       timeout 3 g13loadbind "$G13_BINDFILE"
     elif [ -n "$G13_LCDMSG" ] ; then
-       g13writelcd "$G13_LCDMSG"
+       timeout 3 g13writelcd "$G13_LCDMSG"
     fi
 }
