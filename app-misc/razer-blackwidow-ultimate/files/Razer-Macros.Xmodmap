@@ -1,0 +1,9 @@
+! Razor Macro Keys 1-5
+keycode 191 = Escape
+keycode 192 = Tab
+keycode 193 = Shift_L
+keycode 194 = Shift_L
+keycode 195 = Control_L
+
+! Caps_Lock
+keycode 66 = Shift_L
