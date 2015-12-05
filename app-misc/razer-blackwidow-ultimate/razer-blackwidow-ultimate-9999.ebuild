@@ -35,9 +35,11 @@ src_prepare () {
 
 src_install() {
 	newsbin razer-blackwidow-ultimate.py razer-blackwidow-ultimate
+	newsbin "${FILESDIR}/rbu" rbu
 	dodoc ${FILESDIR}/Razer-Macros.Xmodmap
 	insinto /lib/udev/rules.d
 	doins 99-razer-blackwidow-ultimate.rules
 
+	newconfd "${FILESDIR}/${PN}.conf.d" "${PN}"
 	newinitd "${FILESDIR}/${PN}.init.d" "${PN}"
 }

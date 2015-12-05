@@ -2,7 +2,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-description="Enable M1-M5/FN keys for the Razer BlackWidow Ultimate keyboard"
+description="Enable the Razer BlackWidow Ultimate M1-M5 keys"
 
 depend()
 {
@@ -12,5 +12,14 @@ depend()
 
 start()
 {
-	/usr/sbin/razer-blackwidow-ultimate >> /var/log/razer-blackwidow-ultimate.log 2>&1
+	if [ -n "$RBU_START_ARGS" ] ; then
+	   /usr/sbin/rbu $RBU_START_ARGS
+	fi
+}
+
+stop()
+{
+	if [ -n "$RBU_STOP_ARGS" ] ; then
+	   /usr/sbin/rbu $RBU_STOP_ARGS
+	fi
 }

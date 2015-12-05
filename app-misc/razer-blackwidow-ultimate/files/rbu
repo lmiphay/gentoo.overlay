@@ -1,0 +1,56 @@
+#!/usr/bin/python
+
+import sys
+import os
+import logging
+
+class RazerBlackWidowUltimate(object):
+
+    LOGFILE = '/var/log/razer-blackwidow-ultimate.log'
+
+    BWCMD = {
+	'init':   '0200 0402',
+	'bright': '0303 0301 04ff',
+	'normal': '0303 0301 04a8',
+	'dim':    '0303 0301 0454',
+	'off':    '0303 0301 0400'
+    }
+
+    def __init__(self):
+        logging.basicConfig(level=logging.INFO,
+                            format='%(asctime)s %(levelname)s %(message)s',
+                            filename=self.LOGFILE)
+        self.logger = logging.getLogger("razer.blackwidow.ultimate")
+        sys.stdout = self
+        sys.stderr = self
+
+    def write(self, line):
+        self.logger.log(logging.INFO, line.rstrip())
+
+    def flush(self):
+        pass
+
+    def process(self, bw, argv):
+        for cmd in argv:
+            if cmd in self.BWCMD:
+                self.logger.log(logging.INFO, "send to keyboard: " + cmd)
+                bw.send(self.BWCMD[cmd])
+            else:
+                self.logger.log(logging.ERROR, "unknown command: " + cmd)
+                return 1
+        return 0
+
+if __name__ == '__main__':
+
+    if len(sys.argv)==1 or (len(sys.argv)==2 and sys.argv[1]=='-h'):
+        print("usage: "+ os.path.basename(sys.argv[0]) +
+              " (one-or-more-of:) " + str(RazerBlackWidowUltimate.BWCMD.keys()))
+        sys.exit(1)
+    else:
+        driver = RazerBlackWidowUltimate()
+
+        # import razer-blackwidow-ultimate
+        __name__ = 'notmain'
+        exec(open('/usr/sbin/razer-blackwidow-ultimate').read())
+
+        sys.exit(driver.process(blackwidow(), sys.argv[1:]))
