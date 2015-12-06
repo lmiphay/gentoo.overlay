@@ -17,18 +17,27 @@ class RazerBlackWidowUltimate(object):
     }
 
     def __init__(self):
-        logging.basicConfig(level=logging.INFO,
-                            format='%(asctime)s %(levelname)s %(message)s',
-                            filename=self.LOGFILE)
+        if os.access(self.LOGFILE, os.W_OK):
+            logging.basicConfig(level=logging.INFO,
+                                format='%(asctime)s %(levelname)s %(message)s',
+                                filename=self.LOGFILE)
+        else:
+            print("warning: " + self.LOGFILE + " is not writable")
+            logging.basicConfig(level=logging.INFO,
+                                format='%(asctime)s %(levelname)s %(message)s')
         self.logger = logging.getLogger("razer.blackwidow.ultimate")
+        self.orig_stdout = sys.stdout
         sys.stdout = self
         sys.stderr = self
 
-    def write(self, line):
-        self.logger.log(logging.INFO, line.rstrip())
+    def write(self, msg):
+        self.logger.log(logging.INFO, msg.rstrip())
+        if self.orig_stdout.isatty() and os.access(self.LOGFILE, os.W_OK):
+            self.orig_stdout.write(msg)
 
     def flush(self):
-        pass
+        if self.orig_stdout.isatty():
+            self.orig_stdout.flush()
 
     def process(self, bw, argv):
         for cmd in argv:
