@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -38,6 +38,4 @@ src_install() {
 	else
 		die "unknown arch"
 	fi
-	# install docs as part of the plugin ebuild
-	# dohtml doc/userguide.htm
 }

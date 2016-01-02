@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND="
 	media-sound/logitechmediaserver-bin
-	=net-libs/libupnp-castbridge-1.6.19
+	media-sound/squeeze2cast
 "
 RDEPEND="${DEPEND}"
 
@@ -35,6 +35,7 @@ src_install() {
 pkg_postinst() {
 	elog "Castbridge has been installed to ${INSTALL_DIR} - now:"
 	elog " 1. restart logitechmediaserver, check /var/log/logitechmediaserver/server.log"
+	elog " 2. wait a minute or two the devices to be discovered"
 	elog ""
 	elog "Support thread at: http://forums.slimdevices.com/showthread.php?104614-Announce-CastBridge-integrate-Chromecast-players-with-LMS-(squeeze2cast)"
 }
