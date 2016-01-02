@@ -19,7 +19,7 @@ DEPEND="
 	dev-libs/jansson
 	dev-libs/nanopb
 	dev-libs/openssl
-	=net-libs/libupnp-1.6.19
+	=net-libs/libupnp-castbridge-1.6.19
 "
 RDEPEND="${DEPEND}"
 
@@ -32,5 +32,7 @@ src_prepare() {
 
 src_install() {
 	dobin build/squeeze2cast
-	dohtml doc/userguide.htm
+
+	# install docs as part of the plugin ebuild
+	# dohtml doc/userguide.htm
 }

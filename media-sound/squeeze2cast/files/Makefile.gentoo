@@ -10,15 +10,17 @@ build_dir	= ./build
 squeezetiny_dir = squeezetiny
 squeezecast_dir = squeeze2cast
 nanopb_dir = /usr/share/nanopb
+mdnssd_dir = mdnssd
 
 EXECUTABLE = $(build_dir)/squeeze2cast
 
 INCLUDE = -I/usr/include/upnp \
           -I/usr/include/nanopb \
           -I$(squeezetiny_dir) \
-          -I$(squeezecast_dir)/inc
+          -I$(squeezecast_dir)/inc \
+          -I$(mdnssd_dir)
 
-VPATH   = $(nanopb_dir):$(squeezetiny_dir):$(squeezecast_dir)
+VPATH   = $(nanopb_dir):$(squeezetiny_dir):$(squeezecast_dir):$(mdnssd_dir)
 
 SOURCES = \
 	slimproto.c buffer.c \
@@ -29,7 +31,8 @@ SOURCES = \
 	util.c webserver.c \
 	castcore.c castmessage.pb.c \
         squeeze2cast.c \
-	pb_common.c pb_decode.c pb_encode.c
+	pb_common.c pb_decode.c pb_encode.c \
+	mdnssd-min.c
 HEADERS = $(squeezetiny_dir)/squeezelite.h $(squeezetiny_dir)/slimproto.h\
         $(squeezetiny_dir)/squeezedefs.h $(squeezetiny_dir)/squeezeitf.h
 
