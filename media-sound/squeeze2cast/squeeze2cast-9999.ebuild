@@ -31,8 +31,13 @@ src_prepare() {
 }
 
 src_install() {
-	dobin build/squeeze2cast
-
+	if use amd64 ; then
+		newbin build/squeeze2cast squeeze2cast-x86-64
+	elif use x86 ; then
+		newbin build/squeeze2cast squeeze2cast-x86
+	else
+		die "unknown arch"
+	fi
 	# install docs as part of the plugin ebuild
 	# dohtml doc/userguide.htm
 }
