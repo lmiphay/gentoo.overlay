@@ -19,7 +19,7 @@ DEPEND="
 	dev-libs/jansson
 	dev-libs/nanopb
 	dev-libs/openssl
-	=net-libs/libupnp-castbridge-1.6.19
+	~net-libs/libupnp-castbridge-1.6.19
 "
 RDEPEND="${DEPEND}"
 

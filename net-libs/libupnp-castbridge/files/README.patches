@@ -1,0 +1,14 @@
+These patches originated from:
+
+  1)
+    libupnp-castbridge-1.6.19-httpreadwrite.c.patch
+    libupnp-castbridge-1.6.19-upnp.h.patch
+    libupnp-castbridge-1.6.19-webserver.c.patch
+
+    These patches were made using the files in this repo directory:
+
+       https://github.com/philippe44/LMS-to-Cast/tree/master/application/libupnp.patch
+  2)
+    libupnp-castbridge-1.6.19-suse.patch
+
+    This patch was copied from portage.
