@@ -1,0 +1,72 @@
+diff --git a/makefile b/makefile
+index 9321d8f..a010a28 100644
+--- a/makefile
++++ b/makefile
+@@ -2,7 +2,8 @@
+ 
+ # Includes
+ IDIR        =include
+-IDIR_NATIVE?=../mariadb-native-client/include
++# e.g. this should point at either the GPL MySQL C driver, or the LGPL MariaDB Connector/C
++IDIR_MYSQLC =/usr/include/mysql
+ 
+ # Default folders
+ ODIR=obj
+@@ -14,28 +15,29 @@ DIRS=$(LDIR)	$(ODIR)	$(OSDIR)
+ # Sources
+ SRCS=account.cpp bind.cpp concurrency.cpp connection.cpp date_time.cpp decimal.cpp exceptions.cpp last_error.cpp private.cpp result_set.cpp save_point.cpp statement.cpp time.cpp time_span.cpp transaction.cpp worker.cpp
+ 
+-CXX     =g++
+ AR      =ar -r -s
+-CPPFLAGS=-I$(IDIR) -I$(IDIR_NATIVE) -std=c++11 #-DMARIADB_WITHOUT_CPP11
+-CXXFLAGS=-Wall -O2
++CPPFLAGS=-I$(IDIR) -I$(IDIR_MYSQLC) -std=c++11 #-DMARIADB_WITHOUT_CPP11
+ LIBS    =-lz -lssl -lstdc++ -pthread
+ TARGET  =libmariadb++.a
+-MKDIR   =mkdir -p
++SHLIB_TARGET  =libmariadb++.so
+ 
+ OBJS=$(patsubst %.cpp,$(OSDIR)/%.o,$(SRCS))
+ DEPS=$(patsubst %.cpp,$(OSDIR)/%.d,$(SRCS))
+ 
+-.PHONY:	clean all
++.PHONY:	clean all makedirs
+ 
+-all:	$(TARGET)
++all: makedirs $(LDIR)/$(TARGET) $(LDIR)/$(SHLIB_TARGET)
+ 
+ # Build target
+-$(TARGET):	makedirs	$(LDIR)	$(ODIR)	$(OSDIR)	$(OBJS)	$(DEPS)
++$(LDIR)/$(TARGET): $(OBJS)	$(DEPS)
+ 	$(AR) $(LDIR)/$(TARGET) $(OBJS)
+ 
++$(LDIR)/$(SHLIB_TARGET): $(OBJS)	$(DEPS)
++	$(CXX) -shared -Wl,-soname,libmariadb++.so.1 -o $(LDIR)/$(SHLIB_TARGET) $(OBJS)
++
+ # Objects generation
+ $(OSDIR)/%.o:	$(SDIR)/%.cpp
+-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -fPIC -c $< -o $@
+ 
+ # Generating dependencies
+ $(OSDIR)/%.d:	$(SDIR)/%.cpp
+@@ -43,17 +45,8 @@ $(OSDIR)/%.d:	$(SDIR)/%.cpp
+ 
+ #Cleanup objects / dependencies and target
+ clean:
+-	rm -f $(OBJS) $(DEPS) $(TARGET)
++	rm -rf $(DIRS)
+ 
+-# Create directories
+ makedirs:
+-	@$(call make-dirs)
+-	
+-define make-dirs
+-   	for dir in $(DIRS);\
+-   	do\
+-   		mkdir -p $$dir;\
+-   	done
+-endef
+-
++	mkdir -p $(DIRS)
+ 
