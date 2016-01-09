@@ -4,7 +4,9 @@
 
 EAPI=5
 
-inherit git-r3
+PYTHON_COMPAT=(python{2_7,3_{3,4}})
+
+inherit user distutils-r1 git-r3
 
 DESCRIPTION="Automatation for common tasks around gentoo server upkeep"
 HOMEPAGE="https://github.com/lmiphay/gentoo-oam"
@@ -38,3 +40,7 @@ DEPEND="${RDEPEND}
 "
 
 DOCS="README.md"
+
+pkg_setup() {
+	enewgroup oam
+}
