@@ -15,14 +15,14 @@ EGIT_REPO_URI="https://github.com/lmiphay/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="kde plasmoidviewer"
+IUSE="kde"
 
+#	plasmoidviewer? ( dev-util/plasmate )
 RDEPEND="
 	app-portage/gentoo-oam
 	dev-python/PyQt4
 	dev-python/pyyaml
 	kde? ( kde-base/plasma-workspace[python] kde-base/pykde4 )
-	plasmoidviewer? ( dev-util/plasmate )
 	virtual/ssh
 "
 DEPEND="${RDEPEND}
