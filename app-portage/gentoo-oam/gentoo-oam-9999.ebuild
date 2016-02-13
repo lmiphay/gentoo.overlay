@@ -31,6 +31,7 @@ RDEPEND="
 	>=app-shells/bash-4.3
 	app-text/multitail
 	dev-lang/perl
+	dev-python/click
 	dev-python/pyyaml
 	sys-apps/moreutils[perl]
 	sys-fs/inotify-tools
