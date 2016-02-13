@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=(python{2_7,3_{3,4}})
 
-inherit user distutils-r1 git-r3
+inherit user distutils-r1 bash-completion-r1 git-r3
 
 DESCRIPTION="Automatation for common tasks around gentoo server upkeep"
 HOMEPAGE="https://github.com/lmiphay/gentoo-oam"
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/lmiphay/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+lnav +ranger kernel"
+IUSE="+completion kernel +lnav +ranger"
 
 # >=bash-4.3 is needed for 'local -n / declare -n'
 RDEPEND="
@@ -29,6 +29,7 @@ RDEPEND="
 	app-portage/gentoolkit
 	app-portage/portage-utils
 	>=app-shells/bash-4.3
+	completion? ( app-shells/bash-completion )
 	app-text/multitail
 	dev-lang/perl
 	dev-python/click
@@ -45,4 +46,10 @@ DOCS="README.md"
 
 pkg_setup() {
 	enewgroup oam
+}
+
+src_install() {
+	   emake DESTDIR="${D}" install
+	   dodoc ${DOCS}
+	   newbashcomp etc/bash.completion oam
 }
