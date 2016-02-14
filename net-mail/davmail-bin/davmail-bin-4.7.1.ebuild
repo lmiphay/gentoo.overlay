@@ -1,21 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="5"
 
 inherit eutils java-pkg-2 user
 
-MY_REV="2343"
+MY_REV="2416"
 MY_PN="davmail"
 
-if use x86 ; then
-	MY_P="${MY_PN}-linux-x86"
-else
-	MY_P="${MY_PN}-linux-x86_64"
-fi
+MY_P_x86="${MY_PN}-linux-x86"
+MY_P_amd64="${MY_PN}-linux-x86_64"
 
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}-${PV}-${MY_REV}.tgz"
+SRC_URI="
+	amd64? ( mirror://sourceforge/${MY_PN}/${MY_P_amd64}-${PV}-${MY_REV}.tgz )
+	x86? ( mirror://sourceforge/${MY_PN}/${MY_P_x86}-${PV}-${MY_REV}.tgz )
+"
+
 DESCRIPTION="POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
 RESTRICT="mirror"
@@ -32,7 +32,11 @@ DEPEND="|| (
   !net-mail/davmail"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}-${PV}-${MY_REV}"
+if use x86 ; then
+	S="${WORKDIR}/${MY_P_x86}-${PV}-${MY_REV}"
+else
+	S="${WORKDIR}/${MY_P_amd64}-${PV}-${MY_REV}"
+fi
 
 pkg_setup() {
   if use server ; then
