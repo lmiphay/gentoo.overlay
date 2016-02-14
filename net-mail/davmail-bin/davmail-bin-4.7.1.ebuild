@@ -32,16 +32,23 @@ DEPEND="|| (
   !net-mail/davmail"
 RDEPEND="${DEPEND}"
 
-if use x86 ; then
-	S="${WORKDIR}/${MY_P_x86}-${PV}-${MY_REV}"
-else
-	S="${WORKDIR}/${MY_P_amd64}-${PV}-${MY_REV}"
-fi
+S="${WORKDIR}/${MY_PN}"
 
 pkg_setup() {
   if use server ; then
 	enewuser davmail -1 -1 /dev/null
   fi
+}
+
+src_unpack() {
+	unpack ${A}
+	cd "${WORKDIR}"
+
+	if use x86 ; then
+		mv "${MY_P_x86}-${PV}-${MY_REV}" "${MY_PN}"
+	else
+		mv "${MY_P_amd64}-${PV}-${MY_REV}" "${MY_PN}"
+	fi
 }
 
 src_install() {
