@@ -34,6 +34,7 @@ RDEPEND="
 	app-text/multitail
 	dev-lang/perl
 	dev-python/click
+	dev-python/fabric
 	dev-python/pyyaml
 	sys-apps/moreutils[perl]
 	sys-fs/inotify-tools
@@ -56,4 +57,8 @@ src_install() {
 	   # dodoc ${DOCS}
 	   distutils-r1_src_install
 	   newbashcomp etc/bash.completion oam
+}
+
+src_test() {
+	true
 }
