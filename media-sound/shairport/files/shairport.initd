@@ -18,8 +18,7 @@ command_background=yes
 pidfile=/run/shairport.pid
 
 depend() {
-    need localmount net
-    use avahi-daemon
+    need localmount net avahi-daemon
     after bootmisc
 }
 
