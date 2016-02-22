@@ -1,10 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=5
 
-PYTHON_COMPAT=(python{2_7,3_{3,4}})
+PYTHON_COMPAT=( python2_7 )
 
 inherit user distutils-r1 bash-completion-r1 git-r3
 
@@ -53,8 +52,8 @@ pkg_setup() {
 }
 
 src_install() {
-	   # emake DESTDIR="${D}" install
-	   # dodoc ${DOCS}
+	   emake DESTDIR="${D}" install
+	   dodoc ${DOCS}
 	   distutils-r1_src_install
 	   newbashcomp etc/bash.completion oam
 }
