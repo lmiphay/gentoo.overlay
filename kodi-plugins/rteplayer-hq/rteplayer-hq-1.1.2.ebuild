@@ -35,7 +35,14 @@ src_unpack() {
 }
 
 src_install() {
-	dodoc README.md
+	dodoc README.md ${FILESDIR}/advancedsettings.xml
 	insinto ${INSTALL_DIR}
 	doins ${WORKDIR}/${PLUGIN}/*
+}
+
+pkg_postinst() {
+	elog "if you see buffering issues then see: "
+	elog "   http://kodi.wiki/view/HOW-TO:Modify_the_video_cache"
+	elog ""
+	elog "An example advancedsettings.xml is in: /usr/share/doc/${P}/"
 }
