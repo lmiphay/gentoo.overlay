@@ -34,7 +34,8 @@ RDEPEND="
 	dev-lang/perl
 	dev-python/click
 	dev-python/fabric
-	dev-python/pyinotify
+	dev-python/inotifyx
+	dev-python/psutil
 	dev-python/pyyaml
 	sys-apps/moreutils[perl]
 	sys-fs/inotify-tools

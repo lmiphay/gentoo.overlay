@@ -2,5 +2,7 @@
 =app-admin/lnav-0.7.1 ~amd64 ~x86
 =app-portage/gentoo-koam-9999 ~amd64 ~x86
 =app-portage/gentoo-oam-4.0 ~amd64 ~x86
+=app-portage/gentoo-oam-9999 ~amd64 ~x86
+=dev-python/inotifyx-0.2.2 ~amd64
 =dev-python/pymountboot-0.2.2 ~amd64 ~x86
 =sys-process/mussh-1.0 ~amd64
