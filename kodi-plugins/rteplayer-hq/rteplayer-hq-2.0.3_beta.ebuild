@@ -17,7 +17,7 @@ EGIT_COMMIT="4c016be89fdbb032c65a7920b18997f6a361cad1"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -38,7 +38,7 @@ src_unpack() {
 src_install() {
 	dodoc README.md ${FILESDIR}/advancedsettings.xml
 	insinto ${INSTALL_DIR}
-	doins ${WORKDIR}/${PLUGIN}/*
+	doins -r ${WORKDIR}/${PLUGIN}/*
 }
 
 pkg_postinst() {
