@@ -1,0 +1,12 @@
+diff --git a/Makefile.in b/Makefile.in
+index 6d5775f..4f4e4d7 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -175,7 +175,6 @@ LIBS+=\
+ 	$(LW)bsddb$(A)
+ 
+ all:			dirs buildinfo libs bins
+-		$(MAKE) -C $(D_HLPDOC) $(MAKEFLAGS)
+ 		$(MAKE) -C $(D_MACSRC) $(MAKEFLAGS)
+ 
+ # Build support

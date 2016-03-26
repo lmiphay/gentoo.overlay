@@ -1,0 +1,13 @@
+diff --git a/libmisc/edbt_linux.c b/libmisc/edbt_linux.c
+index ec10552..2deb7ce 100644
+--- a/libmisc/edbt_linux.c
++++ b/libmisc/edbt_linux.c
+@@ -48,6 +48,8 @@ __CIDENT_RCSID(gr_edbt_linux_c,"$Id: edbt_linux.c,v 1.8 2015/02/19 00:17:11 ayou
+ #include <ucontext.h>
+ #if defined(HAVE_BFD_H)
+ #define EDBT_DEMANGLE
++#define PACKAGE "GRIEF"
++#define PACKAGE_VERSION "3.2.0"
+ #include <bfd.h>                                /* libbfd, binutils-dev */
+ #endif
+ #if defined(HAVE_LIBIBERTY)

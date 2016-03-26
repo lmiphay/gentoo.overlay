@@ -1,0 +1,29 @@
+diff --git a/gr/m_system.c b/gr/m_system.c
+index 28ea92b..09afacf 100644
+--- a/gr/m_system.c
++++ b/gr/m_system.c
+@@ -317,16 +317,15 @@ inq_clock(void)                 /* (void) */
+     accint_t value;
+ 
+ #if !defined(CLOCKS_PER_SEC)
+-#error inq_clock: CLOCK_PER_SEC is undefined ...
+-
+-#elif (1000000 == CLOCKS_PER_SEC)               /* POSIX standard */
+-    value = clock();
+-
+-#elif (1000 == CLOCKS_PER_SEC)                  /* WIN32/DOS */
+-    value = (clock() * 1000);
+-
++#error inq_clock: CLOCKS_PER_SEC is undefined ...
+ #else
+-#error inq_clock: unsupported CLOCK_PER_SEC configuration ...
++    if (1000000 == CLOCKS_PER_SEC)               /* POSIX standard */
++       value = clock();
++    else if (1000 == CLOCKS_PER_SEC)             /* WIN32/DOS */
++       value = (clock() * 1000);
++    else {
++      /* die here */
++    }
+ #endif
+ 
+     acc_assign_int(value);
