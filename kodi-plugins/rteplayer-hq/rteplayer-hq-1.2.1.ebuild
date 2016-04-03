@@ -9,10 +9,11 @@ DESCRIPTION="RTE Player HQ"
 HOMEPAGE="http://zakalibit.github.io/kodi.rteplayer.hq/"
 
 MY_PN="rteplayer.hq"
+MY_PV=${PV/_/-}
 PLUGIN="plugin.video.${MY_PN}"
 
 EGIT_REPO_URI="https://github.com/zakalibit/kodi.rteplayer.hq.git"
-EGIT_COMMIT="0b8eadc06c28beabc5a5da4fa5612038a42e67cb"
+EGIT_COMMIT="9c1040d235aa09237ca122779bc336259c1c3a11"
 
 LICENSE=""
 SLOT="0"
@@ -31,13 +32,13 @@ INSTALL_DIR="/usr/share/kodi/addons/${PLUGIN}"
 src_unpack() {
 	git-r3_src_unpack
 	cd "${WORKDIR}"
-	unpack "./${P}/${PLUGIN}/${PLUGIN}-${PV}.zip"
+	unpack "./${P}/${PLUGIN}/${PLUGIN}-${MY_PV}.zip"
 }
 
 src_install() {
 	dodoc README.md ${FILESDIR}/advancedsettings.xml
 	insinto ${INSTALL_DIR}
-	doins ${WORKDIR}/${PLUGIN}/*
+	doins -r ${WORKDIR}/${PLUGIN}/*
 }
 
 pkg_postinst() {
