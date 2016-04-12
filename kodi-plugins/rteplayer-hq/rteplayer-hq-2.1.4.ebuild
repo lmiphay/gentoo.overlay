@@ -13,7 +13,7 @@ MY_PV=${PV/_/-}
 PLUGIN="plugin.video.${MY_PN}"
 
 EGIT_REPO_URI="https://github.com/zakalibit/kodi.rteplayer.hq.git"
-EGIT_COMMIT="4c016be89fdbb032c65a7920b18997f6a361cad1"
+EGIT_COMMIT="10439b37a938f3769c7eb01fbfa7be3d93c17dad"
 
 LICENSE=""
 SLOT="0"
