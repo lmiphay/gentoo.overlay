@@ -1,0 +1,13 @@
+diff --git a/toscaparser/extensions/exttools.py b/toscaparser/extensions/exttools.py
+index 963b958..cebef14 100644
+--- a/toscaparser/extensions/exttools.py
++++ b/toscaparser/extensions/exttools.py
+@@ -36,7 +36,7 @@ class ExtTools(object):
+ 
+         extdirs = [e for e in os.listdir(abs_path) if
+                    not e.startswith('tests') and
+-                   not e.endswith('.pyc') and not e.endswith('.py')]
++                   not e.endswith('.pyc') and not e.endswith('.py') and not e.endswith('.pyo')]
+ 
+         for e in extdirs:
+             log.info(e)
