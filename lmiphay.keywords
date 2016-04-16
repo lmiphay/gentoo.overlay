@@ -19,7 +19,6 @@
 =media-sound/shairport2_helper-9999 ~amd64 ~x86
 =media-sound/shairport2_plugin-9999 ~amd64 ~x86
 =media-sound/squeezy-9999 ~amd64 ~x86
-=net-mail/davmail-bin-4.6.1 ~amd64
 =www-apps/opengrok-bin-0.12.1 ~amd64
 =x11-misc/xphoon-20140814 ~amd64 ~x86
 =x11-wm/tvtwm-11 ~amd64 ~x86
