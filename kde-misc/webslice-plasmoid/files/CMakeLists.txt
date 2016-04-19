@@ -9,6 +9,6 @@ include(KDECMakeSettings)
 
 install(DIRECTORY cqcb.plasma.webslice/
         DESTINATION ${DATA_INSTALL_DIR}/plasma/plasmoids/cqcb.plasma.webslice)
- 
+
 install(FILES cqcb.plasma.webslice/metadata.desktop
         DESTINATION ${SERVICES_INSTALL_DIR} RENAME plasma-applet-webslice.desktop)
