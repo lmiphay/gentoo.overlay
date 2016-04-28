@@ -35,6 +35,7 @@ RDEPEND="
 	dev-python/click
 	dev-python/fabric
 	dev-python/inotifyx
+	dev-python/jinja
 	dev-python/psutil
 	dev-python/pyyaml
 	sys-apps/moreutils[perl]
