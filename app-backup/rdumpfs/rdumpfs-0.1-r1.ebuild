@@ -28,3 +28,8 @@ src_install() {
 	dobin "${PN}" yday
 	dodoc README sample.home.rdumpfs sample.root.rdumpfs
 }
+
+pkg_postinst() {
+	elog "Review the options passed to rsync by ${PN}"
+	elog "see: RDUMPFS_DEFAULT_ARGS in /usr/bin/${PN}"
+}
