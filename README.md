@@ -9,9 +9,9 @@ The overlay also contains ebuilds I have either created or updated from various 
 
 #### Browsing the Overlay
 
-See http://gentoo-overlays.zugaina.org/lmiphay/ for an overview of the available ebuilds.
+See [http://gentoo-overlays.zugaina.org/lmiphay/](http://gentoo-overlays.zugaina.org/lmiphay/) for an overview of the available ebuilds.
 
-Browse the overlay here: http://gpo.zugaina.org/Overlays/lmiphay/
+Browse the overlay here: [http://gpo.zugaina.org/Overlays/lmiphay/](http://gpo.zugaina.org/Overlays/lmiphay/)
 
 #### Adding the Overlay
 
