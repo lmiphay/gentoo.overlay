@@ -1,7 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils git-r3
 
@@ -13,7 +14,7 @@ MY_PV=${PV/_/-}
 PLUGIN="plugin.video.${MY_PN}"
 
 EGIT_REPO_URI="https://github.com/zakalibit/kodi.rteplayer.hq.git"
-EGIT_COMMIT="b8546e8a7b393093f4e961612c2dcb165aa51ab5"
+EGIT_COMMIT="567ec99709284a472a853393cb8d4f60cad97915"
 
 LICENSE=""
 SLOT="0"
@@ -21,10 +22,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	app-arch/unzip
+	>=app-arch/unzip-6.0_p20
 "
 RDEPEND="
 	>=media-tv/kodi-15.0
+	>=virtual/ffmpeg-9-r2
 "
 
 INSTALL_DIR="/usr/share/kodi/addons/${PLUGIN}"
