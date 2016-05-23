@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit kde5
 
@@ -23,6 +23,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 S="${WORKDIR}/plasma-containmentactions-customdesktopmenu"
+
+src_install() {
+	default
+	dodoc "${FILESDIR}/example.config"
+}
 
 pkg_postinst() {
 	elog "To enable this launcher:"
