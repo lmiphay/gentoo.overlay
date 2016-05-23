@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 -*"
 IUSE=""
 
+QA_PREBUILT="usr/lib/slack/*"
+
 DEPEND=""
 RDEPEND="
 	>=gnome-base/gconf-3.2.6-r4
@@ -33,7 +35,7 @@ src_prepare() {
 	eapply_user
 }
 
-src_install(){
+src_install() {
 	cp -a . "${D}" || die
 	make_desktop_entry ${PN} "Slack" /usr/share/pixmaps/${PN}.png "Network"
 }
