@@ -27,12 +27,22 @@ S="${WORKDIR}/plasma-containmentactions-customdesktopmenu"
 src_install() {
 	default
 	dodoc "${FILESDIR}/example.config"
+	insinto /usr/lib64/qt5/plugins
+	doins ${WORKDIR}/${P}_build/plasma_containmentactions_customdesktopmenu.so
+	insinto /usr/share/kservices5
+	doins plasma-containmentactions-customdesktopmenu.desktop
 }
 
 pkg_postinst() {
 	elog "To enable this launcher:"
+	elog ""
+	elog "   Run: kbuildsycoca5"
+	elog ""
 	elog "   Right click to your desktop and select Desktop Settings."
 	elog "   On mouse actions, you can now choose Custom Desktop Menu."
 	elog ""
 	elog "   If new menu is not available, logout/login your session."
+	elog ""
+	elog "   Configure in: <Right-Click>->Desktop Settings->Mouse Actions->Custom Desktop Menu [Config]"
+	elog "   See installed doc: example.config"
 }
