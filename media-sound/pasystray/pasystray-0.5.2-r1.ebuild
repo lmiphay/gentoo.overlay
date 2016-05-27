@@ -12,10 +12,10 @@ SRC_URI="https://github.com/christophgysin/${PN}/archive/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libnotify"
+IUSE="libnotify plasma"
 
 RDEPEND="
-	dev-libs/libappindicator:3
+	plasma? ( dev-libs/libappindicator:3 )
 	>=media-sound/pulseaudio-5.0-r3[glib,zeroconf]
 	>=net-dns/avahi-0.6
 	x11-libs/gtk+:3
