@@ -23,6 +23,7 @@ layman -L && layman -a lmiphay
 
 ##### References
 
++ [QA Report](https://qa-reports.gentoo.org/output/repos/lmiphay.html)
 + [Gentoo Repo QA Check](http://gentoo.github.io/repo-qa-check-results/lmiphay.html)
 + [Ebuild Upstream Scanner](http://euscan.gentooexperimental.org/maintainers/lmiphay@gmail.com/)
 
