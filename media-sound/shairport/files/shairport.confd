@@ -3,3 +3,4 @@
 # 'shairport --help' for available options - default shairport options:
 #shairport_opts="--output=alsa --mdns=avahi"
 #
+shairport_opts="--output=pulse --mdns=avahi"
