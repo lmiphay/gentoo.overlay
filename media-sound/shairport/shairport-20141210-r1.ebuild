@@ -46,6 +46,18 @@ src_prepare () {
 src_install() {
 	dobin shairport
 	dodoc README.md
-	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	if use pulseaudio ; then
+		newconfd "${FILESDIR}"/${PN}.confd.pulse ${PN}
+	else
+		newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	fi
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+}
+
+pkg_postinst() {
+	elog "Check and modify /etc/conf.d/${PN} as required"
+	if use pulseaudio ; then
+		elog "The pulseaudio server must allow the shairport daemon access - see:"
+		elog "https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#index22h3"
+	fi
 }

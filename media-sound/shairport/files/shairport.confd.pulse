@@ -3,3 +3,6 @@
 # 'shairport --help' for available options - default shairport options:
 #shairport_opts="--output=alsa --mdns=avahi"
 #
+
+# select pulseaudio backend and a pulseserver running locally
+shairport_opts="--output=pulse --mdns=avahi -- -a localhost"
