@@ -1,0 +1,38 @@
+diff --git a/audio_pulse.c b/audio_pulse.c
+index b2142b8..dd46b0d 100644
+--- a/audio_pulse.c
++++ b/audio_pulse.c
+@@ -81,16 +81,23 @@ static int init(int argc, char **argv) {
+             .channels = 2
+     };
+ 
+-    pa_dev = pa_simple_new(pa_server,
+-            pa_appname,
+-            PA_STREAM_PLAYBACK,
+-            pa_sink,
+-            "Shairport Stream",
+-            &ss, NULL, NULL,
+-            &pa_error);
+-
+-    if (!pa_dev)
+-        die("Could not connect to pulseaudio server: %s", pa_strerror(pa_error));
++    /** loop waiting for the pulse server to appear
++     */
++    while (1) {
++        pa_dev = pa_simple_new(pa_server,
++                pa_appname,
++                PA_STREAM_PLAYBACK,
++                pa_sink,
++                "Shairport Stream",
++                &ss, NULL, NULL,
++                &pa_error);
++
++        if (pa_dev)
++            break;
++
++        warn("Could not connect to pulseaudio server: %s", pa_strerror(pa_error));
++        sleep(5);
++    }
+ 
+     return 0;
+ }

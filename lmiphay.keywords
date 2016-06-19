@@ -14,7 +14,7 @@
 =kde-misc/containmentaction-favorites-9999 ~amd64 ~x86
 =kde-misc/scriptedhtml-9999 ~amd64 ~x86
 =media-sound/pasystray-0.4.0 ~amd64 ~x86
-=media-sound/shairport-20141210-r1 ~amd64 ~x86
+=media-sound/shairport-20141210-r2 ~amd64
 =media-sound/shairport2_helper-0.19 ~amd64
 =media-sound/shairport2_plugin-0.19 ~amd64
 =media-sound/squeezy-9999 ~amd64 ~x86
