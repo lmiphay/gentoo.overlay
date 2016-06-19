@@ -22,7 +22,7 @@ DEPEND="
 	dev-perl/IO-Socket-INET6
 	dev-perl/Net-SDP
 	media-sound/logitechmediaserver-bin
-	=media-sound/shairport2_helper-0.19
+	=media-sound/shairport2_helper-${PV}
 	net-dns/avahi[dbus]
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
