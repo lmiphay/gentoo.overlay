@@ -11,6 +11,7 @@
 # SL_OPTS="-s 192.168.1.56 -o sysdefault -n $HOSTNAME -v"
 #
 # Example seleting pulse output:
+# export PULSE_SERVER=localhost
 # SL_OPTS="-s 192.168.1.56 -o pulse -n $HOSTNAME -v"
 #
 SL_OPTS=""

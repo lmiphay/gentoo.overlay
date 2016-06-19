@@ -19,7 +19,7 @@ index b994269..124c363 100644
 -			return err;
 +		while ((err = snd_pcm_open(&pcmp, alsa.device, SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
 +			LOG_WARN("playback open error: %s", snd_strerror(err));
-+			sleep(5)
++			sleep(5);
  		}
  
  		// init params
