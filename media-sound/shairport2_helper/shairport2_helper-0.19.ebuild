@@ -9,6 +9,7 @@ inherit eutils git-r3
 DESCRIPTION="Squeezebox ShairPort2 Helper"
 HOMEPAGE="https://github.com/disaster123/shairport2_plugin"
 EGIT_REPO_URI="https://github.com/disaster123/shairport2_plugin.git"
+EGIT_COMMIT="cd311133b2bdd36a53489069b02b7352a5b7ee4d"
 
 LICENSE="MIT"
 SLOT="0"

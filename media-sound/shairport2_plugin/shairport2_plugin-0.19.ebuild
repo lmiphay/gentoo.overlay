@@ -9,6 +9,7 @@ inherit eutils git-r3
 DESCRIPTION="ShairTunes2 shairport Squeezebox Server Plugin - airplay to Squeezebox clients"
 HOMEPAGE="https://github.com/disaster123/shairport2_plugin"
 EGIT_REPO_URI="https://github.com/disaster123/shairport2_plugin.git"
+EGIT_COMMIT="cd311133b2bdd36a53489069b02b7352a5b7ee4d"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,7 +22,7 @@ DEPEND="
 	dev-perl/IO-Socket-INET6
 	dev-perl/Net-SDP
 	media-sound/logitechmediaserver-bin
-	media-sound/shairport2_helper
+	=media-sound/shairport2_helper-0.19
 	net-dns/avahi[dbus]
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
