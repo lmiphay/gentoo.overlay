@@ -1,0 +1,2 @@
+#!/bin/bash
+xprop -root | grep PULSE

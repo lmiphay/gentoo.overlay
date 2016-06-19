@@ -1,0 +1,4 @@
+#!/bin/bash
+avahi-browse -tv _pulse-server._tcp
+
+exit 0

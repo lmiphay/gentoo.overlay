@@ -5,7 +5,7 @@
 
 description="A headless Squeezebox emulator using ALSA audio output"
 
-user="squeezelite:audio"
+user="squeezelite:squeezelite"
 logfile="/var/log/squeezelite.log"
 
 start_stop_daemon_args="--user $user"
