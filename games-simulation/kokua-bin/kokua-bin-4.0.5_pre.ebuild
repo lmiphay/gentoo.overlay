@@ -55,7 +55,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	rm lib64/libgdk_pixbuf-2.0* lib64/libgdk_pixbuf_xlib-2.0* \
-	   lib64/libharfbuzz* lib64/libpangocairo-1.0* lib64/libpangoxft-1.0
+	   lib64/libharfbuzz* lib64/libpangocairo-1.0* lib64/libpangoxft-1.0/*
 	eapply_user
 }
 
