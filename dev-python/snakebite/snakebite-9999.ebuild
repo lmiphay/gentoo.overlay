@@ -15,10 +15,11 @@ EGIT_REPO_URI="https://github.com/spotify/snakebite.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="kerberos"
 
 RDEPEND="
 	${PYTHON_DEPS}
+	kerberos? ( dev-python/python-krbV )
 	dev-libs/protobuf[python]
 "
 DEPEND="
