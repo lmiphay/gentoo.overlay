@@ -35,7 +35,6 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable libnotify notify)
-	sed -i -e 's:volume:volume;:' "data/pasystray.desktop"
 }
 
 src_install() {
