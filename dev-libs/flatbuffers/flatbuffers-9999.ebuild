@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=(python{2_7,3_{3,4}})
+PYTHON_COMPAT=(python{2_7,3_4})
 inherit eutils distutils-r1 git-r3
 
 DESCRIPTION="Memory Efficient Serialization Library"
@@ -28,26 +28,14 @@ DEPEND="
 	${RDEPEND}
 "
 
-# fixme
-# repo=$T/mvnrepository
-repo=/var/cache/maven
-
-pkg_pretend()
-{
-	if use java ; then
-		[ -d $repo ] || die "please 'mkdir -p $repo' owner portage:portage and try again"
-		owner=$(stat -c %U:%G $repo)
-		[ "$owner" = "portage:portage" ] || die "please 'chown portage:portage $repo' and try again"
-	fi
-}
-
 src_compile() {
 	cmake -G "Unix Makefiles"
 	emake
 
 	if use java ; then
-		addwrite $repo
-		cd java && mvn -Dmaven.repo.local=$repo package
+		(cd java && \
+			javac com/google/flatbuffers/*.java && \
+			jar cf flatbuffers.jar com/google/flatbuffers/*.class)
 	fi
 }
 
@@ -58,7 +46,7 @@ src_install() {
 	doins -r include/flatbuffers
 
 	if use doc ; then
-		dohtml -r docs
+		dodoc -r docs
 	fi
 
 	if use examples ; then
@@ -67,7 +55,7 @@ src_install() {
 
 	if use java ; then
 		insinto /usr/share/${PN}
-		doins java/target/flatbuffers*.jar
+		doins java/flatbuffers.jar
 	fi
 
 	if use python ; then
