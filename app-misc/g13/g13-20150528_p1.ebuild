@@ -9,6 +9,7 @@ inherit eutils user linux-info git-r3
 DESCRIPTION="libusb driver for the g13"
 HOMEPAGE="https://github.com/ecraven/g13"
 EGIT_REPO_URI="https://github.com/ecraven/g13.git"
+EGIT_COMMIT="9a917c3c785161c788c47f09846b2fdd2550a9f8"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -37,9 +38,11 @@ pkg_setup() {
 }
 
 src_prepare () {
+	epatch "${FILESDIR}/add-modifiers.patch"
+	epatch "${FILESDIR}/add-logging.patch"
 	sed -i -e 's:/tmp/:/run/:' "g13.h"
 	sed -i '/MODE/G' "91-g13.rules"
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
