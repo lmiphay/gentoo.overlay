@@ -18,7 +18,7 @@ RESTRICT="mirror"
 LICENSE="CDDL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc subversion"
+IUSE="+doc subversion"
 
 # || (tomcat glassfish)
 RDEPEND="
@@ -26,12 +26,21 @@ RDEPEND="
 	>=www-servers/tomcat-8.0.39
 	subversion? ( >=dev-vcs/subversion-1.9.5[java] )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
+"
 
 INSTALL_DIR="/opt/opengrok-bin"
 SRC_DIR="/var/opengrok/src"
 USER_ID="opengrok"
 GROUP_ID="opengrok"
+
+pkg_setup() {
+	enewgroup "${GROUP_ID}"
+	enewuser "${USER_ID}" -1 -1 -1 "${GROUP_ID}"
+}
 
 src_unpack() {
 	unpack ${A}
@@ -39,18 +48,27 @@ src_unpack() {
 	mv "${WORKDIR}"/"opengrok-${MY_PV}" ${P}
 }
 
+src_prepare() {
+	# sed script from Fedora opengrok.spec by Lubomir Kundrak
+	sed 's,^<!DOCTYPE.*,<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookx.dtd">,
+		 s,^<?Pub Inc>,,' man/man1/opengrok.1 | \
+		xsltproc /usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl -
+	eapply_user
+}
+
 src_install() {
+	doman opengrok.1
+
+	if use doc ; then
+		dodoc -r doc
+	fi
+
 	dodir "${INSTALL_DIR}"
-	cp -pRP bin doc lib man "${ED}/${INSTALL_DIR}" || die
+	cp -pRP bin lib "${ED}/${INSTALL_DIR}" || die
 
 	dodir "${SRC_DIR}"
 	fowners "${USER_ID}:${GROUP_ID}" "${SRC_DIR}" -R
 	fperms 775 "${SRC_DIR}"
-}
-
-pkg_setup() {
-	enewgroup "${GROUP_ID}"
-	enewuser "${USER_ID}" -1 -1 -1 "${GROUP_ID}"
 }
 
 pkg_postinst() {
