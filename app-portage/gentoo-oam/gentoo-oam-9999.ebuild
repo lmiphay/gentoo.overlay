@@ -1,9 +1,9 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit user distutils-r1 bash-completion-r1 git-r3
 
@@ -33,8 +33,8 @@ RDEPEND="
 	app-text/multitail
 	dev-lang/perl
 	dev-python/click
-	dev-python/fabric
 	dev-python/inotifyx
+	dev-python/invoke
 	dev-python/jinja
 	dev-python/psutil
 	dev-python/pyyaml
