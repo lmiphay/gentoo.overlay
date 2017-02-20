@@ -49,6 +49,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/opengrok.1.patch"
 	# sed script from Fedora opengrok.spec by Lubomir Kundrak
 	sed 's,^<!DOCTYPE.*,<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookx.dtd">,
 		 s,^<?Pub Inc>,,' man/man1/opengrok.1 | \
