@@ -58,7 +58,7 @@ src_install() {
 	   emake DESTDIR="${D}" install
 	   dodoc ${DOCS}
 	   distutils-r1_src_install
-	   newbashcomp etc/bash.completion "${PN}"
+	   newbashcomp etc/bash.completion oam
 }
 
 src_test() {
