@@ -34,10 +34,10 @@ src_prepare () {
 }
 
 src_install() {
-	   dodoc ${DOCS}
-	   distutils-r1_src_install
-	   newbashcomp completion/bash "${PN}"
-	   newbashcomp completion/bash inv
+	dodoc ${DOCS}
+	distutils-r1_src_install
+	newbashcomp completion/bash "${PN}"
+	newbashcomp completion/bash inv
 }
 
 src_test() {
