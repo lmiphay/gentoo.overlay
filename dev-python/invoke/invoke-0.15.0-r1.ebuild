@@ -6,11 +6,11 @@ EAPI=6
 
 PYTHON_COMPAT=(python2_7 python3_4)
 
-inherit eutils distutils-r1 bash-completion-r1 git-r3
+inherit eutils bash-completion-r1 distutils-r1
 
 DESCRIPTION="Pythonic task management & command execution"
 HOMEPAGE="http://pyinvoke.org"
-EGIT_REPO_URI="https://github.com/pyinvoke/invoke.git"
+SRC_URI="https://github.com/pyinvoke/invoke/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
