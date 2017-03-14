@@ -71,7 +71,8 @@ src_install() {
 	insinto "${INSTALL_DIR}/doc"
 	doins doc/logging.properties
 
-	dodir "${ETC_DIR}" "${SRC_DIR}"
+	keepdir "${ETC_DIR}"
+	keepdir "${SRC_DIR}"
 	fowners "${USER_ID}:${GROUP_ID}" "${OPENGROK_DIR}" -R
 	fperms 775 "${OPENGROK_DIR}"
 }
