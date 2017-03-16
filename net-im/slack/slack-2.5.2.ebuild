@@ -20,7 +20,7 @@ QA_PREBUILT="usr/lib/slack/*"
 
 DEPEND=""
 RDEPEND="
-	plasma? ( kde-plasma/plasma-desktop[legacy-systray,gtk3] )
+	plasma? ( kde-plasma/plasma-desktop[legacy-systray,gtk2] )
 	>=gnome-base/gconf-3.2.6-r4
 	>=gnome-base/libgnome-keyring-3.12.0
 	>=x11-libs/libXScrnSaver-1.2.2-r1
