@@ -45,6 +45,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Support thread for LMS-Cast/${PN} is at: "
-	elog "   http://forums.slimdevices.com/showthread.php?104614-Announce-CastBridge-integrate-Chromecast-players-with-LMS-(squeeze2cast)&p=835640&viewfull=1#post835640 "
+	elog "Support thread for LMS-Cast/${PN} is at:"
+	elog "   http://forums.slimdevices.com/showthread.php?104614-Announce-CastBridge-integrate-Chromecast-players-with-LMS-(squeeze2cast)&p=835640&viewfull=1#post835640"
 }
