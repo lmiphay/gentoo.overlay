@@ -8,6 +8,8 @@ inherit eutils git-r3
 DESCRIPTION="Logitech Media Server plugin for Chromecast devices"
 HOMEPAGE="https://github.com/philippe44/LMS-to-cast"
 EGIT_REPO_URI="https://github.com/philippe44/LMS-to-Cast.git"
+# aka: 0.2.6.4-dev-3
+EGIT_COMMIT="fbb0297dcafe5ba3a5f0edcecf58329f21714b8b"
 
 LICENSE="MIT GPL-3"
 SLOT="0"
