@@ -1,54 +1,26 @@
+# -*- makefile -*-
+DEF = -DNO_CODEC -DPB_FIELD_16BIT
 
-DEFINES = -DNO_CODEC -D_FILE_OFFSET_BITS=64 -DPB_FIELD_16BIT -DHAVE_STDINT_H
-MYCFLAGS  = $(CFLAGS) -Wall -fPIC -ggdb -O2 $(OPTS) $(INCLUDE) $(DEFINES)
+INC = \
+	-I/usr/include/nanopb \
+	-I/usr/include/upnp \
+	-I/usr/include/valgrind \
+	-I../squeezetiny \
+	-I../tools \
+	-I./inc
 
-# for LD debug -s
-MYLDFLAGS = $(LDFLAGS) -lpthread -lssl -lcrypto -ldl -lm -lrt -L. 
-LIBS = -ljansson -lupnp -lixml -lthreadutil
+LIB = -ljansson -lupnp -lixml -lthreadutil -lpthread -lssl -lcrypto -ldl -lm -lrt
 
-build_dir	= ./build
-squeezetiny_dir = squeezetiny
-squeezecast_dir = squeeze2cast
-nanopb_dir = /usr/share/nanopb
-mdnssd_dir = mdnssd
+SRC = \
+	webserver.c util.c squeeze2cast.c castmessage.pb.c castcore.c cast_util.c \
+	../squeezetiny/utils.c ../squeezetiny/util_common.c ../squeezetiny/stream.c \
+	../squeezetiny/slimproto.c ../squeezetiny/output_mr.c ../squeezetiny/main.c \
+	../squeezetiny/decode.c ../squeezetiny/buffer.c \
+	../tools/log_util.c \
+	/usr/share/nanopb/pb_encode.c /usr/share/nanopb/pb_decode.c /usr/share/nanopb/pb_common.c \
+	/usr/share/mdnssd/mdnssd-min.c
 
-EXECUTABLE = $(build_dir)/squeeze2cast
+MYCFLAGS = -Wall -fPIC -ggdb -O2 $(DEF) $(INC)
 
-INCLUDE = -I/usr/include/upnp \
-          -I/usr/include/nanopb \
-          -I$(squeezetiny_dir) \
-          -I$(squeezecast_dir)/inc \
-          -I$(mdnssd_dir)
-
-VPATH   = $(nanopb_dir):$(squeezetiny_dir):$(squeezecast_dir):$(mdnssd_dir)
-
-SOURCES = \
-	slimproto.c buffer.c \
-        stream.c utils.c \
-	output_mr.c decode.c \
-        main.c util_common.c \
-	cast_util.c \
-	util.c webserver.c \
-	castcore.c castmessage.pb.c \
-        squeeze2cast.c \
-	pb_common.c pb_decode.c pb_encode.c \
-	mdnssd-min.c
-HEADERS = $(squeezetiny_dir)/squeezelite.h $(squeezetiny_dir)/slimproto.h\
-        $(squeezetiny_dir)/squeezedefs.h $(squeezetiny_dir)/squeezeitf.h
-
-OBJECTS = $(addprefix $(build_dir)/, $(SOURCES:.c=.o))
-
-all: $(build_dir) $(EXECUTABLE)
-
-$(build_dir): 
-	mkdir -p $(build_dir)
-
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LIBS) $(MYLDFLAGS) -o $@
-
-$(build_dir)/%.o: %.c $(HEADERS)
-	$(CC) $(MYCFLAGS) $(CPPFLAGS) $< -c -o $@
-
-clean:
-	rm -f $(build_dir)/*.o $(EXECUTABLE)
-
+all:
+	$(CC) $(CFLAGS) $(MYCFLAGS) -o squeeze2cast $(SRC) $(LIB) $(LDFLAGS)
