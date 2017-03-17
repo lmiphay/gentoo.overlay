@@ -38,6 +38,13 @@ pkg_postinst() {
 	elog " 1. restart logitechmediaserver, check /var/log/logitechmediaserver/server.log"
 	elog " 2. wait a minute or two the devices to be discovered"
 	elog ""
+	elog "If this message appears in server.log:"
+	elog "  Slim::Networking::Async::Socket::UDP::mcast_add (48)"
+	elog "  Error: While adding multicast membership, UPnP may not work properly:"
+	elog "  No buffer space available "
+	elog "Then you can try increasing the limit on group memberships, e.g.:"
+	elog "   sysctl -w net.ipv4.igmp_max_memberships=20"
+	elog ""
 	elog "Support thread for LMS-Cast/${PN} is at:"
 	elog "   http://forums.slimdevices.com/showthread.php?104614-Announce-CastBridge-integrate-Chromecast-players-with-LMS-(squeeze2cast)&p=835640&viewfull=1#post835640"
 }
