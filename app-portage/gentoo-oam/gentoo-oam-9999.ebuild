@@ -42,6 +42,7 @@ RDEPEND="
 	sys-fs/inotify-tools
 	kernel? ( || ( sys-kernel/gentoo-sources[symlink] sys-kernel/aufs-sources[symlink] ) )
 	sys-process/mussh
+	virtual/python-enum34
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
