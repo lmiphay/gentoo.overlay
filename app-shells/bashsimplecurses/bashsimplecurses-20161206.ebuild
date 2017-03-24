@@ -8,6 +8,7 @@ inherit git-r3
 DESCRIPTION="Functions to create windows on Xterm, aterm, urxvt... etc"
 HOMEPAGE="https://github.com/metal3d/bashsimplecurses"
 EGIT_REPO_URI="https://github.com/metal3d/${PN}.git"
+EGIT_COMMIT="375c041b54df7454dfe5ebe299ce740c39d57f76"
 
 LICENSE="BSD"
 SLOT="0"
