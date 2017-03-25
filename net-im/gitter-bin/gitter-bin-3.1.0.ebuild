@@ -22,25 +22,25 @@ RDEPEND=""
 
 QA_PREBUILT="opt/Gitter/linux64/Gitter"
 
-S="${WORKDIR}"
+S="${WORKDIR}/opt/Gitter/linux64"
 
 src_prepare() {
-	rm opt/Gitter/linux64/after-install.sh opt/Gitter/linux64/after-remove.sh
+	sed -i -e 's;/opt/Gitter/linux64/logo.png;gitter;' "${MY_PN}.desktop"
+
 	eapply_user
 }
 
 src_install() {
-	dodoc usr/share/doc/gitter/changelog.Debian.gz
+	exeinto /opt/Gitter/linux64
+	doexe Gitter
 
-	insinto /opt
-	doins -r opt/Gitter
-	fperms +x /opt/Gitter/linux64/Gitter
+	insinto /opt/Gitter/linux64
+	doins icudtl.dat libffmpegsumo.so nw.pak
+	doins -r locales
 
-	# executable named as per the Gitter after-install.sh script
-	dosym  /opt/Gitter/linux64/Gitter /usr/bin/${MY_PN}
+	# exe named as per Gitter after-install.sh
+	make_wrapper "${MY_PN}" ./Gitter /opt/Gitter/linux64 .
 
-	# weird, but won't start without this
-	dosym  /opt/Gitter/linux64/icudtl.dat /usr/bin/icudtl.dat
-
-	domenu opt/Gitter/linux64/gitter.desktop
+	newicon logo.png ${MY_PN}.png
+	domenu gitter.desktop
 }
