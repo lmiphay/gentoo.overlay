@@ -8,6 +8,7 @@ inherit git-r3
 DESCRIPTION="Manager of SSH ControlMaster connections"
 HOMEPAGE="https://github.com/ClockworkNet/cmc"
 EGIT_REPO_URI="https://github.com/ClockworkNet/cmc.git"
+EGIT_COMMIT="433bf82dbcbfe0a64c1d3bbcd77baf82d495019b"
 
 LICENSE="MIT"
 SLOT="0"
