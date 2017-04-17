@@ -33,6 +33,8 @@ RDEPEND="
 	app-text/multitail
 	dev-lang/perl
 	dev-python/click
+	dev-python/eliot
+	dev-python/eliot-tree
 	dev-python/inotifyx
 	dev-python/invoke
 	dev-python/jinja
