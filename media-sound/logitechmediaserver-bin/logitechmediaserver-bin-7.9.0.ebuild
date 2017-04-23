@@ -41,6 +41,7 @@ DEPEND="
 RDEPEND="
 	!prefix? ( >=sys-apps/baselayout-2.0.0 )
 	!prefix? ( virtual/logger )
+	app-admin/logrotate
 	=dev-lang/perl-5.24*[ithreads]
 	>=dev-perl/Data-UUID-1.202
 	"
