@@ -3,27 +3,25 @@
 
 EAPI="6"
 
+inherit eutils user systemd
+
 MY_PN="${PN/-bin}"
 
 if [[ ${PV} == *_pre* ]] ; then
 	GIT_COMMIT="a321b3b3bb6183eca27e4a509522cbbffbaa3087"
 	SRC_URI="https://github.com/Logitech/slimserver/archive/${GIT_COMMIT}.zip"
 	S="${WORKDIR}/slimserver-${GIT_COMMIT}"
-	INHERIT_VCS=""
 	KEYWORDS="~amd64 ~x86"
 elif [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="public/7.9"
 	EGIT_REPO_URI="https://github.com/Logitech/slimserver.git"
 	S="${WORKDIR}/slimserver"
-	INHERIT_VCS="git-3"
+	inherit git-3
 else
 	SRC_URI="http://downloads.slimdevices.com/LogitechMediaServer_v${PV}/${MY_PN}-${PV}.tgz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
-	INHERIT_VCS=""
 	KEYWORDS="~amd64"
 fi
-
-inherit ${INHERIT_VCS} eutils user systemd
 
 DESCRIPTION="Logitech Media Server (streaming audio server)"
 HOMEPAGE="http://github.com/Logitech/slimserver"
