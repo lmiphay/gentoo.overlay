@@ -1,5 +1,5 @@
 =app-admin/eclean-kernel-0.4.1 ~amd64 ~x86
-=app-admin/lnav-0.7.1 ~amd64 ~x86
+=app-admin/lnav-0.8.2 ~amd64
 =app-portage/gentoo-koam-9999 ~amd64 ~x86
 =app-portage/gentoo-oam-4.0 ~amd64 ~x86
 =app-portage/gentoo-oam-9999 ~amd64 ~x86
