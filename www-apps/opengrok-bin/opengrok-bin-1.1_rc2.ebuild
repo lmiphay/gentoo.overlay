@@ -93,4 +93,5 @@ pkg_postinst() {
 	elog "e.g. /etc/init.d/tomcat-8 restart"
 	elog ""
 	elog "This is an RC release! Check the release notes at: https://github.com/OpenGrok/OpenGrok/releases"
+	elog "You probably want to reindex; e.g. opengrok index ${SRC_DIR}"
 }
