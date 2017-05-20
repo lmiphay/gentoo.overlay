@@ -21,6 +21,8 @@ This overlay is in layman, you can add this overlay by:
 layman -L && layman -a lmiphay
 ```
 
+A copy of the overlay with metadata is available here: [https://github.com/gentoo-mirror/lmiphay](https://github.com/gentoo-mirror/lmiphay)
+
 ##### References
 
 + [QA Report](https://qa-reports.gentoo.org/output/repos/lmiphay.html)
