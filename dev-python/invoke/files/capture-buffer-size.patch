@@ -1,0 +1,78 @@
+diff --git a/invoke/config.py b/invoke/config.py
+index b3531d2..21c7b18 100644
+--- a/invoke/config.py
++++ b/invoke/config.py
+@@ -415,6 +415,7 @@ class Config(DataProxy):
+                 'out_stream': None,
+                 'err_stream': None,
+                 'in_stream': None,
++                'capture_buffer_size': None,
+                 'watchers': [],
+                 'echo_stdin': None,
+             },
+diff --git a/invoke/runners.py b/invoke/runners.py
+index 6f34caa..dd76546 100644
+--- a/invoke/runners.py
++++ b/invoke/runners.py
+@@ -7,6 +7,7 @@ from subprocess import Popen, PIPE
+ import sys
+ import threading
+ import time
++from collections import deque
+ 
+ # Import some platform-specific things at top level so they can be mocked for
+ # tests.
+@@ -274,7 +275,7 @@ class Runner(object):
+         # Arrive at final encoding if neither config nor kwargs had one
+         self.encoding = opts['encoding'] or self.default_encoding()
+         # Set up IO thread parameters (format - body_func: {kwargs})
+-        stdout, stderr = [], []
++        stdout, stderr = deque(maxlen=opts['capture_buffer_size']), deque(maxlen=opts['capture_buffer_size'])
+         thread_args = {
+             self.handle_stdout: {
+                 'buffer_': stdout,
+@@ -424,6 +425,9 @@ class Runner(object):
+         in_stream = opts['in_stream']
+         if in_stream is None:
+             in_stream = sys.stdin
++        if opts['capture_buffer_size']:
++            if opts['capture_buffer_size'] < len(self.context.config.sudo.prompt):
++                 raise ValueError('capture_buffer_size is too short to match prompt')
+         # Determine pty or no
+         self.using_pty = self.should_use_pty(opts['pty'], opts['fallback'])
+         if opts['watchers']:
+@@ -532,7 +536,7 @@ class Runner(object):
+             # result after execution completes.
+             # NOTE: this is threadsafe insofar as no reading occurs until after
+             # the thread is join()'d.
+-            buffer_.append(data)
++            buffer_.extend(data)
+             # Run our specific buffer through the autoresponder framework
+             self.respond(buffer_)
+ 
+diff --git a/tests/runners.py b/tests/runners.py
+index 6652ed5..fe06df1 100644
+--- a/tests/runners.py
++++ b/tests/runners.py
+@@ -122,6 +122,21 @@ class Runner_(Spec):
+             eq_(r.stdout, 'stuff')
+             eq_(sys.stdout.getvalue(), '')
+ 
++    class capture_buffer_size:
++        @trap
++        def limits_capture(self):
++            runner = self._runner(out='x'*99 + 'y'*40, run={'capture_buffer_size': 40})
++            eq_(runner.run(_).stdout, 'y'*40)
++
++        @trap
++        def fails_when_too_small(self):
++            try:
++                self._runner(out='abc', run={'capture_buffer_size': 3}).run(_)
++            except ValueError as e:
++                eq_(str(e), 'capture_buffer_size is too short to match prompt')
++            else:
++                assert False, "Did not raise ValueError too small a buffer"
++
+     class pty:
+         def pty_defaults_to_off(self):
+             eq_(self._run(_).pty, False)
