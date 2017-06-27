@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
@@ -27,12 +26,12 @@ DEPEND="
 "
 
 DOCS="README.rst"
-
-src_prepare () {
-	epatch "${FILESDIR}/loader-sys-path.patch"
-	epatch "${FILESDIR}/encode-fallback.patch"
-	eapply_user
-}
+PATCHES=( \
+		"${FILESDIR}/loader-sys-path.patch" \
+		"${FILESDIR}/encode-fallback.patch" \
+		"${FILESDIR}/files-in-config.patch" \
+		"${FILESDIR}/capture-buffer-size.patch" \
+)
 
 src_install() {
 	dodoc ${DOCS}
