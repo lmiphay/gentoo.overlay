@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,6 @@ IUSE="+completion kernel +lnav +ranger"
 # >=bash-4.3 is needed for 'local -n / declare -n'
 RDEPEND="
 	${PYTHON_DEPS}
-	app-admin/eclean-kernel
 	lnav? ( app-admin/lnav )
 	app-admin/logrotate
 	app-misc/screen
@@ -43,7 +42,6 @@ RDEPEND="
 	sys-apps/moreutils[perl]
 	sys-fs/inotify-tools
 	kernel? ( || ( sys-kernel/gentoo-sources[symlink] sys-kernel/aufs-sources[symlink] ) )
-	sys-process/mussh
 	virtual/python-enum34
 "
 DEPEND="
