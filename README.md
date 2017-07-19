@@ -47,5 +47,5 @@ These steps were required prior to the overlay being in layman.
 
 ##### gentoo proxy-maintained packages
 
-+ [![Gentoo pasystray](https://repology.org/badge/version-for-repo/gentoo/pasystray.svg)](https://repology.org/metapackage/pasystray)
-+ [![Gentoo pdumpfs](https://repology.org/badge/version-for-repo/gentoo/pdumpfs.svg)](https://repology.org/metapackage/pdumpfs)
++ pasystray [![Gentoo pasystray](https://repology.org/badge/version-for-repo/gentoo/pasystray.svg)](https://repology.org/metapackage/pasystray)
++ pdumpfs [![Gentoo pdumpfs](https://repology.org/badge/version-for-repo/gentoo/pdumpfs.svg)](https://repology.org/metapackage/pdumpfs)
