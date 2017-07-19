@@ -44,3 +44,8 @@ layman -f -a lmiphay -o 'https://raw.githubusercontent.com/lmiphay/gentoo.overla
 ```
 
 These steps were required prior to the overlay being in layman.
+
+##### gentoo proxy-maintained packages
+
++ [![Gentoo pasystray](https://repology.org/badge/version-for-repo/gentoo/pasystray.svg)](https://repology.org/metapackage/pasystray)
++ [![Gentoo pdumpfs](https://repology.org/badge/version-for-repo/gentoo/pdumpfs.svg)](https://repology.org/metapackage/pdumpfs)
