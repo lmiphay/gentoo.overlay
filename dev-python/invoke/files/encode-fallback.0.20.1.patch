@@ -1,0 +1,16 @@
+diff --git a/invoke/util.py b/invoke/util.py
+index 06e675b..66535b8 100644
+--- a/invoke/util.py
++++ b/invoke/util.py
+@@ -140,7 +140,10 @@ def encode_output(string, encoding):
+         # TODO: split up encoding settings (currently, the one we are given -
+         # often a Runner.encoding value - is used for both input and output),
+         # only use the one for 'local encoding' here.
+-        string = string.encode(encoding)
++        try:
++            string = string.encode(encoding)
++        except UnicodeEncodeError as e:
++            string = string.encode('utf-8')
+     return string
+ 
+ 
