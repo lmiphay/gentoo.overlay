@@ -31,6 +31,7 @@ RDEPEND="
 	completion? ( app-shells/bash-completion )
 	app-text/multitail
 	dev-lang/perl
+	dev-python/attrdict
 	dev-python/click
 	dev-python/eliot
 	dev-python/eliot-tree
