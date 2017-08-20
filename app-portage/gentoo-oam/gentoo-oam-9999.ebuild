@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/lmiphay/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+completion kernel +lnav +ranger"
+IUSE="+completion +lnav +ranger"
 
 # >=bash-4.3 is needed for 'local -n / declare -n'
 RDEPEND="
@@ -42,7 +42,6 @@ RDEPEND="
 	dev-python/pyyaml
 	sys-apps/moreutils[perl]
 	sys-fs/inotify-tools
-	kernel? ( || ( sys-kernel/gentoo-sources[symlink] sys-kernel/aufs-sources[symlink] ) )
 	virtual/python-enum34
 "
 DEPEND="
