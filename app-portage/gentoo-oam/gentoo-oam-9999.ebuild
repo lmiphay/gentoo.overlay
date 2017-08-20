@@ -23,7 +23,6 @@ RDEPEND="
 	app-admin/logrotate
 	app-misc/screen
 	ranger? ( app-misc/ranger )
-	app-portage/eix
 	app-portage/genlop
 	app-portage/gentoolkit
 	app-portage/portage-utils
