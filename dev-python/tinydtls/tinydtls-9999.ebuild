@@ -42,7 +42,7 @@ python_configure() {
 }
 
 python_compile() {
-	append-flags "-I${WORKDIR}/${P}-python3_4 -I${WORKDIR}/${P}-python3_4/sha2"
+	append-cppflags "-I${WORKDIR}/${P}-python3_4 -I${WORKDIR}/${P}-python3_4/sha2"
 	(cd "${CYTHONSRC}" && esetup.py build)
 }
 
