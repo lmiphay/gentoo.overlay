@@ -2,8 +2,7 @@
 
 This overlay can be used to install these applications:
 
-+ [app-portage/gentoo-oam](https://github.com/lmiphay/gentoo-oam) Automatation to help keeping gentoo servers up-to-date
-+ [app/portage/gentoo-koam](https://github.com/lmiphay/gentoo-koam) a UI to track merges running on gentoo servers
++ [app-portage/oam](https://github.com/lmiphay/oam) Automatation to help keeping gentoo servers up-to-date
 
 The overlay also contains ebuilds I have either created or updated from various sources.
 
