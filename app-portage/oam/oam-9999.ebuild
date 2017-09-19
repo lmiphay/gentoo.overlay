@@ -35,7 +35,7 @@ RDEPEND="
 	dev-python/eliot
 	dev-python/eliot-tree
 	dev-python/inotifyx
-	dev-python/invoke
+	>=dev-python/invoke-0.21.0
 	dev-python/jinja
 	dev-python/psutil
 	dev-python/pyyaml
