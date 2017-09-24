@@ -1,0 +1,12 @@
+* 340.104
+looks clean from:
+https://github.com/warpme/minimyth2/tree/master/script/nvidia/nvidia-340.104
+
+* 340.102
+Post & patches for 340.102 by warpme:
+forum: https://forums.geforce.com/default/topic/1012391/340-xx-compilation-fails-under-4-12-kernel-/
+source: https://github.com/warpme/minimyth2/tree/master/script/nvidia/nvidia-340.102/files
+
+** alt (not tried):
+https://github.com/Hoshpak/void-packages/tree/master/srcpkgs/nvidia340/files
+
