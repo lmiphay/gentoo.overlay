@@ -13,7 +13,7 @@ EGIT_COMMIT="d3f683ca70ea1c959e8e994e7c94d9f036963760"
 
 LICENSE="jivelite"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -24,7 +24,7 @@ DEPEND="
 	dev-lua/luafilesystem
 	dev-lua/luasocket
 	media-libs/libsdl
-	media-libs/sdl-image
+	media-libs/sdl-image[png]
 	media-libs/sdl-ttf
 	media-libs/sdl-gfx
 "
