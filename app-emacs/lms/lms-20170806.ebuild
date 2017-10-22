@@ -20,12 +20,27 @@ KEYWORDS="~amd64 ~x86"
 DEPEND=">=app-editors/emacs-25.2"
 
 DOCS="README.org"
+DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="customize:
+
  lms-hostname, lms-telnet-port, lms-html-port, lms-username, lms-password
+
 and run with: lms-ui
+
 Then read complete documentation by pressing the 'h' key
+
 For an overview of what it can do see: https://inigo.katxi.org/blog/2017/07/31/lms_el.html
+
 Support thread at: http://forums.slimdevices.com/showthread.php?107769-Announce-lms-el-a-squeezebox-controller-for-emacs
 "
 
 S="${WORKDIR}/inigoserna-${PN}.el-${HASH}"
+
+src_install() {
+	default
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
+}
