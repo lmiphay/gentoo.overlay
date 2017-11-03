@@ -21,6 +21,7 @@ RESTRICT="mirror"
 RDEPEND="
 	${PYTHON_DEPS}
 	=dev-python/fuzzywuzzy-0.12.0[${PYTHON_USEDEP}]
+	dev-python/lambda-uploader
 	net-misc/stunnel
 "
 DEPEND="
