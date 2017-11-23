@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=6
 
-PYTHON_COMPAT=(python2_7 python3_4)
+PYTHON_COMPAT=(python2_7 python3_{4,5})
 
 inherit eutils distutils-r1
 
@@ -21,8 +20,8 @@ RDEPEND="
 	${PYTHON_DEPS}
 "
 DEPEND="
-	dev-python/nose
+	dev-python/nose[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/six
+	dev-python/six[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
