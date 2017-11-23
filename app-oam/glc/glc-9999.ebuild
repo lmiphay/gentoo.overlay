@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5} )
 
 inherit distutils-r1 git-r3
 
@@ -18,11 +18,22 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
+	app-crypt/gnupg
+	app-crypt/rhash
+	app-emulation/lxc[python,${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	>=dev-python/invoke-0.21.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	net-misc/wget
+	sys-apps/coreutils
 "
 DEPEND="
-	test? ( >=dev-python/coverage-4.2 >=dev-python/flake8-2.5.4 >=dev-python/mock-2.0.0 >=dev-python/pylint-1.6.5 )
+	test? (
+		>=dev-python/coverage-4.2[${PYTHON_USEDEP}]
+		>=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
+	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.6.3[${PYTHON_USEDEP}]
 	${RDEPEND}
