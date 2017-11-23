@@ -3,9 +3,10 @@
 =app-admin/lnav-0.8.2 ~amd64
 =app-oam/oam-9999 ~amd64
 =app-oam/bun-9999 ~amd64
+=app-oam/glc-9999 ~amd64
 =dev-python/attrdict-2.0.0 ~amd64
 =dev-python/inotifyx-0.2.2 ~amd64
-=dev-python/invoke-0.21.0 ~amd64
+=dev-python/invoke-0.21.0-r1 ~amd64
 =dev-python/pymountboot-0.2.2 ~amd64 ~x86
 =dev-python/eliot-1.0.0 ~amd64
 =dev-python/pyrsistent-0.12.0 ~amd64
