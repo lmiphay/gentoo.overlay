@@ -1,0 +1,41 @@
+diff --git a/invoke/config.py b/invoke/config.py
+index 21cc45a..31394a1 100644
+--- a/invoke/config.py
++++ b/invoke/config.py
+@@ -1,5 +1,6 @@
+ import copy
+ import inspect
++import io
+ import json
+ import os
+ from os.path import join, splitext, expanduser
+@@ -1117,6 +1118,11 @@ class Config(DataProxy):
+ class AmbiguousMergeError(ValueError):
+     pass
+ 
++def is_file(obj):
++    if six.PY3:
++        return isinstance(obj, io.IOBase)
++    else:
++        return isinstance(obj, file)
+ 
+ def merge_dicts(base, updates):
+     """
+@@ -1151,6 +1157,8 @@ def merge_dicts(base, updates):
+             else:
+                 if isinstance(base[key], dict):
+                     raise _merge_error(base[key], value)
++                elif is_file(value):
++                    base[key] = value
+                 else:
+                     base[key] = copy.copy(value)
+         # New values get set anew
+@@ -1159,6 +1167,8 @@ def merge_dicts(base, updates):
+             # updates dict, which can lead to nasty state-bleed bugs otherwise
+             if isinstance(value, dict):
+                 base[key] = copy_dict(value)
++            elif is_file(value):
++                base[key] = value
+             # Non-dict values just get set straight
+             else:
+                 base[key] = copy.copy(value)
