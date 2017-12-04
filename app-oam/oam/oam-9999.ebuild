@@ -48,9 +48,21 @@ pkg_setup() {
 }
 
 python_install_all() {
-	   dodoc ${DOCS}
-	   newbashcomp etc/bash.completion oam
-	   distutils-r1_python_install_all
+	dodoc ${DOCS}
+	newbashcomp etc/bash.completion oam
+	distutils-r1_python_install_all
+
+	keepdir /var/log/oam
+
+	fowners -R "root:oam"  "/etc/oam"
+	fowners    "root:oam"  "/var/log/oam"
+	fowners    "root:root" "/etc/cron.daily/oam"
+
+	fperms 640 "/etc/oam/oam.yaml"
+	fperms 750 "/etc/oam/conf.d" "/etc/oam/localtasks"
+	fperms 640 /etc/oam/conf.d/*.yaml /etc/oam/localtasks/*.py
+	fperms 770 "/var/log/oam"
+	fperms 755 "/etc/cron.daily/oam"
 }
 
 python_test() {
