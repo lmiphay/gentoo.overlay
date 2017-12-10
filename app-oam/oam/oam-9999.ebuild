@@ -60,7 +60,8 @@ python_install_all() {
 
 	fperms 640 "/etc/oam/oam.yaml"
 	fperms 750 "/etc/oam/conf.d" "/etc/oam/localtasks"
-	fperms 640 /etc/oam/conf.d/*.yaml /etc/oam/localtasks/*.py
+	# fperms 640 /etc/oam/conf.d/*.yaml /etc/oam/localtasks/*.py
+	chmod 0640 "${ED}"/etc/oam/conf.d/*.yaml "${ED}"/etc/oam/localtasks/*.py || die
 	fperms 770 "/var/log/oam"
 	fperms 755 "/etc/cron.daily/oam"
 }
