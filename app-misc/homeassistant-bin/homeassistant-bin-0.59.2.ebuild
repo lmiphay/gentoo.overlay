@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit readme.gentoo-r1 eutils
+inherit user readme.gentoo-r1 eutils
 
 MY_PN="${PN/-bin/}"
 
@@ -34,6 +34,8 @@ DOC_CONTENTS="
  command line arguments can be configured in: /etc/conf.d/${MY_PN}
  logging is to /var/log/${MY_PN}.log
 "
+
+S="${WORKDIR}/home-assistant-${PV}"
 
 pkg_setup() {
 	enewgroup "${MY_PN}"
