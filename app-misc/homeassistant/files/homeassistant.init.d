@@ -5,14 +5,14 @@
 description="Open-source home automation platform"
 
 user="homeassistant:homeassistant"
-logfile="/var/log/homeassistant/homeassistant.log"
+logfile="/var/log/homeassistant.log"
+errorslog="/var/log/homeassistant-errors.log"
 
-start_stop_daemon_args="--user $user"
+start_stop_daemon_args="--user $user --stdout $logfile --stderr $errorslog --retry 10"
 
-command="/opt/homeassistant-bin/bin/hass"
+command="/opt/homeassistant/bin/hass"
 command_args="
 	--config /etc/homeassistant
-	--pid-file /run/homeassistant.pid
 	--log-file $logfile
         ${HASS_OPTS}
 "
@@ -27,4 +27,5 @@ depend() {
 
 start_pre() {
     checkpath --file --owner $user --mode 0644 $logfile
+    checkpath --file --owner $user --mode 0644 $errorslog
 }
