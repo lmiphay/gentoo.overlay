@@ -20,7 +20,7 @@ IUSE=""
 DEPEND="
 	!app-misc/homeassistant
 	dev-python/pip
-	>=dev-lang/python-3.4
+	>=dev-lang/python-3.5
 "
 RDEPEND="${DEPEND}
 	dev-python/virtualenv
@@ -48,8 +48,10 @@ src_install() {
 	keepdir "/etc/${MY_PN}"
 	fowners -R "${MY_PN}:${MY_PN}" "/etc/${MY_PN}"
 
-	python3 -m venv "$INSTALL_DIR"
-	VIRTUAL_ENV="$INSTALL_DIR" "$INSTALL_DIR/bin/python3" -m pip install "${MY_PN}"
+	python3 -m venv "${D}/$INSTALL_DIR"
+	# for no output from pip add: --quiet
+	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "${MY_PN}"
+	sed -i "1c#!$INSTALL_DIR/bin/python3" "${D}/$INSTALL_DIR/bin/hass"
 	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
 
 	newconfd "${FILESDIR}/${MY_PN}.conf.d" "${MY_PN}"
