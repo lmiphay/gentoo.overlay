@@ -8,7 +8,7 @@ user="homeassistant:homeassistant"
 logfile="/var/log/homeassistant.log"
 errorslog="/var/log/homeassistant-errors.log"
 
-start_stop_daemon_args="--user $user --stdout $logfile --stderr $errorslog"
+start_stop_daemon_args="--user $user --stdout $logfile --stderr $errorslog --retry 10"
 
 command="/opt/homeassistant/bin/hass"
 command_args="
