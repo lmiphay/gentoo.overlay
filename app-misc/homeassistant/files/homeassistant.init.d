@@ -12,6 +12,7 @@ start_stop_daemon_args="--user $user --stdout $logfile --stderr $errorslog --ret
 
 command="/opt/homeassistant/bin/hass"
 command_args="
+	--skip-pip
 	--config /etc/homeassistant
 	--log-file $logfile
         ${HASS_OPTS}
