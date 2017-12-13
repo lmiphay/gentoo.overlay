@@ -23,6 +23,7 @@ DEPEND="
 	>=dev-lang/python-3.5
 "
 RDEPEND="${DEPEND}
+	app-admin/logrotate
 	dev-python/virtualenv
 "
 
@@ -34,7 +35,11 @@ DOC_CONTENTS="
 
  hass configuration is in: /etc/${MY_PN}
  command line arguments can be configured in: /etc/conf.d/${MY_PN}
- logging is to /var/log/${MY_PN}-errors.log and /var/log/${MY_PN}.log
+
+ logging is to: /var/log/${MY_PN}/{server,errors,stdout}.log
+
+ support thread at:
+	https://community.home-assistant.io/t/gentoo-homeassistant-0-59-2-ebuild/35577
 "
 
 S="${WORKDIR}/home-assistant-${PV}"
@@ -58,6 +63,12 @@ src_install() {
 
 	newconfd "${FILESDIR}/${MY_PN}.conf.d" "${MY_PN}"
 	newinitd "${FILESDIR}/${MY_PN}.init.d" "${MY_PN}"
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
+
+	keepdir "/var/log/${MY_PN}"
+	fowners -R "${MY_PN}:${MY_PN}" "/var/log/${MY_PN}"
 
 	readme.gentoo_create_doc
 }
