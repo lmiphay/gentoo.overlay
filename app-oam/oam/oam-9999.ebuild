@@ -64,6 +64,9 @@ python_install_all() {
 	chmod 0640 "${ED}"/etc/oam/conf.d/*.yaml "${ED}"/etc/oam/localtasks/*.py || die
 	fperms 770 "/var/log/oam"
 	fperms 755 "/etc/cron.daily/oam"
+
+	insinto /etc/logrotate.d
+	newins etc/oam.logrotate oam
 }
 
 python_test() {
