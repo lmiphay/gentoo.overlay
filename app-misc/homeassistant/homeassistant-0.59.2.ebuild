@@ -44,9 +44,11 @@ INSTALL_DIR="/opt/${PN}"
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
+ The HA interface listens on port 8123 - this _will_ take a minute or two to appear
+
  hass configuration is in: /etc/${PN}
  command line arguments can be configured in: /etc/conf.d/${PN}
- logging is to /var/log/${PN}.log
+ logging is to /var/log/${MY_PN}-errors.log and /var/log/${MY_PN}.log
 "
 
 S="${WORKDIR}/home-assistant-${PV}"
