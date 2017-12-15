@@ -38,6 +38,9 @@ DOC_CONTENTS="
 
  logging is to: /var/log/${MY_PN}/{server,errors,stdout}.log
 
+ sqlite db by default is in: /etc/${MY_PN}
+  - to move it after ${MY_PN} has run once: add/include /etc/${MY_PN}/recorder.yaml to /etc/${MY_PN}/configuration.yaml
+
  support thread at:
 	https://community.home-assistant.io/t/gentoo-homeassistant-0-59-2-ebuild/35577
 "
@@ -53,6 +56,8 @@ src_install() {
 	keepdir "$INSTALL_DIR"
 
 	keepdir "/etc/${MY_PN}"
+	insinto "/etc/${MY_PN}"
+	doins "${FILESDIR}/recorder.yaml"
 	fowners -R "${MY_PN}:${MY_PN}" "/etc/${MY_PN}"
 
 	python3 -m venv "${D}/$INSTALL_DIR"
@@ -69,6 +74,9 @@ src_install() {
 
 	keepdir "/var/log/${MY_PN}"
 	fowners -R "${MY_PN}:${MY_PN}" "/var/log/${MY_PN}"
+
+	keepdir "/var/db/${MY_PN}"
+	fowners -R "${MY_PN}:${MY_PN}" "/var/db/${MY_PN}"
 
 	readme.gentoo_create_doc
 }
