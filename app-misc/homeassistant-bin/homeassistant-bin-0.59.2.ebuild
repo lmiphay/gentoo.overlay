@@ -39,7 +39,7 @@ DOC_CONTENTS="
  logging is to: /var/log/${MY_PN}/{server,errors,stdout}.log
 
  sqlite db by default is in: /etc/${MY_PN}
-  - to move it after ${MY_PN} has run once: add/include /etc/${MY_PN}/recorder.yaml to /etc/${MY_PN}/configuration.yaml
+  - to move it after ${MY_PN} has run once: add /etc/${MY_PN}/recorder.yaml to /etc/${MY_PN}/configuration.yaml
 
  support thread at:
 	https://community.home-assistant.io/t/gentoo-homeassistant-0-59-2-ebuild/35577
