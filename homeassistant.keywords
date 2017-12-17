@@ -2,3 +2,4 @@
 app-misc/homeassistant-bin
 =app-admin/authbind-2.1.1 ~amd64
 =app-crypt/ssl-cert-check-20171114 ~amd64
+=net-misc/dropbox-uploader-20171114 ~amd64
