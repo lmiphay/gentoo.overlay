@@ -52,10 +52,10 @@ python_install_all() {
 	newbashcomp etc/bash.completion oam
 	distutils-r1_python_install_all
 
-	keepdir /var/log/oam
+	keepdir /var/log/oam/old
 
 	fowners -R "root:oam"  "/etc/oam"
-	fowners    "root:oam"  "/var/log/oam"
+	fowners -R "root:oam"  "/var/log/oam"
 	fowners    "root:root" "/etc/cron.daily/oam"
 
 	fperms 640 "/etc/oam/oam.yaml"
