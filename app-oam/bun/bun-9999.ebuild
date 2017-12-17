@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 pypy )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 pypy )
 
 inherit distutils-r1 git-r3
 
@@ -18,7 +18,7 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/invoke-0.21.0[${PYTHON_USEDEP}]
+	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="
