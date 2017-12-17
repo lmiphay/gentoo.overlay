@@ -24,6 +24,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	app-admin/logrotate
+	app-crypt/certbot
 	dev-python/virtualenv
 "
 
@@ -72,7 +73,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${MY_PN}.logrotate" "${MY_PN}"
 
-	keepdir "/var/log/${MY_PN}"
+	keepdir "/var/log/${MY_PN}/old"
 	fowners -R "${MY_PN}:${MY_PN}" "/var/log/${MY_PN}"
 
 	keepdir "/var/db/${MY_PN}"
