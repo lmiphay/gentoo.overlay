@@ -22,7 +22,12 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="
-	test? ( >=dev-python/coverage-4.2 >=dev-python/flake8-2.5.4 >=dev-python/mock-2.0.0 >=dev-python/pylint-1.6.5 )
+	test? (
+		>=dev-python/coverage-4.2[${PYTHON_USEDEP}]
+		>=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
+		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
+	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.6.3[${PYTHON_USEDEP}]
 	${RDEPEND}
