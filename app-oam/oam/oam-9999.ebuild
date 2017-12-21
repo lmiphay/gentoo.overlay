@@ -30,7 +30,7 @@ RDEPEND="
 	dev-python/eliot[${PYTHON_USEDEP}]
 	dev-python/eliot-tree[${PYTHON_USEDEP}]
 	dev-python/inotifyx[${PYTHON_USEDEP}]
-	>=dev-python/invoke-0.21.0[${PYTHON_USEDEP}]
+	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
