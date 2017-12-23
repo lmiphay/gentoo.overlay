@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "usage: $(basename $0) <lms_server>"
+    exit 1
+fi
+
+LMS_SERVER=$1
+
+{ echo "status"; sleep 0.5; } | ncat $LMS_SERVER 9090
+
+exit $?

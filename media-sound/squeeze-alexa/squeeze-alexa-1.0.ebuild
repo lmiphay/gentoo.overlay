@@ -22,6 +22,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	=dev-python/fuzzywuzzy-0.12.0[${PYTHON_USEDEP}]
 	dev-python/lambda-uploader[${PYTHON_USEDEP}]
+	net-analyzer/nmap[ncat]
 	net-misc/stunnel
 "
 DEPEND="
@@ -52,6 +53,8 @@ Support thread at:
 src_install() {
 	python_domodule squeezealexa
 	python_newscript bin/local_test.py ${PN}-local-test
+
+	dobin ${FILESDIR}/lms-status
 
 	insinto "/usr/share/${PN}"
 	doins \
