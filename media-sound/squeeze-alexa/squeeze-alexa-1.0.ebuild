@@ -21,11 +21,16 @@ RESTRICT="mirror"
 RDEPEND="
 	${PYTHON_DEPS}
 	=dev-python/fuzzywuzzy-0.12.0[${PYTHON_USEDEP}]
-	dev-python/lambda-uploader
+	dev-python/lambda-uploader[${PYTHON_USEDEP}]
 	net-misc/stunnel
 "
 DEPEND="
-	test? ( dev-python/pytest dev-python/pytest-cov dev-python/coverage dev-python/flake8 )
+	test? (
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/flake8[${PYTHON_USEDEP}]
+	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
@@ -60,4 +65,9 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+}
+
+python_test() {
+	py.test -vv || die "Tests failed"
+	flake8 --verbose --config="${S}"/setup.cfg "${S}"/squeezealexa
 }
