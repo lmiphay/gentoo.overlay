@@ -1,0 +1,12 @@
+# logrotate script for ha-bridge
+
+/var/log/ha-bridge/*.log {
+        daily
+        missingok
+        copytruncate
+        rotate 9
+        compress
+        notifempty
+        su root root
+        olddir /var/log/ha-bridge/old
+}
