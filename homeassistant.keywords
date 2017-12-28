@@ -12,10 +12,14 @@
 =dev-python/aiohttp-2.3.6 ~amd64
 =dev-python/astral-1.4.1 ~amd64
 =dev-python/async_timeout-2.0.0 ~amd64
+=dev-python/click-datetime-0.2.0 ~amd64
 =dev-python/yarl-0.16.0 ~amd64
 
 # deps on above
 =dev-python/multidict-3.3.2 ~amd64
+
+# specific support from lmiphay overlay
+=dev-python/pyhs100-0.3.0 ~amd64
 
 # misc other packages
 =net-misc/ha-bridge-bin-5.1.0 ~amd64
