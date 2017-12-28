@@ -17,7 +17,7 @@ RESTRICT="mirror"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="maint"
+IUSE="hs100 maint wemo"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -39,6 +39,8 @@ DEPEND="
 	>=dev-python/xmltodict-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/yarl-0.16.0[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.39[${PYTHON_USEDEP}]
+	hs100? ( >=dev-python/pyhs100-0.3.0[${PYTHON_USEDEP}] )
+	wemo? ( >=dev-python/pywemo-0.4.20[${PYTHON_USEDEP}] )
 "
 # add:
 # home-assistant-frontend==20171216.0
@@ -49,9 +51,7 @@ DEPEND="
 # fuzzywuzzy==0.15.1
 #
 # maybe:
-# pyHS100==0.3.0
 # gTTS-token==1.1.1
-# pywemo==0.4.20
 # pytradfri[async]==4.1.0
 # pyatv==0.3.9
 
