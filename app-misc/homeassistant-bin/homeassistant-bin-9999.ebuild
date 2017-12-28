@@ -9,23 +9,26 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Open-source home automation platform running on Python 3"
 HOMEPAGE="https://home-assistant.io"
-SRC_URI="https://github.com/home-assistant/home-assistant/archive/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
-RESTRICT="mirror"
+SRC_URI=""  # pip installs latest HA from PyPI
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="maint"
 
 DEPEND="
 	!app-misc/homeassistant
 	dev-python/pip
+	dev-python/virtualenv
 	>=dev-lang/python-3.5
 "
 RDEPEND="${DEPEND}
 	app-admin/logrotate
-	app-crypt/certbot
-	dev-python/virtualenv
+	maint? (
+		app-crypt/certbot
+		app-crypt/ssl-cert-check
+		net-misc/dropbox-uploader
+	)
 "
 
 INSTALL_DIR="/opt/${MY_PN}"
@@ -46,7 +49,7 @@ DOC_CONTENTS="
 	https://community.home-assistant.io/t/gentoo-homeassistant-0-59-2-ebuild/35577
 "
 
-S="${WORKDIR}/home-assistant-${PV}"
+S="${WORKDIR}"
 
 pkg_setup() {
 	enewgroup "${MY_PN}"

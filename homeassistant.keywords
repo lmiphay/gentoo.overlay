@@ -1,5 +1,23 @@
-#app-misc/homeassistant
-app-misc/homeassistant-bin
+#=app-misc/homeassistant-bin-0.59.2 ~amd64
+=app-misc/homeassistant-bin-0.60 ~amd64
+
+# from portage
+=dev-python/certifi-2017.11.5 ~amd64
+=dev-python/jinja-2.9.6 ~amd64
+=dev-python/requests-2.18.4 ~amd64
+=dev-python/sqlalchemy-1.1.15 ~amd64
+=media-libs/mutagen-1.39 ~amd64
+
+# lmiphay overlay direct deps
+=dev-python/aiohttp-2.3.6 ~amd64
+=dev-python/astral-1.4.1 ~amd64
+=dev-python/async_timeout-2.0.0 ~amd64
+=dev-python/yarl-0.16.0 ~amd64
+
+# deps on above
+=dev-python/multidict-3.3.2 ~amd64
+
+# misc other packages
 =net-misc/ha-bridge-bin-5.1.0 ~amd64
 =app-admin/authbind-2.1.1 ~amd64
 =app-crypt/ssl-cert-check-20171114 ~amd64
