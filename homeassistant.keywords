@@ -20,6 +20,7 @@
 
 # specific support from lmiphay overlay
 =dev-python/pyhs100-0.3.0 ~amd64
+=dev-python/pywemo-0.4.20 ~amd64
 
 # misc other packages
 =net-misc/ha-bridge-bin-5.1.0 ~amd64
