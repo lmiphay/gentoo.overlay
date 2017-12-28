@@ -27,6 +27,7 @@ A copy of the overlay with metadata is available here: [https://github.com/gento
 + [QA Report](https://qa-reports.gentoo.org/output/repos/lmiphay.html)
 + [Gentoo Repo QA Check](http://gentoo.github.io/repo-qa-check-results/lmiphay.html)
 + [Ebuild Upstream Scanner](http://euscan.gentooexperimental.org/maintainers/lmiphay@gmail.com/)
++ [Levelnine checks](https://gentoo.levelnine.at/full-sort-by-maintainer/lmiphay_at_gmail.com.txt)
 
 ##### Alternative Overlay Setup
 
