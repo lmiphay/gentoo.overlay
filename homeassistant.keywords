@@ -6,6 +6,7 @@
 =dev-python/jinja-2.9.6 ~amd64
 =dev-python/requests-2.18.4 ~amd64
 =dev-python/sqlalchemy-1.1.15 ~amd64
+=dev-python/zeroconf-0.17.7 ~amd64
 =media-libs/mutagen-1.39 ~amd64
 
 # lmiphay overlay direct deps
@@ -16,11 +17,16 @@
 =dev-python/yarl-0.16.0 ~amd64
 
 # deps on above
+=dev-python/aiocoap-0.4_alpha3 ~amd64
+=dev-python/dtlssocket-0.1.4 ~amd64
 =dev-python/multidict-3.3.2 ~amd64
 
 # specific support from lmiphay overlay
+=dev-python/pyatv-0.3.9 ~amd64
 =dev-python/pyhs100-0.3.0 ~amd64
+=dev-python/pytradfri-4.1.0 ~amd64
 =dev-python/pywemo-0.4.20 ~amd64
+=dev-python/gtts-token-1.1.1 ~amd64
 
 # misc other packages
 =net-misc/ha-bridge-bin-5.1.0 ~amd64
