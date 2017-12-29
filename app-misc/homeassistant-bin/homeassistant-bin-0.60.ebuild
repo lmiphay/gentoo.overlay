@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=(python3_5)
+PYTHON_COMPAT=( python3_5 )
 
 inherit user readme.gentoo-r1 eutils distutils-r1
 
@@ -53,7 +53,8 @@ DEPEND="
 # netdisco==1.2.3
 # fuzzywuzzy==0.15.1
 
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	app-admin/logrotate
 	maint? (
 		app-crypt/certbot
@@ -105,9 +106,9 @@ src_install() {
 	doins "${FILESDIR}/recorder.yaml"
 	fowners -R "${MY_PN}:${MY_PN}" "/etc/${MY_PN}"
 
-	python3 -m venv --system-site-packages "${D}/$INSTALL_DIR"
+	python3.5 -m venv --system-site-packages "${D}/$INSTALL_DIR"
+	# note the venv has a python3, but no python3.5
 	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" setup.py install
-
 	sed -i "1c#!$INSTALL_DIR/bin/python3" "${D}/$INSTALL_DIR/bin/hass"
 	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
 
