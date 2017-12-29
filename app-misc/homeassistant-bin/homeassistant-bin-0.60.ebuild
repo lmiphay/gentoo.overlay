@@ -9,7 +9,7 @@ inherit user readme.gentoo-r1 eutils distutils-r1
 
 MY_PN="${PN/-bin/}"
 
-DESCRIPTION="Open-source home automation platform running on Python 3"
+DESCRIPTION="Home automation platform (Python 3 required)"
 HOMEPAGE="https://home-assistant.io"
 SRC_URI="https://github.com/home-assistant/home-assistant/archive/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
 RESTRICT="mirror"
@@ -17,7 +17,7 @@ RESTRICT="mirror"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="hs100 maint wemo"
+IUSE="atv hs100 maint tradfri wemo"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -28,6 +28,7 @@ DEPEND="
 	>=dev-python/async_timeout-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/certifi-2017.11.5[${PYTHON_USEDEP}]
 	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
+	>=dev-python/gtts-token-1.1.1[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.9.6[${PYTHON_USEDEP}]
 	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2017.2[${PYTHON_USEDEP}]
@@ -39,7 +40,9 @@ DEPEND="
 	>=dev-python/xmltodict-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/yarl-0.16.0[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.39[${PYTHON_USEDEP}]
+	atv? ( >=dev-python/pyatv-0.3.9[${PYTHON_USEDEP}] )
 	hs100? ( >=dev-python/pyhs100-0.3.0[${PYTHON_USEDEP}] )
+	tradfri? ( >=dev-python/pytradfri-4.1.0[${PYTHON_USEDEP}] )
 	wemo? ( >=dev-python/pywemo-0.4.20[${PYTHON_USEDEP}] )
 "
 # add:
@@ -49,11 +52,6 @@ DEPEND="
 # distro==1.1.0
 # netdisco==1.2.3
 # fuzzywuzzy==0.15.1
-#
-# maybe:
-# gTTS-token==1.1.1
-# pytradfri[async]==4.1.0
-# pyatv==0.3.9
 
 RDEPEND="${DEPEND}
 	app-admin/logrotate
@@ -71,7 +69,7 @@ DOC_CONTENTS="
  The HA interface listens on port 8123 - this _will_ take a minute or two to appear
 
  hass configuration is in: /etc/${MY_PN}
- command line arguments can be configured in: /etc/conf.d/${MY_PN}
+ daemon command line arguments are configured in: /etc/conf.d/${MY_PN}
 
  logging is to: /var/log/${MY_PN}/{server,errors,stdout}.log
 
