@@ -3,11 +3,13 @@
 
 EAPI="6"
 
-inherit user readme.gentoo-r1 eutils
+PYTHON_COMPAT=( python3_5 )
+
+inherit user readme.gentoo-r1 eutils distutils-r1
 
 MY_PN="${PN/-bin/}"
 
-DESCRIPTION="Open-source home automation platform running on Python 3"
+DESCRIPTION="Home automation platform (Python 3 required)"
 HOMEPAGE="https://home-assistant.io"
 SRC_URI=""  # pip installs latest HA from PyPI
 
@@ -17,12 +19,13 @@ KEYWORDS="~amd64"
 IUSE="maint"
 
 DEPEND="
+	${PYTHON_DEPS}
 	!app-misc/homeassistant
-	dev-python/pip
-	dev-python/virtualenv
-	>=dev-lang/python-3.5
+	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	app-admin/logrotate
 	maint? (
 		app-crypt/certbot
@@ -38,12 +41,14 @@ DOC_CONTENTS="
  The HA interface listens on port 8123 - this _will_ take a minute or two to appear
 
  hass configuration is in: /etc/${MY_PN}
- command line arguments can be configured in: /etc/conf.d/${MY_PN}
+ daemon command line arguments are configured in: /etc/conf.d/${MY_PN}
 
  logging is to: /var/log/${MY_PN}/{server,errors,stdout}.log
 
- sqlite db by default is in: /etc/${MY_PN}
-  - to move it after ${MY_PN} has run once: add /etc/${MY_PN}/recorder.yaml to /etc/${MY_PN}/configuration.yaml
+ The sqlite db is by default in: /etc/${MY_PN}
+ To move it after ${MY_PN} has run once and while ${MY_PN} is stopped:
+   - add /etc/${MY_PN}/recorder.yaml to /etc/${MY_PN}/configuration.yaml
+   - mv /etc/${MY_PN}/home-assistant_v2.db /var/db/${MY_PN}
 
  support thread at:
 	https://community.home-assistant.io/t/gentoo-homeassistant-0-59-2-ebuild/35577
@@ -64,8 +69,9 @@ src_install() {
 	doins "${FILESDIR}/recorder.yaml"
 	fowners -R "${MY_PN}:${MY_PN}" "/etc/${MY_PN}"
 
-	python3 -m venv "${D}/$INSTALL_DIR"
+	python3.5 -m venv "${D}/$INSTALL_DIR"
 	# for no output from pip add: --quiet
+	# note the venv has a python3, but no python3.5
 	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "${MY_PN}"
 	sed -i "1c#!$INSTALL_DIR/bin/python3" "${D}/$INSTALL_DIR/bin/hass"
 	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
