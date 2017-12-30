@@ -29,7 +29,9 @@ DEPEND="
 	>=dev-python/certifi-2017.11.5[${PYTHON_USEDEP}]
 	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
 	>=dev-python/gtts-token-1.1.1[${PYTHON_USEDEP}]
+	>=dev-python/fuzzywuzzy-0.15.1[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.9.6[${PYTHON_USEDEP}]
+	>=dev-python/netdisco-1.2.3[${PYTHON_USEDEP}]
 	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2017.2[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
@@ -45,13 +47,10 @@ DEPEND="
 	tradfri? ( >=dev-python/pytradfri-4.1.0[${PYTHON_USEDEP}] )
 	wemo? ( >=dev-python/pywemo-0.4.20[${PYTHON_USEDEP}] )
 "
-# add:
 # home-assistant-frontend==20171216.0
 # user-agents==1.1.0
 # aiohttp_cors==0.5.3
 # distro==1.1.0
-# netdisco==1.2.3
-# fuzzywuzzy==0.15.1
 
 RDEPEND="
 	${DEPEND}
