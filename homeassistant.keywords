@@ -26,6 +26,7 @@
 =dev-python/ed25519-1.4 ~amd64
 =dev-python/fuzzywuzzy-0.15.1 ~amd64
 =dev-python/gtts-token-1.1.1 ~amd64
+=dev-python/netdisco-1.2.3 ~amd64
 =dev-python/pyatv-0.3.9 ~amd64
 =dev-python/pyhs100-0.3.0 ~amd64
 =dev-python/pytradfri-4.1.0 ~amd64
