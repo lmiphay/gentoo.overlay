@@ -11,9 +11,13 @@
 
 # lmiphay overlay direct deps
 =dev-python/aiohttp-2.3.6 ~amd64
+=dev-python/aiohttp-cors-0.6.0 ~amd64
 =dev-python/astral-1.4.1 ~amd64
 =dev-python/async_timeout-2.0.0 ~amd64
 =dev-python/click-datetime-0.2.0 ~amd64
+=dev-python/distro-1.2.0 ~amd64
+=dev-python/ua-parser-0.7.3 ~amd64
+=dev-python/user-agents-1.1.0 ~amd64
 =dev-python/yarl-0.16.0 ~amd64
 
 # deps on above
