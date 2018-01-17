@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -61,6 +61,10 @@ pkg_setup() {
 	enewuser "${MY_PN}" -1 -1 "$INSTALL_DIR" "${MY_PN}"
 }
 
+src_compile() {
+	true
+}
+
 src_install() {
 	keepdir "$INSTALL_DIR"
 
@@ -93,4 +97,8 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+}
+
+pkg_config() {
+	"${INSTALL_DIR}/bin/hass" --script ensure_config
 }

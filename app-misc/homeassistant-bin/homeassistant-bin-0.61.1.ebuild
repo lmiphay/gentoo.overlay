@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,47 +11,19 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Home automation platform (Python 3 required)"
 HOMEPAGE="https://home-assistant.io"
-SRC_URI="https://github.com/home-assistant/home-assistant/archive/${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
-RESTRICT="mirror"
+SRC_URI=""  # pip installs HA version $PV from PyPI
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="atv hs100 maint tradfri wemo"
+IUSE="maint"
 
 DEPEND="
 	${PYTHON_DEPS}
 	!app-misc/homeassistant
+	dev-python/pip[${PYTHON_USEDEP}]
 	dev-python/virtualenv[${PYTHON_USEDEP}]
-	>=dev-python/aiohttp-2.3.6[${PYTHON_USEDEP}]
-	>=dev-python/astral-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/async_timeout-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/certifi-2017.11.5[${PYTHON_USEDEP}]
-	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
-	>=dev-python/gtts-token-1.1.1[${PYTHON_USEDEP}]
-	>=dev-python/fuzzywuzzy-0.15.1[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.9.6[${PYTHON_USEDEP}]
-	>=dev-python/netdisco-1.2.3[${PYTHON_USEDEP}]
-	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
-	>=dev-python/pytz-2017.2[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.18.4[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-1.1.15[${PYTHON_USEDEP}]
-	>=dev-python/typing-3.6.2[${PYTHON_USEDEP}]
-	>=dev-python/voluptuous-0.10.5[${PYTHON_USEDEP}]
-	>=dev-python/xmltodict-0.11.0[${PYTHON_USEDEP}]
-	>=dev-python/yarl-0.16.0[${PYTHON_USEDEP}]
-	>=media-libs/mutagen-1.39[${PYTHON_USEDEP}]
-	atv? ( >=dev-python/pyatv-0.3.9[${PYTHON_USEDEP}] )
-	hs100? ( >=dev-python/pyhs100-0.3.0[${PYTHON_USEDEP}] )
-	tradfri? ( >=dev-python/pytradfri-4.1.0[${PYTHON_USEDEP}] )
-	wemo? ( >=dev-python/pywemo-0.4.20[${PYTHON_USEDEP}] )
 "
-# home-assistant-frontend==20171216.0
-# user-agents==1.1.0
-# aiohttp_cors==0.5.3
-# distro==1.1.0
-
 RDEPEND="
 	${DEPEND}
 	app-admin/logrotate
@@ -82,19 +54,15 @@ DOC_CONTENTS="
 	https://community.home-assistant.io/t/gentoo-homeassistant-0-59-2-ebuild/35577
 "
 
-S="${WORKDIR}/home-assistant-${PV}"
+S="${WORKDIR}"
 
 pkg_setup() {
 	enewgroup "${MY_PN}"
 	enewuser "${MY_PN}" -1 -1 "$INSTALL_DIR" "${MY_PN}"
 }
 
-src_prepare() {
-	sed -e 's;astral==1.4;astral>=1.4;' \
-		-i "setup.py" \
-		-i homeassistant/package_constraints.txt
-
-	eapply_user
+src_compile() {
+	true
 }
 
 src_install() {
@@ -105,9 +73,10 @@ src_install() {
 	doins "${FILESDIR}/recorder.yaml"
 	fowners -R "${MY_PN}:${MY_PN}" "/etc/${MY_PN}"
 
-	python3.5 -m venv --system-site-packages "${D}/$INSTALL_DIR"
+	python3.5 -m venv "${D}/$INSTALL_DIR"
+	# for no output from pip add: --quiet
 	# note the venv has a python3, but no python3.5
-	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" setup.py install
+	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "${MY_PN}==${PV}"
 	sed -i "1c#!$INSTALL_DIR/bin/python3" "${D}/$INSTALL_DIR/bin/hass"
 	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
 
