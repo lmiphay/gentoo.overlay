@@ -16,6 +16,7 @@ command="/opt/homeassistant/bin/hass"
 command_args="
 	--config /etc/homeassistant
 	--log-file $warningslog
+	--log-rotate-days 9
         ${HASS_OPTS}
 "
 

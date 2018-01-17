@@ -1,6 +1,6 @@
 # logrotate script for homeassistant
 
-/var/log/homeassistant/*.log {
+/var/log/homeassistant/stdout.log /var/log/homeassistant/server.log {
         daily
         missingok
         copytruncate
