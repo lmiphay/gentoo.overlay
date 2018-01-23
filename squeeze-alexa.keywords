@@ -1,4 +1,4 @@
-=media-sound/squeeze-alexa-1.0 ~amd64
+=media-sound/squeeze-alexa-20171216 ~amd64
 
 =dev-python/awscli-1.11.158 ~amd64
 =dev-python/fuzzywuzzy-0.12.0 ~amd64
