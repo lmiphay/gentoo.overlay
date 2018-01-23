@@ -31,6 +31,7 @@ RDEPEND="
 		app-crypt/certbot
 		app-crypt/ssl-cert-check
 		net-misc/dropbox-uploader
+		virtual/logger
 	)
 "
 
