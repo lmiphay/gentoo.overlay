@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RESTRICT="mirror"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	=dev-python/boto3-1.4.0[${PYTHON_USEDEP}]
+	>=dev-python/boto3-1.4.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? ( dev-python/pytest dev-python/flake8 )
