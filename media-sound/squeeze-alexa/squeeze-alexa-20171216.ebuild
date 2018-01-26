@@ -22,9 +22,9 @@ RESTRICT="mirror"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/awscli[${PYTHON_USEDEP}]
+	dev-python/awscli
 	=dev-python/fuzzywuzzy-0.12.0[${PYTHON_USEDEP}]
-	dev-python/lambda-uploader[${PYTHON_USEDEP}]
+	dev-python/lambda-uploader
 	net-analyzer/nmap[ncat]
 	net-misc/stunnel
 	virtual/logger
