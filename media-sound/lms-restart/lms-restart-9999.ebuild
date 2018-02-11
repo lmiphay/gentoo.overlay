@@ -17,6 +17,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	media-sound/logitechmediaserver-bin
+	virtual/cron
 "
 
 DISABLE_AUTOFORMATTING=1
