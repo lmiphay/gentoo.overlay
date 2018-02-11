@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# This script will:
+# 1. stop homeassistant if it is running
+# 2. backs up /opt/homeassistant (moves it to: /opt/homeassistant-OLD_VERSION)
+# 3. merges the new version of homeassistant
+# 4. re-starts homeassistant if the merge was successful
+
+prog="homeassistant"
+atom="app-misc/${prog}-bin"
+
+/etc/init.d/${prog} --ifstarted stop
+
+installed_version()
+{
+    equery --no-color list -F '$fullversion' "${atom}" | tail -1
+}
+
+version=$(installed_version)
+
+if [ -d "/opt/${prog}" ] ; then
+    if [ ! -d "/opt/${prog}-v${version}" ] ; then
+	echo "backing up previous version as v${version}"
+	echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
+	mv "/opt/${prog}" "/opt/${prog}-v${version}"
+    else
+	echo "Previous backup found - (re-)move it manually and run the script again"
+	exit 2
+    fi
+fi
+
+if emerge -v1 "${atom}" ; then
+    echo "${atom} $(installed_version) merge successful"
+    /etc/init.d/${prog} --ifstopped start
+    echo "now check the logs in /var/log/${prog}"
+    exit 0
+else
+    echo "${atom} merge failed"
+    exit 1
+fi
