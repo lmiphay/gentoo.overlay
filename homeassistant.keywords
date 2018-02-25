@@ -5,22 +5,24 @@
 
 # from portage
 =dev-python/certifi-2017.11.5 ~amd64
-=dev-python/jinja-2.9.6 ~amd64
+=dev-python/jinja-2.10 ~amd64
 =dev-python/requests-2.18.4 ~amd64
 =dev-python/sqlalchemy-1.1.15 ~amd64
 =dev-python/zeroconf-0.17.7 ~amd64
 =media-libs/mutagen-1.39 ~amd64
 
 # lmiphay overlay direct deps
-=dev-python/aiohttp-2.3.6 ~amd64
+=dev-python/aiohttp-2.3.10 ~amd64
 =dev-python/aiohttp-cors-0.6.0 ~amd64
-=dev-python/astral-1.4.1 ~amd64
+=dev-python/astral-1.5 ~amd64
 =dev-python/async_timeout-2.0.0 ~amd64
+=dev-python/attrs-17.4.0 ~amd64
 =dev-python/click-datetime-0.2.0 ~amd64
 =dev-python/distro-1.2.0 ~amd64
 =dev-python/ua-parser-0.7.3 ~amd64
 =dev-python/user-agents-1.1.0 ~amd64
-=dev-python/yarl-0.16.0 ~amd64
+=dev-python/voluptuous-0.11.1 ~amd64
+=dev-python/yarl-1.1.0 ~amd64
 
 # deps on above
 =dev-python/aiocoap-0.4_alpha3 ~amd64
