@@ -18,6 +18,6 @@
 =media-sound/shairport2_helper-0.19 ~amd64
 =media-sound/shairport2_plugin-0.19 ~amd64
 =media-sound/squeezelite-1.8.4.743-r1 ~amd64
-=media-sound/squeezy-9999 ~amd64 ~x86
+=media-sound/squeezy-20170714 ~amd64 ~x86
 =x11-misc/xphoon-20140814 ~amd64 ~x86
 =x11-wm/tvtwm-11 ~amd64 ~x86
