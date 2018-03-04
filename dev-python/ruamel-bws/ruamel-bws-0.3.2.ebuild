@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=(python2_7 python3_{5,6})
 
-inherit distutils-r1
+inherit distutils-r1 readme.gentoo-r1
 
 MY_PN="ruamel.bws"
 
@@ -34,13 +34,26 @@ DOCS="README.rst"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
+DISABLE_AUTOFORMATTING=1
+DOC_CONTENTS="
+  If browser state isn't being saved as expected check the basenamestart settings
+  in ~/.config/bws/bws.ini
+"
+
 src_prepare() {
 	# remove requirement for 'pip install .'
 	sed -i '243,249d' setup.py
+	# add 'chrome' as a recognised browser executable
+	sed -i -e "s:'chromium-browser':'chrome', 'chromium-browser':" "browserworkspace.py"
 	eapply_user
 }
 
 python_install_all() {
   distutils-r1_python_install_all
   find "${ED}" -name '*.pth' -delete || die
+  readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
