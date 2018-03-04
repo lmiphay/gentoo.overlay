@@ -49,9 +49,9 @@ src_prepare() {
 }
 
 python_install_all() {
-  distutils-r1_python_install_all
-  find "${ED}" -name '*.pth' -delete || die
-  readme.gentoo_create_doc
+	distutils-r1_python_install_all
+	find "${ED}" -name '*.pth' -delete || die
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {

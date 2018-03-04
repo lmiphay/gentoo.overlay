@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# not saving number of windows: 1 < 3
+arg="--verbose --minwin 1"
+
+set -o monitor
+
+cleanup()
+{
+    if kill -0 "${browser_pid}" 2>/dev/null ; then
+	echo "browser still running"
+    else
+	echo "browser exited ${browser_pid}"
+	exit 0
+    fi
+}
+
+${BWS_BROWSER:-"chromium"} &
+browser_pid=$!
+
+trap cleanup CHLD
+
+sleep ${BWS_BROWSER_STARTUP_WAIT:-10}
+
+if ls ~/.config/bws/*.bws >/dev/null 2>&1; then
+    echo "restoring browser window snapshot"
+    bws ${arg} restore
+else
+    echo "no saved workspace found; doing initial save"
+    bws ${arg} save
+fi
+
+saveproc()
+{
+    while jobs %1 >/dev/null 2>&1 ; do
+	sleep ${BWS_BROWSER_PERIODIC_SAVE:-300}
+	echo "saving browser window snapshot"
+	bws ${arg} save
+    done
+}
+
+saveproc &
+
+wait ${browser_pid}
+
+exit 0
