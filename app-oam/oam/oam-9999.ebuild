@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python3_5 )
 
 inherit user distutils-r1 bash-completion-r1 git-r3
 
@@ -18,9 +18,7 @@ IUSE="+lnav +ranger"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	lnav? ( app-admin/lnav )
 	app-admin/logrotate
-	ranger? ( app-misc/ranger )
 	app-portage/genlop
 	app-portage/gentoolkit
 	app-portage/portage-utils
@@ -29,12 +27,14 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/eliot[${PYTHON_USEDEP}]
 	dev-python/eliot-tree[${PYTHON_USEDEP}]
-	dev-python/inotifyx[${PYTHON_USEDEP}]
+	dev-python/pyinotify[${PYTHON_USEDEP}]
 	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
+	lnav? ( app-admin/lnav )
+	ranger? ( app-misc/ranger )
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
