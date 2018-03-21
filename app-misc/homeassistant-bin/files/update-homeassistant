@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script will:
-# 1. stop homeassistant if it is running
+# 1. stop homeassistant if it is running (wait/kill it if it fails to stop)
 # 2. backs up /opt/homeassistant (moves it to: /opt/homeassistant-OLD_VERSION)
 # 3. merges the new version of homeassistant
 # 4. re-starts homeassistant if the merge was successful
@@ -9,7 +9,14 @@
 prog="homeassistant"
 atom="app-misc/${prog}-bin"
 
-/etc/init.d/${prog} --ifstarted stop
+if /etc/init.d/${prog} --ifstarted stop ; then
+    echo "${prog} stopped"
+else
+    echo "failed to stop, sleeping/killing: ${prog}"
+    sleep 10
+    pkill -9 -f "/opt/${prog}/bin/python3"
+    /etc/init.d/${prog} zap
+fi
 
 installed_version()
 {
