@@ -15,7 +15,6 @@ SRC_URI=""  # pip installs latest HA from PyPI
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="maint"
 
 DEPEND="
