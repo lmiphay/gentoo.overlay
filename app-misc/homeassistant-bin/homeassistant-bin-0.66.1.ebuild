@@ -74,6 +74,7 @@ src_install() {
 	dobin "${FILESDIR}/update-homeassistant"
 
 	keepdir "$INSTALL_DIR"
+	fperms -R a-w "$INSTALL_DIR"
 
 	keepdir "/etc/${MY_PN}"
 	insinto "/etc/${MY_PN}"
