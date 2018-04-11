@@ -6,4 +6,4 @@
 # Switches to pass to hass. See 'hass --help' for
 # a description of the possible switches.
 #
-HASS_OPTS=""
+HASS_OPTS="-c /etc/homeassistant"
