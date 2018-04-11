@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_5 )
 
-inherit user readme.gentoo-r1 eutils distutils-r1
+inherit user readme.gentoo-r1 eutils distutils-r1 systemd
 
 MY_PN="${PN/-bin/}"
 
@@ -74,6 +74,7 @@ src_install() {
 	dobin "${FILESDIR}/update-homeassistant"
 
 	keepdir "$INSTALL_DIR"
+	fperms -R a-w "$INSTALL_DIR"
 
 	keepdir "/etc/${MY_PN}"
 	insinto "/etc/${MY_PN}"
@@ -98,6 +99,8 @@ src_install() {
 
 	keepdir "/var/db/${MY_PN}"
 	fowners -R "${MY_PN}:${MY_PN}" "/var/db/${MY_PN}"
+
+	systemd_dounit "${FILESDIR}"/${MY_PN}.service
 
 	readme.gentoo_create_doc
 }
