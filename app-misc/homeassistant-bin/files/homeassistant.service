@@ -5,8 +5,7 @@ After=network-online.target
 [Service]
 Type=simple
 User=homeassistant
-ExecStart=/opt/homeassistant/bin/hass --log-file /var/log/homeassistant/homeassistant.log $HASS_OPTS
-EnvironmentFile=/etc/conf.d/homeassistant
+ExecStart=/opt/homeassistant/bin/hass --log-file /var/log/homeassistant/homeassistant.log --config /etc/homeassistant
 
 [Install]
 WantedBy=multi-user.target
