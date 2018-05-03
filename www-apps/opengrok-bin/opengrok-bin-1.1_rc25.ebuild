@@ -18,11 +18,13 @@ RESTRICT="mirror"
 LICENSE="CDDL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+doc subversion"
+# use cssc for SCCS support
+IUSE="cssc +doc subversion"
 
 RDEPEND="
 	>=dev-util/ctags-5.8
 	>=www-servers/tomcat-8.0.39
+	cssc? ( dev-vcs/cssc )
 	subversion? ( >=dev-vcs/subversion-1.9.5[java] )
 "
 DEPEND="
