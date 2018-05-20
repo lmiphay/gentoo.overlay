@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/lmiphay/${PN}.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+lnav +ranger"
+IUSE="+lnav +ranger server"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -35,6 +35,7 @@ RDEPEND="
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	lnav? ( app-admin/lnav )
 	ranger? ( app-misc/ranger )
+	server? ( app-admin/ansible )
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
