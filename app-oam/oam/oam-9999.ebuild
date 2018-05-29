@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/eliot[${PYTHON_USEDEP}]
 	dev-python/eliot-tree[${PYTHON_USEDEP}]
+	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
