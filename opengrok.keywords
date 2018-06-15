@@ -1,3 +1,4 @@
 #=www-apps/opengrok-bin-1.1_rc26 ~amd64
-=www-apps/opengrok-bin-1.1_rc28 ~amd64
+#=www-apps/opengrok-bin-1.1_rc28 ~amd64
+www-apps/opengrok-bin ~amd64
 =dev-util/ctags-20170704 ~amd64
