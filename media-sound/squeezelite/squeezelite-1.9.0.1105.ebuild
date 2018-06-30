@@ -51,22 +51,22 @@ src_compile() {
 	export OPTS=""
 
 	if use dsd; then
-		OPTS+=" -DOPT_DSD"
+		OPTS+=" -DDSD"
 		einfo "dsd support enabled via dsd2pcm"
 	fi
 
 	if use ffmpeg; then
-		OPTS+=" -DOPT_FF"
+		OPTS+=" -DFFMPEG"
 		einfo "alac and wma support enabled via ffmpeg"
 	fi
 
 	if use resample; then
-		OPTS+=" -DOPT_RESAMPLE"
+		OPTS+=" -DRESAMPLE"
 		einfo "resample support enabled via soxr"
 	fi
 
 	if use visexport; then
-		OPTS+=" -DOPT_VIS"
+		OPTS+=" -DVISEXPORT"
 		einfo "audio data export to jivelite support enabled"
 	fi
 
@@ -91,7 +91,7 @@ src_compile() {
 		einfo "  or 'mpg123' USE flag if you need it"
 	fi
 	if ! use aac; then
-		OPTS+=" -DOPT_NO_FAAD"
+		OPTS+=" -DNO_FAAD"
 		einfo "AAC support disabled; add 'aac' USE flag if you need it"
 	fi
 
