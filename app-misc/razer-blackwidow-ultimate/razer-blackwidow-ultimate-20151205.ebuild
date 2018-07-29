@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit python-single-r1 git-r3
 
 DESCRIPTION="Enable M1-M5/FN keys for the Razer BlackWidow Ultimate keyboard"
 HOMEPAGE="https://github.com/astrolince/razer-blackwidow-ultimate"
 EGIT_REPO_URI="https://github.com/astrolince/razer-blackwidow-ultimate.git"
+EGIT_COMMIT="9e6bfe3c3995d882bd093a3f3fc020d2839541a9"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-python/pyusb
+	dev-python/pyusb[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}
@@ -30,7 +30,7 @@ src_prepare () {
 	sed -i -e \
 		's:/usr/bin/razer-blackwidow-ultimate.py:/usr/sbin/razer-blackwidow-ultimate:' \
 		"99-razer-blackwidow-ultimate.rules"
-	epatch_user
+	eapply_user
 }
 
 src_install() {
