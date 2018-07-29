@@ -1,0 +1,54 @@
+diff --git a/invoke/runners.py b/invoke/runners.py
+index 7ffc988e..0e61da5f 100644
+--- a/invoke/runners.py
++++ b/invoke/runners.py
+@@ -295,7 +295,8 @@ class Runner(object):
+         # Arrive at final encoding if neither config nor kwargs had one
+         self.encoding = opts["encoding"] or self.default_encoding()
+         # Set up IO thread parameters (format - body_func: {kwargs})
+-        stdout, stderr = deque(maxlen=opts['capture_buffer_size']), deque(maxlen=opts['capture_buffer_size'])
++        stdout = deque(maxlen=opts['capture_buffer_size'])
++        stderr = deque(maxlen=opts['capture_buffer_size'])
+         thread_args = {
+             self.handle_stdout: {
+                 "buffer_": stdout,
+@@ -447,8 +448,10 @@ class Runner(object):
+         if in_stream is None:
+             in_stream = sys.stdin
+         if opts['capture_buffer_size']:
+-            if opts['capture_buffer_size'] < len(self.context.config.sudo.prompt):
+-                 raise ValueError('capture_buffer_size is too short to match prompt')
++            prompt_len = len(self.context.config.sudo.prompt)
++            if opts['capture_buffer_size'] < prompt_len:
++                err = 'capture_buffer_size is too short to match prompt'
++                raise ValueError(err)
+         # Determine pty or no
+         self.using_pty = self.should_use_pty(opts["pty"], opts["fallback"])
+         if opts["watchers"]:
+diff --git a/tests/runners.py b/tests/runners.py
+index a192cb89..7eb60509 100644
+--- a/tests/runners.py
++++ b/tests/runners.py
+@@ -148,15 +148,18 @@ class Runner_:
+     class capture_buffer_size:
+         @trap
+         def limits_capture(self):
+-            runner = self._runner(out='x'*99 + 'y'*40, run={'capture_buffer_size': 40})
+-            eq_(runner.run(_).stdout, 'y'*40)
++            runner = self._runner(out='x' * 99 + 'y' * 40,
++                                  run={'capture_buffer_size': 40})
++            assert runner.run(_).stdout == 'y' * 40
+ 
+         @trap
+         def fails_when_too_small(self):
+             try:
+-                self._runner(out='abc', run={'capture_buffer_size': 3}).run(_)
++                self._runner(out='abc',
++                             run={'capture_buffer_size': 3}).run(_)
+             except ValueError as e:
+-                eq_(str(e), 'capture_buffer_size is too short to match prompt')
++                err_msg = 'capture_buffer_size is too short to match prompt'
++                assert str(e) == err_msg
+             else:
+                 assert False, "Did not raise ValueError too small a buffer"
+ 

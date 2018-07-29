@@ -1,0 +1,25 @@
+diff --git a/invoke/config.py b/invoke/config.py
+index 0f365464..199d6a8a 100644
+--- a/invoke/config.py
++++ b/invoke/config.py
+@@ -482,7 +482,7 @@ class Config(DataProxy):
+                 "out_stream": None,
+                 "err_stream": None,
+                 "in_stream": None,
+-                'capture_buffer_size': None,
++                "capture_buffer_size": None,
+                 "watchers": [],
+                 "echo_stdin": None,
+             },
+diff --git a/tests/config.py b/tests/config.py
+index cf1d943f..61fbffcb 100644
+--- a/tests/config.py
++++ b/tests/config.py
+@@ -100,6 +100,7 @@ class Config_:
+                     "hide": None,
+                     "in_stream": None,
+                     "out_stream": None,
++                    "capture_buffer_size": None,
+                     "pty": False,
+                     "replace_env": False,
+                     "shell": "/bin/bash",
