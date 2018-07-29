@@ -34,9 +34,9 @@
 =dev-python/gtts-token-1.1.1 ~amd64
 =dev-python/netdisco-1.2.3 ~amd64
 =dev-python/pyatv-0.3.9 ~amd64
-=dev-python/pyhs100-0.3.0 ~amd64
+=dev-python/pyhs100-0.3.2 ~amd64
 =dev-python/pytradfri-4.1.0 ~amd64
-=dev-python/pywemo-0.4.25 ~amd64
+=dev-python/pywemo-0.4.28 ~amd64
 =dev-python/srptools-0.2.0 ~amd64
 =dev-python/zeroconf-0.19.1 ~amd64
 
