@@ -23,7 +23,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-datetime[${PYTHON_USEDEP}]
-	dev-python/typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
