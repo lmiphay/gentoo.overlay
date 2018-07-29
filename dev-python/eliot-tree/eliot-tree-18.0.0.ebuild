@@ -18,13 +18,13 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/six-1.9.0
-	>=dev-python/toolz-0.8.2
-	>=dev-python/termcolor-1.1.0
-	>=dev-python/jmespath-0.7.1
-	>=dev-python/iso8601-0.1.10
-	>=dev-python/eliot-0.12.0
-	>=dev-python/tree-format-0.1.1
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
+	>=dev-python/toolz-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/termcolor-1.1.0[${PYTHON_USEDEP}]
+	>=dev-python/jmespath-0.7.1[${PYTHON_USEDEP}]
+	>=dev-python/iso8601-0.1.10[${PYTHON_USEDEP}]
+	>=dev-python/eliot-0.12.0[${PYTHON_USEDEP}]
+	>=dev-python/tree-format-0.1.1[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
