@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="
 	dev-python/netifaces[${PYTHON_USEDEP}]
