@@ -1,0 +1,5 @@
+#!/bin/bash
+
+INST_DIR="/opt/kokua-bin"
+
+PATH="${INST_DIR}/bin:$PATH" exec "${INST_DIR}/kokua"
