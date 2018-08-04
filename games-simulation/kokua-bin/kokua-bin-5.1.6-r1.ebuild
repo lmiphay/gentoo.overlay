@@ -62,6 +62,13 @@ src_prepare() {
 		lib64/libgdk_pixbuf_xlib-2.0* \
 		lib64/libharfbuzz* \
 		lib64/libpangocairo-1.0*
+	rm \
+		lib64/libatk-1.0.so* \
+		lib64/libcairo* \
+		lib64/libgtk-x11-2.0.so* \
+		lib64/libpng12.so* \
+		lib64/libpangoxft-1.0.so* \
+		lib64/libSDL-1.2.so.0*
 	# shouldn't need to null RPATH with chrpath - but scanelf
 	# reports 'Security problem NULL DT_RPATH' otherwise
 	chrpath -r '' lib32/libalut.so.0.0.0
