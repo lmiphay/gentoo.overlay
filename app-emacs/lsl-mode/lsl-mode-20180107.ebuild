@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit elisp git-r3
+inherit readme.gentoo-r1 elisp git-r3
 
 DESCRIPTION="Major mode for editing Linden Scripting Language"
 HOMEPAGE="http://www.buildersbrewery.com/"
@@ -22,8 +22,20 @@ DOCS="README.md"
 
 S="${WORKDIR}/${P}/emacs"
 
+DISABLE_AUTOFORMATTING=1
+DOC_CONTENTS="
+An external editor can be configured using the ExternalEditor debug setting
+or the LL_SCRIPT_EDITOR environment variable; e.g.
+   export LL_SCRIPT_EDITOR='/usr/bin/emacsclient -a emacs %s'
+"
+
 src_install() {
 	insinto /usr/share/emacs/etc/yasnippet-snippets
 	doins -r yasnippet/snippets/lsl-mode
 	elisp_src_install
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
