@@ -17,7 +17,7 @@ RESTRICT="mirror"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 # use cssc for SCCS support
 IUSE="cssc +doc subversion"
 
