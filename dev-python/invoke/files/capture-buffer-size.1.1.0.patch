@@ -65,18 +65,6 @@ index d565b523..7ffc988e 100644
              # Run our specific buffer through the autoresponder framework
              self.respond(buffer_)
  
-diff --git a/sites/www/changelog.rst b/sites/www/changelog.rst
-index c07ceff0..4c55612d 100644
---- a/sites/www/changelog.rst
-+++ b/sites/www/changelog.rst
-@@ -2,6 +2,7 @@
- Changelog
- =========
- 
-+* :feature:`344` Implement stdout/stderr capture limiting. Credit: Paul Healy.
- - :release:`1.1.0 <2018-07-12>`
- - :release:`1.0.1 <2018-07-12>`
- - :feature:`-` Enhance `~invoke.tasks.Call` with a new method
 diff --git a/tests/runners.py b/tests/runners.py
 index 2ac8ec22..a192cb89 100644
 --- a/tests/runners.py
