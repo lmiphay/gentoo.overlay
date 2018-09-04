@@ -26,6 +26,7 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
 
