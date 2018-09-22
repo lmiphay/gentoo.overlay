@@ -11,8 +11,6 @@
 =dev-perl/Net-Bluetooth-0.41 ~amd64 ~x86
 =dev-perl/Net-SDP-0.07-r1 ~amd64 ~x86
 =dev-perl/Net-UDAP-9999 ~amd64 ~x86
-=kde-misc/containmentaction-favorites-9999 ~amd64 ~x86
-=kde-misc/scriptedhtml-9999 ~amd64 ~x86
 =media-sound/pasystray-0.6.0 ~amd64 ~x86
 =media-sound/shairport-20141210-r2 ~amd64
 =media-sound/shairport2_helper-0.19 ~amd64
