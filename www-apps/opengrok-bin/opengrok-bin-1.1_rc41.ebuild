@@ -17,7 +17,7 @@ RESTRICT="mirror"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 # use cssc for SCCS support
 IUSE="cssc +doc subversion"
 
@@ -53,6 +53,7 @@ src_prepare() {
 	# force the finding of ctags (exuberant version is installed as ctags on gentoo)
 	sed -i -e "s:'ctags-exuberant', 'exctags', ::" bin/indexer.py
 
+	sed -i -e '1,2d' man/man1/opengrok.1
 	# manpage sed based on Fedora opengrok.spec by Lubomir Kundrak
 	sed 's,^<!DOCTYPE.*,<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookx.dtd">,
 		 s,^<?Pub Inc>,,
