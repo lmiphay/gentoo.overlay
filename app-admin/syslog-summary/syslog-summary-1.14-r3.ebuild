@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
-inherit eutils python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Summarizes the contents of a syslog log file"
 HOMEPAGE="https://github.com/dpaleino/syslog-summary"
@@ -21,20 +21,22 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}"
 
+PATCHES=( "${FILESDIR}/${PN}-py3.diff" )
+
 src_prepare() {
+	default
+
 	python_fix_shebang -f syslog-summary
 
-	sed -i -e 's:python-magic:sys-apps/file[python]:' "syslog-summary"
+	sed -i -e 's:python-magic:sys-apps/file[python]:' "syslog-summary" || die
 
 	# Sadly, the makefile is useless for us.
 	rm Makefile || die
-
-	eapply_user
 }
 
 src_install() {
 	dobin syslog-summary
-	dodoc AUTHORS ChangeLog NEWS README
+	einstalldocs
 	doman syslog-summary.1
 
 	insinto /etc/syslog-summary
