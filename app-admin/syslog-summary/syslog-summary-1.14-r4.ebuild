@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND=""
-RDEPEND="${PYTHON_DEPS}"
+RDEPEND=""
 
 python_prepare_all() {
 	eapply "${FILESDIR}/${PN}-py3.diff"
