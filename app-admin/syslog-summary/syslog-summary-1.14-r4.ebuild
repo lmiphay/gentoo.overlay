@@ -37,7 +37,6 @@ python_prepare_all() {
 }
 
 python_install_all() {
-	einstalldocs
 	doman syslog-summary.1
 
 	insinto /etc/syslog-summary
