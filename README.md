@@ -49,3 +49,5 @@ These steps were required prior to the overlay being in layman.
 
 + pasystray [![Gentoo pasystray](https://repology.org/badge/version-for-repo/gentoo/pasystray.svg)](https://repology.org/metapackage/pasystray)
 + pdumpfs [![Gentoo pdumpfs](https://repology.org/badge/version-for-repo/gentoo/pdumpfs.svg)](https://repology.org/metapackage/pdumpfs)
++ syslog-summary [![Gentoo syslog-summary](https://repology.org/badge/version-for-repo/gentoo/syslog-summary.svg)](https://repology.org/metapackage/syslog-summary)
++ dstat [![Gentoo dstat](https://repology.org/badge/version-for-repo/gentoo/dstat.svg)](https://repology.org/metapackage/dstat)
