@@ -42,7 +42,6 @@ RDEPEND="
 	cssc? ( dev-vcs/cssc )
 	subversion? ( >=dev-vcs/subversion-1.9.5[java] )
 "
-# 'resource'
 
 INSTALL_DIR="/opt/${MY_PN}"
 OPENGROK_DIR="/var/${MY_PN}"
