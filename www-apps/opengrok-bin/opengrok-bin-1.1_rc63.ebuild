@@ -87,7 +87,6 @@ python_prepare_all() {
 }
 
 python_install_all() {
-	# man/man1/opengrok.1 is 15k vs 10k for this one
 	doman opengrok.1
 
 	dodir "${INSTALL_DIR}"
