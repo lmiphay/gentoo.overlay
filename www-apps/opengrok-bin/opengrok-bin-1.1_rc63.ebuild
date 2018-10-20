@@ -52,7 +52,7 @@ GROUP_ID="opengrok"
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=( "doc/README.md" )
+DOCS=( "doc/README.md" "doc/logging.properties" )
 
 pkg_setup() {
 	enewgroup "${GROUP_ID}"
@@ -91,10 +91,6 @@ python_install_all() {
 
 	dodir "${INSTALL_DIR}"
 	cp -pRP lib share "${ED}/${INSTALL_DIR}" || die
-
-	# install default logging.properties file (required by driver script)
-	insinto "${INSTALL_DIR}/doc"
-	doins doc/logging.properties
 
 	diropts -m 0775 -o ${USER_ID} -g ${GROUP_ID}
 	keepdir "${ETC_DIR}" "${SRC_DIR}"
