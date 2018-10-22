@@ -18,6 +18,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	app-emulation/docker
 	dev-vcs/git
+	sys-fs/bindfs
 "
 
 DISABLE_AUTOFORMATTING=1
@@ -31,13 +32,13 @@ DOC_CONTENTS="
 DOCS=( "README.md" )
 
 src_install() {
-	dobin lms-gd-init lms-gd-build lms-gd-run
+	dobin "${PN}"
 
 	insinto /usr/share/lms-gd
 	doins Dockerfile lms.keywords lms.use make.conf.lms-gd squeezebox.conf
 
-	newconfd "${FILESDIR}/${PN}.conf.d" "${PN}"
-	newinitd "${FILESDIR}/${PN}.init.d" "${PN}"
+	newconfd "${PN}.conf.d" "${PN}"
+	newinitd "${PN}.init.d" "${PN}"
 
 	readme.gentoo_create_doc
 
