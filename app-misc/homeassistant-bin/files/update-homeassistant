@@ -41,8 +41,10 @@ if emerge -v1 "${atom}" ; then
     /etc/init.d/${prog} --ifstopped start
     echo "now check the logs in /var/log/${prog}; e.g."
     echo "  tail -f /var/log/${prog}/server.log"
+    echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
     exit 0
 else
     echo "${atom} merge failed"
+    echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
     exit 1
 fi
