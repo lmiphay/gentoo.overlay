@@ -1,5 +1,5 @@
-#=app-misc/homeassistant-bin-0.81.4 ~amd64
-=app-misc/homeassistant-bin-0.81.6 ~amd64
+#=app-misc/homeassistant-bin-0.81.6 ~amd64
+=app-misc/homeassistant-bin-0.82.0 ~amd64
 
 # from portage
 =dev-python/certifi-2017.11.5 ~amd64
