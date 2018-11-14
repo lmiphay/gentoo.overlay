@@ -71,6 +71,7 @@ python_prepare_all() {
 
 	sed -i '/resource/d' 'opengrok_tools.egg-info/requires.txt' || die
 	sed -i "/'resource'/d" 'setup.py' || die
+	sed -i "/'pytest-runner',/d" 'setup.py' || die
 
 	# force the finding of ctags (exuberant version is installed as ctags on gentoo)
 	sed -i -e "s:'universal-ctags', ::" src/main/python/opengrok_tools/utils/indexer.py || die
