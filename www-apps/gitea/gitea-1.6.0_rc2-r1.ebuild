@@ -7,7 +7,7 @@ inherit user systemd golang-build golang-vcs-snapshot versionator
 MY_PV=$(replace_version_separator 3 '-')
 
 EGO_PN="code.gitea.io/gitea"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm"
 
 DESCRIPTION="A painless self-hosted Git service, written in Go"
 HOMEPAGE="https://github.com/go-gitea/gitea"
