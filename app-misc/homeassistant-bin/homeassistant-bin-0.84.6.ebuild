@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -49,6 +49,7 @@ DOC_CONTENTS="
  For openrc daemon command line arguments are configured in: /etc/conf.d/${MY_PN}
 
  logging is to: /var/log/${MY_PN}/{server,errors,stdout}.log
+ For HA logging configuration see: https://www.home-assistant.io/components/logger/
 
  The sqlite db is by default in: /etc/${MY_PN}
  To move it after ${MY_PN} has run once and while ${MY_PN} is stopped:
