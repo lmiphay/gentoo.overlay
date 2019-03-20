@@ -10,7 +10,7 @@ stdoutlog="/var/log/homeassistant/stdout.log"
 serverlog="/var/log/homeassistant/server.log"
 warningslog="/var/log/homeassistant/warnings.log"
 
-start_stop_daemon_args="--user $user --stdout $stdoutlog --stderr $serverlog --retry 10"
+start_stop_daemon_args="--user $user --stdout $stdoutlog --stderr $serverlog --retry 20"
 
 command="/opt/homeassistant/bin/hass"
 command_args="
