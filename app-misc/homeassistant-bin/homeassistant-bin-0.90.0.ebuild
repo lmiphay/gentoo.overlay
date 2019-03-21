@@ -68,6 +68,15 @@ S="${WORKDIR}"
 pkg_setup() {
 	enewgroup "${MY_PN}"
 	enewuser "${MY_PN}" -1 -1 "$INSTALL_DIR" "${MY_PN}"
+
+	elog "This ebuild requires network access for 'pip install $MY_PN'"
+	elog "If the install fails due to name lookup retrying out, then try"
+	elog "disabling the portage network-sandbox ; e.g. in /etc/portage/make.conf:"
+	elog ""
+	elog "FEATURES=\"-network-sandbox\""
+	elog ""
+	elog "The update-homeassistant script temporally disables the network-sandbox (and can"
+	elog "also be used to do an initial install of ${PN})."
 }
 
 src_compile() {

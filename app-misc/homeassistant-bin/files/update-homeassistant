@@ -9,13 +9,15 @@
 prog="homeassistant"
 atom="app-misc/${prog}-bin"
 
-if /etc/init.d/${prog} --ifstarted stop ; then
-    echo "${prog} stopped"
-else
-    echo "failed to stop, sleeping/killing: ${prog}"
-    sleep 10
-    pkill -9 -f "/opt/${prog}/bin/python3"
-    /etc/init.d/${prog} zap
+if [ -f /etc/init.d/${prog} ] ; then
+    if /etc/init.d/${prog} --ifstarted stop ; then
+	echo "${prog} stopped"
+    else
+	echo "failed to stop, sleeping/killing: ${prog}"
+	sleep 20
+	pkill -9 -f "/opt/${prog}/bin/python3"
+	/etc/init.d/${prog} zap
+    fi
 fi
 
 installed_version()
@@ -23,28 +25,38 @@ installed_version()
     equery --no-color list -F '$fullversion' "${atom}" | tail -1
 }
 
+rollback_info()
+{
+    if [ -d "/opt/${prog}-v${version}" ] ; then
+	echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
+    fi
+}
+
 version=$(installed_version)
 
 if [ -d "/opt/${prog}" ] ; then
     if [ ! -d "/opt/${prog}-v${version}" ] ; then
 	echo "backing up previous version as v${version}"
-	echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
 	mv "/opt/${prog}" "/opt/${prog}-v${version}"
+	rollback_info
     else
 	echo "Previous backup found - (re-)move it manually and run the script again"
 	exit 2
     fi
 fi
 
-if emerge -v1 "${atom}" ; then
+echo "The portage network-sandbox will be temporally disabled to install ${atom}"
+read -t 5 -p "Hit Control-C within 5 seconds to abort this install..."
+
+if FEATURES="-network-sandbox" emerge -v1 "${atom}" ; then
     echo "${atom} $(installed_version) merge successful"
     /etc/init.d/${prog} --ifstopped start
     echo "now check the logs in /var/log/${prog}; e.g."
     echo "  tail -f /var/log/${prog}/server.log"
-    echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
+    rollback_info
     exit 0
 else
     echo "${atom} merge failed"
-    echo "rollback by: mv /opt/${prog}-v${version} /opt/${prog}"
+    rollback_info
     exit 1
 fi
