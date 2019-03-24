@@ -5,11 +5,11 @@ EAPI=6
 
 PYTHON_COMPAT=(python{2_7,3_6})
 
-inherit eutils distutils-r1 git-r3
+inherit eutils distutils-r1
 
 DESCRIPTION="Pythonic DBus library"
 HOMEPAGE="https://github.com/LEW21/pydbus"
-EGIT_REPO_URI="https://github.com/LEW21/pydbus.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
