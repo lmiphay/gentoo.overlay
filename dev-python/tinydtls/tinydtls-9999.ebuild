@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=(python3_4)
+PYTHON_COMPAT=(python3_6)
 
 inherit eutils autotools distutils-r1 flag-o-matic git-r3
 
@@ -42,7 +42,7 @@ python_configure() {
 }
 
 python_compile() {
-	append-cppflags "-I${WORKDIR}/${P}-python3_4 -I${WORKDIR}/${P}-python3_4/sha2"
+	append-cppflags "-I${WORKDIR}/${P}-python3_6 -I${WORKDIR}/${P}-python3_6/sha2"
 	(cd "${CYTHONSRC}" && esetup.py build)
 }
 
