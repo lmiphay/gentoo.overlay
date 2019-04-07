@@ -1,0 +1,13 @@
+diff --git a/include/edthreads.h b/include/edthreads.h
+index c295454..6053cd6 100644
+--- a/include/edthreads.h
++++ b/include/edthreads.h
+@@ -123,6 +123,8 @@ __CEND_DECLS
+ 
+ #endif /*NON-NATIVE*/
+ 
++#include <edtypes.h>
++
+ __CBEGIN_DECLS
+ 
+ extern struct timespec      timespec_diff(const struct timespec end, const struct timespec start);

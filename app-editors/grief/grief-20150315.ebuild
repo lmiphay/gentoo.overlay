@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils git-r3
 
 DESCRIPTION="Programmers console editor/a BRIEF clone"
 HOMEPAGE="https://sourceforge.net/projects/grief/"
-EGIT_REPO_URI="git://git.code.sf.net/p/grief/code"
+EGIT_REPO_URI="https://git.code.sf.net/p/grief/code"
+EGIT_COMMIT="5653b574c4747ea9acda4021b14a691ac41f9580"
 SRC_URI="grief-libchartable-1.0.tar.xz"
 
 LICENSE="QPL-1.0"
@@ -24,6 +24,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( \
+	"${FILESDIR}"/bfd_config.patch \
+	"${FILESDIR}"/clocks_per_second.patch \
+	"${FILESDIR}"/disable-hlpdoc.patch \
+	"${FILESDIR}"/define-cbegin-decls.patch
+)
+
 pkg_nofetch() {
 	einfo "Please generate libchartable data"
 	einfo "using ${FILESDIR}/generate-libchartable.sh"
@@ -32,10 +39,7 @@ pkg_nofetch() {
 
 src_prepare() {
 	(cd "${S}"/libchartable && unpack ${A})
-	epatch "${FILESDIR}"/bfd_config.patch
-	epatch "${FILESDIR}"/clocks_per_second.patch
-	epatch "${FILESDIR}"/disable-hlpdoc.patch
-	epatch_user
+	default
 }
 
 src_configure() {
