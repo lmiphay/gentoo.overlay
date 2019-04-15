@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit unpacker gnome2-utils xdg
+inherit unpacker xdg
 
 MY_PN="${PN/-bin/}"
 
@@ -62,17 +62,16 @@ src_install() {
 
 pkg_preinst() {
 	xdg_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
