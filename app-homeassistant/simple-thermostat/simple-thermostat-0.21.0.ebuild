@@ -45,6 +45,15 @@ views:
 	Above from, and thanks to the contributors at:
 
 	https://www.reddit.com/r/homeassistant/comments/alcuv1/lovelace_custom_cards_without_uilovelaceyaml/
+
+	Add a simple-thermostat card:
+
+	1. (+ button - bottom RHS) - > 'Manual Card'
+	2. Add yaml configuration in the editor - for example:
+
+name: myroom
+type: 'custom:simple-thermostat'
+entity: climate.my-entity_1
 "
 
 src_unpack() {
