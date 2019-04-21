@@ -1,6 +1,8 @@
 #=app-misc/homeassistant-bin-0.91.3 ~amd64
 =app-misc/homeassistant-bin-0.91.4 ~amd64
 
+=app-homeassistant/simple-thermostat-0.21.0 ~amd64
+
 # from portage
 =dev-python/certifi-2017.11.5 ~amd64
 =dev-python/jinja-2.10 ~amd64

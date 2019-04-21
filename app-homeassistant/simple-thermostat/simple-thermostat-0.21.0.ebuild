@@ -28,9 +28,13 @@ DOC_CONTENTS="
 	https://github.com/nervetattoo/simple-thermostat#installation-manual
 "
 
+src_unpack() {
+	true
+}
+
 src_install() {
 	insinto /etc/homeassistant/www
-	newins "${P}.js" "${PN}.js"
+	newins "${DISTDIR}/${P}.js" "${PN}.js"
 
 	readme.gentoo_create_doc
 	default
