@@ -23,9 +23,28 @@ S="${WORKDIR}"
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
 DOC_CONTENTS="
-	To configure Lovelace to load the simple-thermostat card, see:
+	To configure Lovelace to load the simple-thermostat card, first read:
 
 	https://github.com/nervetattoo/simple-thermostat#installation-manual
+
+	Then, to add the resource item via the Lovelace UI:
+
+	(three dots - top RHS) -> 'Configure UI' (top RHS) -> (three dots - top RHS) -> 'Raw config editor'
+
+	(and add the three lines described in the simple-thermostat manual installation)
+
+	As an example, it may look like this (if there are no other custom cards configured):
+
+title: Myplace
+resources:
+  - url: /local/simple-thermostat.js?v=1
+	type: module
+views:
+  - ...
+
+	Above from, and thanks to the contributors at:
+
+	https://www.reddit.com/r/homeassistant/comments/alcuv1/lovelace_custom_cards_without_uilovelaceyaml/
 "
 
 src_unpack() {
