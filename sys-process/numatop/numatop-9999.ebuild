@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
-inherit git-r3
+inherit git-r3 autotools
 
 DESCRIPTION="Tool for NUMA memory locality and processes/threads analysis"
 HOMEPAGE="https://01.org/numatop"
@@ -22,15 +21,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i -e 's;CFLAGS;MYCFLAGS;g' "Makefile"
-	sed -i -e 's;LDFLAGS;MYLDFLAGS;g' "Makefile"
-	sed -i -e 's;-g -Wall -O2;$(CFLAGS);' "Makefile"
-	sed -i -e 's;-g;$(LDFLAGS);' "Makefile"
-	epatch_user
+	eautoreconf
+	eapply_user
 }
 
 src_install() {
 	dobin numatop
 	doman numatop.8
-	dodoc README
+	dodoc README.md
 }
