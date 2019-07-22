@@ -1,5 +1,5 @@
-#=app-misc/homeassistant-bin-0.94.4 ~amd64
-=app-misc/homeassistant-bin-0.95.4 ~amd64
+#=app-misc/homeassistant-bin-0.96.0 ~amd64
+=app-misc/homeassistant-bin-0.96.3 ~amd64
 
 =app-homeassistant/simple-thermostat-0.21.0 ~amd64
 
