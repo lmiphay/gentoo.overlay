@@ -28,8 +28,6 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/pkgconfig"
 
-S="${WORKDIR}/v${PV}"
-
 pkg_setup() {
 	if kernel_is ge 3 13; then
 		if use modern_kernel && kernel_is lt 3 18; then
