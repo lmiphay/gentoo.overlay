@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,6 +39,11 @@ src_prepare() {
 	ln -s libfmod.so.8.14 libfmod.so
 	ln -s libfmodstudio.so.8.14 libfmodstudio.so.8
 	ln -s libfmodstudio.so.8.14 libfmodstudio.so
+
+	# fails: DllImport error loading library, but then dies with:
+	#  System.BadImageFormatException: Invalid Image
+	ln -s openjpeg-dotnet.dll libopenjpeg-dotnet.dll
+	ln -s openjpeg-dotnet-x86_64.dll libopenjpeg-dotnet-x86_64.dll
 
 	eapply_user
 }
