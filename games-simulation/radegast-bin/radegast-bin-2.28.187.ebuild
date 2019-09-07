@@ -23,7 +23,6 @@ DEPEND=""
 RDEPEND="
 	dev-dotnet/libgdiplus[cairo]
 	dev-lang/mono
-	media-libs/fmod
 "
 
 S=${WORKDIR}/bin
