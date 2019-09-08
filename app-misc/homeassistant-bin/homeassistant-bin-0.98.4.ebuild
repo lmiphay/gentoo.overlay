@@ -15,7 +15,7 @@ SRC_URI=""  # pip installs HA version $PV from PyPI
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="maint mysql"
 
 PY_HA="3.6"
