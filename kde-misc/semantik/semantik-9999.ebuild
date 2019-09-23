@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 #S="${WORKDIR}/plasma-containmentactions-customdesktopmenu"
 
 src_configure() {
-	./waf configure --prefix=/usr || die
+	./waf configure --prefix=/usr --libdir=/usr/lib64 || die
 }
 
 src_compile() {
