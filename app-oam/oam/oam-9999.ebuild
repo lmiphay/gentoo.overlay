@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit user distutils-r1 bash-completion-r1 git-r3
 
@@ -25,8 +25,6 @@ RDEPEND="
 	app-text/multitail
 	dev-python/attrdict[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/eliot[${PYTHON_USEDEP}]
-	dev-python/eliot-tree[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
