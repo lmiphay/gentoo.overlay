@@ -1,0 +1,5 @@
+#!/bin/bash
+
+INST_DIR="/opt/felix-bin"
+
+exec java -jar "${INST_DIR}/bin/felix.jar" "$@"
