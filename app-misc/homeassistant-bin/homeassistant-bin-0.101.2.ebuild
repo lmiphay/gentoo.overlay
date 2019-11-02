@@ -100,6 +100,9 @@ src_install() {
 	sed -i "1c#!$INSTALL_DIR/bin/python3" "${D}/$INSTALL_DIR/bin/hass"
 	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
 
+	# see: https://github.com/home-assistant/home-assistant/issues/28198#issuecomment-546300192
+	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "home-assistant-frontend" || die
+
 	if use mysql ; then
 		VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "mysqlclient" || die
 	fi
