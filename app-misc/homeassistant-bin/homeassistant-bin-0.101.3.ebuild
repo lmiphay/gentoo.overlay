@@ -98,7 +98,6 @@ src_install() {
 	# note the venv has a python3, but no python3.x
 	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "${MY_PN}==${PV}" || die
 	sed -i "1c#!$INSTALL_DIR/bin/python3" "${D}/$INSTALL_DIR/bin/hass"
-	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
 
 	# see: https://github.com/home-assistant/home-assistant/issues/28198#issuecomment-546300192
 	VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "home-assistant-frontend" || die
@@ -106,6 +105,9 @@ src_install() {
 	if use mysql ; then
 		VIRTUAL_ENV="$INSTALL_DIR" "${D}/$INSTALL_DIR/bin/python3" -m pip --no-cache-dir install "mysqlclient" || die
 	fi
+
+	# this has to come after all of the package installs
+	fowners -R "${MY_PN}:${MY_PN}" "$INSTALL_DIR"
 
 	newconfd "${FILESDIR}/${MY_PN}.conf.d" "${MY_PN}"
 	newinitd "${FILESDIR}/${MY_PN}.init.d" "${MY_PN}"
