@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_7 )
 
 inherit user readme.gentoo-r1 eutils distutils-r1 systemd
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="maint mysql"
 
-PY_HA="3.6"
+PY_HA="3.7"
 
 DEPEND="
 	${PYTHON_DEPS}
