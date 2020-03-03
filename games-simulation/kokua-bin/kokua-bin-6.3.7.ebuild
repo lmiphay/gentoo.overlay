@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils versionator
 
 # check: https://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-SL/Linux64Bit/
-REVISION=46555
+REVISION=46402
 
 DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://blog.kokuaviewer.org/"
@@ -55,6 +55,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-admin/chrpath
+	dev-util/patchelf
 "
 
 src_unpack() {
@@ -72,6 +73,9 @@ src_prepare() {
 	# reports 'Security problem NULL DT_RPATH' otherwise
 	chrpath -r '' lib/lib32/libalut.so.0.0.0
 	scanelf -Xr lib/lib32/libalut.so.0.0.0
+
+	patchelf --set-interpreter /lib64/ld-linux-x86-64.so.2 bin/do-not-directly-run-kokua-bin
+
 	eapply_user
 }
 

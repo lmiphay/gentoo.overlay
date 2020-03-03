@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils versionator
 
 # check: https://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-SL/Linux64Bit/
-REVISION=46400
+REVISION=46402
 
 DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://blog.kokuaviewer.org/"
