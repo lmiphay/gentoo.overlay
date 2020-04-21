@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit kde5
+inherit ecm
 
 DESCRIPTION="A fully customisable desktop menu for plasma 5"
 HOMEPAGE="https://sourceforge.net/projects/plasma-custom-desktop-menu"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	$(add_plasma_dep plasma-workspace)
+	kde-plasma/plasma-workspace
 "
 DEPEND="${RDEPEND}
 "
