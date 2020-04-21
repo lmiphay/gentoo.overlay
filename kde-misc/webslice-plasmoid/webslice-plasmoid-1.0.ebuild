@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit kde5
+inherit ecm
 
 DESCRIPTION="Plasma 5 widget to display a webpage or image"
 LICENSE="AGPL-3"
@@ -17,12 +17,13 @@ SLOT="0"
 RESTRICT="mirror"
 
 RDEPEND="
-	$(add_plasma_dep plasma-workspace)
+	kde-plasma/plasma-workspace
 "
 DEPEND="${RDEPEND}
 "
 
 src_prepare() {
 	cp -p ${FILESDIR}/CMakeLists.txt ${S}
-	kde5_src_prepare
+	cmake_src_prepare
+	default
 }
