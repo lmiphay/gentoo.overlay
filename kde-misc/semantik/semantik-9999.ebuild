@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 PY_SEMANTIK="3.6"
 PYTHON_COMPAT=( python3_6 )
 
-inherit kde5 distutils-r1 git-r3
+inherit ecm distutils-r1 git-r3
 
 DESCRIPTION="A mind-mapping application for KDE"
 HOMEPAGE="https://waf.io/semantik.html"
@@ -18,10 +18,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	$(add_frameworks_dep kio)
-	$(add_qt_dep qtpositioning)
-	$(add_qt_dep qtsvg)
-	$(add_qt_dep qtwebengine 'widgets')
+	kde-frameworks/kio
+	dev-qt/qtpositioning
+	dev-qt/qtsvg
+	dev-qt/qtwebengine[widgets]
 	dev-lang/python:${PY_SEMANTIK}
 	dev-python/pygments[${PYTHON_USEDEP}]
 "
