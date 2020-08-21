@@ -27,7 +27,6 @@ IUSE="cssc subversion"
 TOMCAT=9
 
 BDEPEND="
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="
