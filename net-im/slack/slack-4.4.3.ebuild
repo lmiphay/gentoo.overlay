@@ -21,7 +21,6 @@ DEPEND=""
 RDEPEND="
 	plasma? ( dev-libs/libappindicator:2 )
 	>=gnome-base/gconf-3.2.6-r4
-	>=gnome-base/libgnome-keyring-3.12.0
 	>=x11-libs/libXScrnSaver-1.2.2-r1
 "
 
@@ -33,7 +32,7 @@ src_unpack() {
 
 src_prepare() {
 	rm etc/cron.daily/slack \
-	   usr/lib/slack/LICENSE
+		usr/lib/slack/LICENSE
 	eapply_user
 }
 
