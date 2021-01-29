@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PY_SEMANTIK="3.6"
-PYTHON_COMPAT=( python3_6 )
+PY_SEMANTIK="3.8"
+PYTHON_COMPAT=( python3_8 )
 
 inherit ecm distutils-r1 git-r3
 
