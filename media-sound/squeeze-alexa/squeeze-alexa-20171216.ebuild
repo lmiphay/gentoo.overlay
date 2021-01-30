@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=(python2_7) # python3_6
+PYTHON_COMPAT=(python3_{8,9})
 
 inherit readme.gentoo-r1 eutils python-single-r1 git-r3
 
@@ -16,27 +16,21 @@ EGIT_COMMIT="949ed35dc8fc4e5a0c6c5164d07ebc87c5e5575f"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="mirror"
 
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/awscli
-	=dev-python/fuzzywuzzy-0.12.0[${PYTHON_USEDEP}]
+	=dev-python/fuzzywuzzy-0.12.0
 	dev-python/lambda-uploader
 	net-analyzer/nmap[ncat]
 	net-misc/stunnel
 	virtual/logger
 "
 DEPEND="
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}]
-	)
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep ' dev-python/setuptools[${PYTHON_USEDEP}] ')
 	${RDEPEND}
 "
 
