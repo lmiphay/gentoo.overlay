@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=(python2_7 python3_{4,5,6})
+PYTHON_COMPAT=(python3_{8,9})
 
 inherit distutils-r1
 
@@ -23,7 +23,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-datetime[${PYTHON_USEDEP}]
-	dev-python/typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
