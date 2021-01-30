@@ -1,10 +1,11 @@
 =media-sound/squeeze-alexa-20171216 ~amd64
 
-=dev-python/awscli-1.11.158 ~amd64
+#=dev-python/awscli-1.11.158 ~amd64
+dev-python/awscli
 =dev-python/fuzzywuzzy-0.12.0 ~amd64
 
 # lambda-uploader
 =dev-python/lambda-uploader-1.2.0 ~amd64
-=dev-python/boto3-1.4.0 ~amd64
-=dev-python/botocore-1.4.93 ~amd64
+dev-python/boto3
+dev-python/botocore
 
