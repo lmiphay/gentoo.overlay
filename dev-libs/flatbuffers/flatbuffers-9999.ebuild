@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
+EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=(python{2_7,3_4})
+PYTHON_COMPAT=(python3_9)
 inherit eutils distutils-r1 git-r3
 
 DESCRIPTION="Memory Efficient Serialization Library"
