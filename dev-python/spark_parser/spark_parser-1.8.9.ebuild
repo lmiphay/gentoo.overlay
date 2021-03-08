@@ -1,16 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=(python{2_7,3_4})
+PYTHON_COMPAT=(python3_{8,9})
 
 inherit distutils-r1
 
 DESCRIPTION="An Early-Algorithm Context-free grammar Parser"
 HOMEPAGE="https://github.com/rocky/python-spark"
-SRC_URI="https://github.com/rocky/python-spark/archive/release-${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+SRC_URI="https://github.com/rocky/python-spark/archive/${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
+# https://github.com/rocky/python-spark/archive/1.8.9.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
