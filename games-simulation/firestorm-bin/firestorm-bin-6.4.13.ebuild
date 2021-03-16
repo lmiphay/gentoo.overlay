@@ -11,7 +11,8 @@ DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://www.firestormviewer.org/"
 
 MY_P="Phoenix_Firestorm-Release_x86_64_${PV}.${REVISION}"
-SRC_URI="https://downloads.firestormviewer.org/preview/linux/${MY_P}.tar.xz"
+SRC_URI="https://downloads.firestormviewer.org/linux/${MY_P}.tar.xz"
+# https://downloads.firestormviewer.org/linux/Phoenix_Firestorm-Releasex64_x86_64_6.4.13.63251.tar.xz
 # https://downloads.firestormviewer.org/preview/linux/Phoenix_Firestorm-Release_x86_64_6.4.13.63251.tar.xz
 
 RESTRICT="mirror"
