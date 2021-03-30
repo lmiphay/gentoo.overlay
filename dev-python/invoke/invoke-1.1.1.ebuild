@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=(python3_{8,9})
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit eutils bash-completion-r1 distutils-r1
 
