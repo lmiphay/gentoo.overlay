@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
@@ -20,4 +19,5 @@ DOCS="brief-mode.htm brief-mode.news"
 src_prepare() {
 	sed -i -e 's:global-set-key \[DEL]:global-set-key [delete]:' "brief-mode.el"
 	sed -i -e 's:global-set-key \[M-DEL]:global-set-key [M-delete]:' "brief-mode.el"
+	eapply_user
 }
