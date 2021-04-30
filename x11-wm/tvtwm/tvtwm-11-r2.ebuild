@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 XORG_STATIC=no
-inherit xorg-2
+inherit xorg-3
 
 DESCRIPTION="tvtwm X11 window manager"
 HOMEPAGE="http://ftp.x.org/contrib/window_managers"
