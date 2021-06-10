@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit user readme.gentoo-r1 eutils distutils-r1 systemd
 
 MY_PN="${PN/-bin/}"
 
-DESCRIPTION="Home automation platform (Python 3 required)"
+DESCRIPTION="Home automation platform"
 HOMEPAGE="https://home-assistant.io"
 SRC_URI=""  # pip installs HA version $PV from PyPI
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="maint mysql"
 
-PY_HA="3.7"
+PY_HA="3.8"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -127,7 +127,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "homeassistant requires python 3.5 (or later)"
+	elog "homeassistant requires python 3.8 (or later)"
 	elog ""
 	elog "This ebuild installs homeassistant into a virtualenv built for:"
 	elog ""
