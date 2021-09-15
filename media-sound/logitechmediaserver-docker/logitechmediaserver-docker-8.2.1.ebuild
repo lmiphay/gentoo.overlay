@@ -7,7 +7,7 @@ inherit eutils systemd
 
 DESCRIPTION="Logitechmediaserver in a container"
 HOMEPAGE="https://github.com/lmiphay/logitechmediaserver-docker"
-SRC_URI="https://github.com/lmiphay/${PN}/archive/refs/tags/${PVR}.tar.gz"
+SRC_URI="https://github.com/lmiphay/${PN}/archive/refs/tags/${PVR}.tar.gz -> ${PN}-${PVR}.tar.gz"
 RESTRICT="mirror"
 
 LICENSE="GPL-2"
