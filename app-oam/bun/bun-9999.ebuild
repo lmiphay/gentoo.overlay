@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9})
+PYTHON_COMPAT=(python3_9)
 
 inherit distutils-r1 git-r3
 
@@ -18,14 +18,13 @@ IUSE="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="
+	>=dev-python/invoke-0.22.0[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/coverage-4.2[${PYTHON_USEDEP}]
 		>=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
-		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
 	)
 	dev-python/setuptools[${PYTHON_USEDEP}]
