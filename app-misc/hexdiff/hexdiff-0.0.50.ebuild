@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ S="${WORKDIR}/HexDiff"
 src_prepare () {
 	sed -i -e 's:COMP=gcc:COMP=$(CC):' "Makefile" || die
 	sed -i -e 's:COPT=-g:COPT=$(CFLAGS):' "Makefile" || die
-	sed -i -e 's:LOPT=:LOPT=$(LDFLAGS) :' "Makefile" || die
+	sed -i -e 's:LOPT=-lncurses:LOPT=-lncurses -ltinfo $(LDFLAGS):' "Makefile" || die
 	default
 }
 
