@@ -24,10 +24,9 @@ DEPEND="
 	>=dev-python/sphinx-1.6.3[${PYTHON_USEDEP}]
 	tasks? ( >=dev-python/invoke-0.21.0[${PYTHON_USEDEP}] )
 	test? (
-	  >=dev-python/coverage-4.2[${PYTHON_USEDEP}]
-	  >=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
-	  >=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-	  >=dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
+		>=dev-python/coverage-4.2[${PYTHON_USEDEP}]
+		>=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
+		>=dev-python/pylint-1.6.5[${PYTHON_USEDEP}]
 	)
 	${RDEPEND}
 "
