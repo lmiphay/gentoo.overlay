@@ -27,6 +27,7 @@ RDEPEND="sys-devel/m4
 DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
+	x11-misc/imake
 "
 
 DOCS=( "README" "README.old" "sample-twmrc/cross.twmrc" )
