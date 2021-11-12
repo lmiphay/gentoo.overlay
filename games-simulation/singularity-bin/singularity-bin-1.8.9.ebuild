@@ -1,17 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit eutils versionator
 
-REVISION=6937
-MY_P="SingularityAlpha-x86_64-${PV}.${REVISION}"
+REVISION=8338
+MY_PV=$(get_version_component_range 1-3 $(replace_all_version_separators '_'))
 
 DESCRIPTION="An experimental Snowglobe 1.5 based Second Life Viewer"
 HOMEPAGE="http://www.singularityviewer.org/"
-SRC_URI="mirror://sourceforge/singularityview/alphas/${MY_P}.tar.bz2"
-#http://sourceforge.net/projects/singularityview/files/alphas/SingularityAlpha-x86_64-1.8.7.6937.tar.bz2/download
+SRC_URI="https://github.com/singularity-viewer/SingularityViewer/releases/download/sv-${PV}.${REVISION}-release/Singularity_${MY_PV}_${REVISION}_x86_64.tar.xz"
 RESTRICT="mirror"
 
 LICENSE="GPL-2-with-Linden-Lab-FLOSS-exception"
@@ -46,24 +45,26 @@ RDEPEND="
 	net-dns/c-ares
 	sys-libs/zlib
 	virtual/glu
+	virtual/libcrypt
 	virtual/opengl
 "
 DEPEND="${RDEPEND}
 	app-admin/chrpath
 "
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/Singularity_${MY_PV}_${REVISION}_x86_64"
 
 src_prepare() {
 	chrpath -r '' lib64/libalut.so.0.0.0
 	scanelf -Xr lib64/libalut.so.0.0.0
+	rm -f bin/SLVoice bin/llplugin/libmedia_plugin_gstreamer.so lib32/*
 	eapply_user
 }
-
 
 src_install() {
 	mkdir -p "${D}/${INST_DIR}/"
 	cp -a . "${D}/${INST_DIR}/" || die
+	chmod 0755 "${D}/${INST_DIR}/"
 	dosym /${INST_DIR}/singularity /usr/bin/singularity
 	make_desktop_entry singularity-bin "Singularity Viewer (bin)" /${INST_DIR}/viewer_icon.png
 }
