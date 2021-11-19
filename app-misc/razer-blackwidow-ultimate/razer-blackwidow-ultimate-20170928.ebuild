@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit python-single-r1 git-r3
 
 DESCRIPTION="Enable M1-M5/FN keys for the Razer BlackWidow Ultimate keyboard"
-HOMEPAGE="https://github.com/astrolince/razer-blackwidow-ultimate"
-EGIT_REPO_URI="https://github.com/astrolince/razer-blackwidow-ultimate.git"
+HOMEPAGE="https://github.com/lmiphay/razer-blackwidow-ultimate"
+EGIT_REPO_URI="https://github.com/lmiphay/razer-blackwidow-ultimate.git"
 EGIT_COMMIT="725c58e3d469d50fae7fb8fe41f89c7f6b18b5da"
 
 LICENSE="Apache-2"
@@ -32,7 +32,7 @@ src_prepare () {
 	sed -i -e \
 		's:/usr/bin/razer-blackwidow-ultimate.py:/usr/sbin/razer-blackwidow-ultimate:' \
 		"99-razer-blackwidow-ultimate.rules"
-	epatch_user
+	eapply_user
 }
 
 src_install() {
