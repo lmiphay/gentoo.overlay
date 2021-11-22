@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=(python3_9)
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Generate pip requirements.txt file based on imports of any project"
 HOMEPAGE="https://github.com/bndr/pipreqs"
@@ -26,4 +26,9 @@ DEPEND="
 	${RDEPEND}
 "
 
+distutils_enable_tests unittest
+
 DOCS="README.rst"
+
+# the tests fail connecting out to pypi.python.org
+RESTRICT="test"
