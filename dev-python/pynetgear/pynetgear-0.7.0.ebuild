@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_9 )
 
 inherit distutils-r1
 
@@ -21,3 +21,13 @@ BDEPEND="
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 "
+
+src_prepare() {
+	# setup.py opens up requirements.txt (which isn't shipped) and fails the
+	# install - so remove references to it:
+	sed -i '19d;7,8d' "setup.py"
+
+	sed -i -e 's;description-file;description_file;' "setup.cfg"
+
+	eapply_user
+}
