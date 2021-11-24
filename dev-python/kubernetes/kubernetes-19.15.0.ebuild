@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_9 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -16,6 +17,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+# restrict test for now - missing test deps:
+#  randomize
+#  sphinx_markdown_tables
+#  codecov
+RESTRICT="test"
+
 CDEPEND="
 	>=dev-python/certifi-14.05.14[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
@@ -27,8 +34,24 @@ CDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requests-oauthlib[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.24.2[${PYTHON_USEDEP}]
+	test? (
+		dev-python/coverage
+		dev-python/nose
+		dev-python/pytest
+		dev-python/pytest-cov
+		dev-python/pluggy
+		dev-python/py
+		dev-python/sphinx
+		dev-python/recommonmark
+		dev-python/pycodestyle
+		dev-python/autopep8
+		dev-python/isort
+	)
 "
+
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 RDEPEND="${CDEPEND}"
+
+distutils_enable_tests pytest
