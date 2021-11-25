@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
 inherit eutils
 
@@ -16,9 +15,11 @@ patchhash="2c55a5441d00bc3f00df01ed3184da81461c6cb2"
 manpage="gdb-${PN}.man"
 manhash="08593f1932ecb3f18c9531a6e35317dcea7a67e4"
 
+# moved to https://src.fedoraproject.org/rpms/gdb/blob/rawhide/f/gdb-6.3-gstack-20050411.patch
+#          https://src.fedoraproject.org/rpms/gdb/raw/rawhide/f/gdb-6.3-gstack-20050411.patch
 SRC_URI="
-	http://pkgs.fedoraproject.org/cgit/gdb.git/plain/${patchfile}?id=${patchhash} -> ${patchfile}_${PV}
-	http://pkgs.fedoraproject.org/cgit/gdb.git/plain/${manpage}?id=${manhash} -> ${manpage}_${PV}
+	https://src.fedoraproject.org/rpms/gdb/raw/rawhide/f/${patchfile}?id=${patchhash} -> ${patchfile}_${PV}
+	https://src.fedoraproject.org/rpms/gdb/raw/rawhide/f/${manpage}?id=${manhash} -> ${manpage}_${PV}
 "
 RESTRICT="mirror"
 
@@ -40,7 +41,7 @@ src_unpack() {
 
 src_prepare() {
 	filterdiff -i '*/gstack.sh' ${DISTDIR}/${patchfile}_${PV} | patch -p2
-	epatch_user
+	eapply_user
 }
 
 src_install() {
