@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
+EAPI=7
 
 inherit eutils user linux-info git-r3
 
@@ -24,6 +23,10 @@ RDEPEND="${DEPEND}
 	media-gfx/imagemagick
 	sys-apps/coreutils
 "
+PATCHES=(
+	"${FILESDIR}/add-modifiers.patch"
+	"${FILESDIR}/add-logging.patch"
+)
 
 pkg_pretend() {
 	CONFIG_CHECK="~INPUT_UINPUT"
@@ -38,11 +41,13 @@ pkg_setup() {
 }
 
 src_prepare () {
-	epatch "${FILESDIR}/add-modifiers.patch"
-	epatch "${FILESDIR}/add-logging.patch"
+	eapply_user
+
 	sed -i -e 's:/tmp/:/run/:' "g13.h"
 	sed -i '/MODE/G' "91-g13.rules"
-	eapply_user
+
+	# https://bugs.gentoo.org/823329
+	sed -i -e 's:-lboost_system-mt:-lboost_system:' "Makefile"
 }
 
 src_compile() {
