@@ -1,10 +1,9 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{8,9})
+PYTHON_COMPAT=(python3_9)
 
 inherit distutils-r1
 
@@ -26,6 +25,8 @@ DEPEND="
 	${RDEPEND}
 "
 
-DOCS="README.md"
+DOCS="README.rst NEW-FEATURES.rst"
 
-S="${WORKDIR}/python-spark-release-${PV}"
+S="${WORKDIR}/python-spark-${PV}"
+
+distutils_enable_tests nose
