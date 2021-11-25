@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_9 )
 
-inherit meson python-r1
+inherit meson python-r1 xdg-utils
 
 DESCRIPTION="GTK application to configure gaming mice"
 HOMEPAGE="https://github.com/libratbag/piper"
@@ -18,11 +18,15 @@ IUSE=""
 
 DEPEND="
 	>=dev-libs/libratbag-0.14:=
+	dev-python/flake8
+	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-python/python-evdev[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 "
 RDEPEND="
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/python-evdev[${PYTHON_USEDEP}]
+	${DEPEND}
 "
 
 pkg_setup() {
@@ -34,3 +38,10 @@ src_install() {
 	python_optimize
 }
 
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+}
