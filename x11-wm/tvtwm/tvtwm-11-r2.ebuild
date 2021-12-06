@@ -23,6 +23,7 @@ RDEPEND="sys-devel/m4
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXt
+	x11-misc/xbitmaps
 	"
 DEPEND="${RDEPEND}
 	sys-devel/bison
