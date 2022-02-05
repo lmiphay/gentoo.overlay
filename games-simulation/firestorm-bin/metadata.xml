@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lmiphay@gmail.com</email>
+		<name>Paul Healy</name>
+	</maintainer>
+	<use>
+		<flag name="system-fontconfig">Use system fontconfig instead of the bundled one</flag>
+		<flag name="system-sdl">Use system SDL instead of the bundled one.</flag>
+		<flag name="voice">Unsupported incomplete voice support</flag>
+	</use>
+</pkgmetadata>
