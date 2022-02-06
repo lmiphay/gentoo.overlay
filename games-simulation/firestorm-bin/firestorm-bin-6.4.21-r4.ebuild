@@ -11,8 +11,9 @@ DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://www.firestormviewer.org/"
 
 MY_P="Phoenix_Firestorm-Release_x86_64_${PV}.${REVISION}"
-SRC_URI="https://downloads.firestormviewer.org/linux/${MY_P}.tar.xz
-		 http://3p.firestormviewer.org/freetype-2.4.4.180841832-linux64-180841832.tar.bz2
+SRC_URI="
+	https://downloads.firestormviewer.org/linux/${MY_P}.tar.xz
+	http://3p.firestormviewer.org/freetype-2.4.4.180841832-linux64-180841832.tar.bz2
 "
 # https://downloads.firestormviewer.org/linux/Phoenix_Firestorm-Release_x86_64_6.4.21.64531.tar.xz
 # https://downloads.firestormviewer.org/preview/linux/Phoenix_Firestorm-Release_x86_64_6.4.21.64519.tar.xz
@@ -55,7 +56,6 @@ RDEPEND="
 	x11-libs/libXdmcp
 	x11-libs/libXext
 	x11-libs/libXinerama
-	x11-libs/pangox-compat
 	system-fontconfig? ( media-libs/fontconfig )
 	system-sdl? ( media-libs/libsdl )
 	voice? ( net-dns/libidn-compat )
