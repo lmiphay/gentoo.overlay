@@ -23,7 +23,7 @@ RESTRICT="mirror"
 LICENSE="GPL-2-with-Linden-Lab-FLOSS-exception"
 SLOT="0"
 KEYWORDS="~amd64 -*"
-IUSE="+system-fontconfig system-sdl voice"
+IUSE="+system-fontconfig +system-sdl voice"
 
 INST_DIR="opt/firestorm-bin"
 QA_PREBUILT="${INST_DIR}/*"
