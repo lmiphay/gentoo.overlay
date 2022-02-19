@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -29,14 +28,15 @@ S="${WORKDIR}/${PN}"
 
 src_configure() {
 	xmkmf || die
+	sed -i '/ CC = gcc/d' "Makefile"
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CCOPTIONS="${CFLAGS}" EXTRA_LDOPTIONS="${LDFLAGS}" || die
+	emake CCOPTIONS="${CFLAGS}" EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
 src_install() {
-	dobin ${PN} || die
-	newman ${PN}.man ${PN}.1 || die
-	dodoc README || die
+	dobin ${PN}
+	newman ${PN}.man ${PN}.1
+	dodoc README
 }
