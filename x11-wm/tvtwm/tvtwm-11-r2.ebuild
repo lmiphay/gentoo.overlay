@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,9 @@ S="${WORKDIR}/${PN}"
 
 src_configure() {
 	xmkmf || die
+
 	sed -i -e 's:-D_POSIX_SOURCE -D_XOPEN_SOURCE:-D_DEFAULT_SOURCE:g' "Makefile"
+	sed -i '/ CC = gcc/d' "Makefile"
 
 	sed -i -e 's:YYBISON:notdef:' "gram.y"
 
