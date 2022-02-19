@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils
 
@@ -26,6 +26,7 @@ src_prepare() {
 	sed -i -e 's:CXX = g++ -g -Wall -std=c++98 -pedantic-errors -fno-omit-frame-pointer -ffloat-store:MYCXXFLAGS = -Wall -std=c++98 -pedantic-errors:' Makefile
 	sed -i -e 's:CXX += -arch i386 -arch ppc::' Makefile
 	sed -i -e 's:CXX += -arch i386::' Makefile
+	sed -i -e 's:g++:$(CXX):' Makefile
 	sed -i -e 's:$(CXX) $(CXXFLAGS):$(CXX) $(CXXFLAGS) $(MYCXXFLAGS):' Makefile
 
 	sed -i -e 's:$(LD) $(LDFLAGS):$(CXX) $(LDFLAGS):' Makefile
