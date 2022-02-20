@@ -28,8 +28,6 @@ DEPEND="
 	${RDEPEND}
 "
 
-extras_require={"dev": ["nose"]},
-
 DOCS="README.md"
 
 distutils_enable_tests nose
