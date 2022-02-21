@@ -35,7 +35,7 @@ src_install() {
 	dobin fdc
 
 	insinto /usr/share/${PN}
-	doins Dockerfile Makefile .dockerignore avx2-openal-autobuild.xml.diff
+	doins Dockerfile Makefile .dockerignore
 
 	readme.gentoo_create_doc
 }
