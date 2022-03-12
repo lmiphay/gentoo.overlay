@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	app-containers/docker
 	sys-apps/coreutils
+	!media-sound/logitechmediaserver-bin
 	sys-apps/grep
 "
 DEPEND="
