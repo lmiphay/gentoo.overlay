@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{8,9,10} )
+PYTHON_COMPAT=( python3_{9,10,11} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit user distutils-r1 bash-completion-r1 git-r3
+inherit distutils-r1 bash-completion-r1 git-r3
 
 DESCRIPTION="Operations and maintenance automation for gentoo servers"
 HOMEPAGE="https://github.com/lmiphay/oam"
@@ -19,6 +19,7 @@ IUSE="+lnav +ranger server"
 
 RDEPEND="
 	${PYTHON_DEPS}
+	acct-group/oam
 	app-admin/logrotate
 	app-portage/genlop
 	app-portage/gentoolkit
@@ -43,10 +44,6 @@ DEPEND="
 "
 
 DOCS="README.md"
-
-pkg_setup() {
-	enewgroup oam
-}
 
 python_install_all() {
 	dodoc ${DOCS}
