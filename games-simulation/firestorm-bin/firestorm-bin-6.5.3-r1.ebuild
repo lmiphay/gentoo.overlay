@@ -12,7 +12,7 @@ HOMEPAGE="http://www.firestormviewer.org/"
 
 MY_P="Phoenix_Firestorm-Releasex64_x86_64_${PV}.${REVISION}"
 SRC_URI="
-	https://downloads.firestormviewer.org/preview/linux/${MY_P}.tar.xz
+	https://downloads.firestormviewer.org/linux/${MY_P}.tar.xz
 	http://3p.firestormviewer.org/freetype-2.4.4.180841832-linux64-180841832.tar.bz2
 "
 # https://downloads.firestormviewer.org/preview/linux/Phoenix_Firestorm-Releasex64_x86_64_6.5.3.65658.tar.xz
