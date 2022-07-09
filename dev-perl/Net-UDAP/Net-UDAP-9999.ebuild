@@ -24,8 +24,6 @@ DEPEND="
 	dev-perl/Module-Build
 "
 
-SRC_TEST="skip"
-
 S=${WORKDIR}/${P}/src/${PN}
 
 src_prepare() {
