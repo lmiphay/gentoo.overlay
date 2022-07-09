@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=INGY
-MODULE_VERSION=0.0.2
+DIST_AUTHOR=INGY
+DIST_VERSION=0.0.2
 inherit perl-module
 
 DESCRIPTION="Diff 2 YAML Documents Semantically"
@@ -25,5 +24,4 @@ DEPEND="
 	dev-perl/YAML-LibYAML
 "
 
-SRC_TEST="skip"
 RESTRICT="mirror"
