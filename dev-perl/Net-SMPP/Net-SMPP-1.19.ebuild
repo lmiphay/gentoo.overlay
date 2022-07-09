@@ -19,5 +19,4 @@ DEPEND="
 	dev-perl/Module-Build
 "
 
-#SRC_TEST="skip"
 RESTRICT="mirror"
