@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=ADDUTKO
+DIST_AUTHOR=ADDUTKO
 inherit perl-module
 
 DESCRIPTION="Perl Bluetooth Interface"
@@ -20,5 +19,4 @@ DEPEND="
 	dev-perl/Module-Build
 "
 
-SRC_TEST="skip"
 RESTRICT="mirror"
