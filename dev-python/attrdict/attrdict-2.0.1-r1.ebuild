@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9,10} )
+PYTHON_COMPAT=( python3_10 )
 
 inherit distutils-r1
 
@@ -24,6 +24,10 @@ DEPEND="
 	)
 "
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
+
+DOCS="README.rst"
+
+PATCHES=( "${FILESDIR}/attrdict-collections.diff" )
 
 python_test() {
 	esetup.py nosetests
