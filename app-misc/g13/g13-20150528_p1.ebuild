@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils user linux-info git-r3
+inherit eutils user linux-info git-r3 udev
 
 DESCRIPTION="libusb driver for the g13"
 HOMEPAGE="https://github.com/ecraven/g13"
@@ -69,6 +69,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
+
 	elog "Note that the command pipe is: /run/g13-0"
 	elog "And you need to be in the plugdev group to write to it."
 	elog ""
@@ -85,4 +87,8 @@ pkg_postinst() {
 	elog ""
 	elog "Bindings similar to the windows default are available at:"
 	elog "  https://github.com/zekesonxx/g13-profiles"
+}
+
+pkg_postrm() {
+	udev_reload
 }
