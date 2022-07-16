@@ -1,0 +1,11 @@
+#
+# copy this to $HOME/.gyazo.config.yml
+#
+#browser_cmd: xdg-open
+#clipboard_cmd: xclip
+#clipboard_opt: "-sel clip"
+#host: upload.gyazo.com
+#cgi: "/upload.cgi"
+#ua: "Gyazo/1.3.1"
+#http_port: 443
+#use_ssl: true
