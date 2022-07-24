@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils git-r3
 
@@ -16,10 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # require dbus use flag on avahi to have the avahi-browse binary built
+#	media-sound/logitechmediaserver-bin
 DEPEND="dev-perl/Crypt-OpenSSL-RSA
 	dev-perl/IO-Socket-INET6
 	dev-perl/Net-SDP
-	media-sound/logitechmediaserver-bin
 	media-sound/shairport_helper
 	net-dns/avahi[dbus]
 	virtual/perl-Digest-MD5
@@ -31,14 +30,10 @@ RDEPEND="${DEPEND}"
 # or /opt/logitechmediaserver/Plugins
 INSTALL_DIR="/var/lib/logitechmediaserver/Plugins/ShairTunes"
 
-src_prepare() {
-	epatch_user
-}
-
 src_install() {
 	insinto ${INSTALL_DIR}
 	doins AIRPLAY.pm Plugin.pm install.xml public.xml strings.txt
-	fowners logitechmediaserver:logitechmediaserver ${INSTALL_DIR} -R
+	#fowners logitechmediaserver:logitechmediaserver ${INSTALL_DIR} -R
 	dodoc README.md
 	dobin ${FILESDIR}/airplayservers
 }
