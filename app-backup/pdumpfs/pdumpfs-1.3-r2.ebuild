@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils
 
@@ -16,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="linguas_ja"
 
 DEPEND="
-	>=dev-lang/ruby-2.0.0_p598
+	dev-lang/ruby
 "
 
 src_prepare() {
@@ -28,7 +27,7 @@ src_install() {
 	dobin pdumpfs || die
 
 	doman man/man8/pdumpfs.8
-	dohtml -r doc/*
+	dodoc -r doc/*
 
 	if use linguas_ja; then
 		insinto /usr/share/man/ja/man8
