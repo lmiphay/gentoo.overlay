@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils git-r3
 
 DESCRIPTION="Squeezebox ShairPort Helper"
 HOMEPAGE="https://github.com/StuartUSA/shairport_plugin/"
-EGIT_REPO_URI="git://github.com/StuartUSA/shairport_plugin.git"
+EGIT_REPO_URI="https://github.com/StuartUSA/shairport_plugin.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -26,7 +25,7 @@ src_prepare() {
 	sed -i -e 's;CFLAGS:=-O2 -Wall $(MY_CFLAGS);CFLAGS:=$(MY_CFLAGS) $(CFLAGS);' "Makefile"
 	sed -i -e 's;LDFLAGS:=-lm -lpthread $(MY_LDFLAGS);LDFLAGS:=-lm -lpthread $(MY_LDFLAGS) $(LDFLAGS);' "Makefile"
 	emake clean
-	epatch_user
+	eapply_user
 }
 
 src_install() {
