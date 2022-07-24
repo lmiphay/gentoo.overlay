@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils git-r3
 
@@ -15,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	>=dev-lang/ruby-2.0.0_p598
+	dev-lang/ruby
 "
 
 src_install() {
