@@ -28,8 +28,6 @@ INST_DIR="opt/firestorm-bin"
 QA_PREBUILT="${INST_DIR}/*"
 
 RDEPEND="
-	dev-libs/apr
-	dev-libs/apr-util
 	dev-libs/libgcrypt
 	dev-libs/libgpg-error
 	dev-libs/openssl
