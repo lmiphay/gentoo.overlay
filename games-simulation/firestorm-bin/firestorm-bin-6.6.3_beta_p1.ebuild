@@ -5,7 +5,7 @@ EAPI=7
 
 inherit eutils desktop font
 
-REVISION=67375
+REVISION=67412
 
 DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://www.firestormviewer.org/"
@@ -22,7 +22,7 @@ RESTRICT="mirror"
 LICENSE="GPL-2-with-Linden-Lab-FLOSS-exception"
 SLOT="0"
 KEYWORDS=""
-IUSE="+system-sdl voice"
+IUSE="voice"
 
 INST_DIR="opt/firestorm-bin"
 QA_PREBUILT="${INST_DIR}/*"
@@ -57,7 +57,6 @@ RDEPEND="
 	x11-libs/libXdmcp
 	x11-libs/libXext
 	x11-libs/libXinerama
-	system-sdl? ( media-libs/libsdl )
 	voice? ( net-dns/libidn-compat )
 "
 DEPEND="${RDEPEND}
@@ -67,10 +66,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	if use system-sdl ; then
-		rm lib/libSDL-1.2.so.0* lib/libSDL.so || die
-	fi
-
 	# shouldn't need to null RPATH with chrpath - but scanelf
 	# reports 'Security problem NULL DT_RPATH' otherwise
 	chrpath -r '' lib/libffi.so.5.0.10
