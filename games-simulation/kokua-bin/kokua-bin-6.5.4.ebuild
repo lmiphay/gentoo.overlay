@@ -73,6 +73,8 @@ src_prepare() {
 	# reports 'Security problem NULL DT_RPATH' otherwise
 	chrpath -r '' lib/lib32/libalut.so.0.0.0
 	scanelf -Xr lib/lib32/libalut.so.0.0.0
+	chrpath -r '' bin/dullahan_host
+	scanelf -Xr bin/dullahan_host
 	eapply_user
 }
 
