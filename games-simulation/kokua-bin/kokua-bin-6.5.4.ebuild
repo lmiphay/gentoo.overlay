@@ -41,7 +41,7 @@ RDEPEND="
 	dev-libs/boost
 	media-libs/freetype
 	media-libs/libogg
-	media-libs/libpng:1.2
+	media-libs/libpng
 	media-libs/libsdl
 	media-libs/libvorbis
 	media-libs/gstreamer
