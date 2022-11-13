@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Major mode for editing Linden Scripting Language"
 HOMEPAGE="http://www.buildersbrewery.com/"
 
 EGIT_REPO_URI="https://github.com/buildersbrewery/linden-scripting-language.git"
-EGIT_COMMIT="120b7ebd905a81df9dc9c2c32a40bc399a42112e"
+EGIT_COMMIT="eddb08ceabbf47a922ff6eb145c9913095d3dfe8"
 
 LICENSE=""
 SLOT="0"
