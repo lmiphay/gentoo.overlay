@@ -1,23 +1,29 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit readme.gentoo-r1 elisp
 
-HASH="f347681d0133"
+HASH="05c8fd16ff94590393b6b0a9cb193ec9572a9c97"
+SHORTHASH="05c8fd16ff94"
 
 DESCRIPTION="Frontend for Squeezebox / Logitech Media Server"
-HOMEPAGE="https://bitbucket.org/inigoserna/lms.el"
-SRC_URI="https://bitbucket.org/inigoserna/lms.el/get/${HASH}.zip -> ${P}.zip"
+HOMEPAGE="https://hg.serna.eu/emacs/lms"
+SRC_URI="https://hg.serna.eu/emacs/lms/archive/${HASH}.zip?subrepos=false -> ${P}.zip"
 RESTRICT="mirror"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="helm"
 
 # need seq.el included in emacs 25
-DEPEND=">=app-editors/emacs-25.2"
+RDEPEND="
+	>=app-editors/emacs-25.2
+	helm? ( app-emacs/helm )
+"
+BDEPEND="${RDEPEND}"
 
 DOCS="README.org"
 DISABLE_AUTOFORMATTING=1
@@ -34,7 +40,7 @@ For an overview of what it can do see: https://inigo.katxi.org/blog/2017/07/31/l
 Support thread at: http://forums.slimdevices.com/showthread.php?107769-Announce-lms-el-a-squeezebox-controller-for-emacs
 "
 
-S="${WORKDIR}/inigoserna-${PN}.el-${HASH}"
+S="${WORKDIR}/lms-${SHORTHASH}"
 
 src_install() {
 	readme.gentoo_create_doc
