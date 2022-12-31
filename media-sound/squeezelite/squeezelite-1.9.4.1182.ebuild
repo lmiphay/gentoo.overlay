@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils user flag-o-matic git-r3
 
@@ -32,6 +32,11 @@ DEPEND="media-libs/alsa-lib
 RDEPEND="${DEPEND}
 		 media-sound/alsa-utils"
 
+PATCHES=(
+	 "${FILESDIR}/${P}-gentoo-optional-codecs.patch"
+	 "${FILESDIR}/${P}-gentoo-optional-codecs-decode.patch"
+)
+
 pkg_setup() {
 	enewgroup squeezelite
 	if use pulseaudio ; then
@@ -39,12 +44,6 @@ pkg_setup() {
 	else
 		enewuser squeezelite -1 -1 "/dev/null" "squeezelite,audio"
 	fi
-}
-
-src_prepare () {
-	epatch "${FILESDIR}/${P}-gentoo-optional-codecs.patch"
-	epatch "${FILESDIR}/${P}-gentoo-optional-codecs-decode.patch"
-	eapply_user
 }
 
 src_compile() {
