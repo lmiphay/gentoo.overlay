@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit ecm
 
@@ -28,7 +28,7 @@ src_install() {
 	default
 	dodoc "${FILESDIR}/example.config"
 	insinto /usr/lib64/qt5/plugins
-	doins ${WORKDIR}/${P}_build/plasma_containmentactions_customdesktopmenu.so
+	doins ${WORKDIR}/plasma-containmentactions-customdesktopmenu_build/bin/plasma_containmentactions_customdesktopmenu.so
 	insinto /usr/share/kservices5
 	doins plasma-containmentactions-customdesktopmenu.desktop
 }
