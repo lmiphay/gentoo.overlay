@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7,8})
+PYTHON_COMPAT=(python3_{10,11})
 
 inherit distutils-r1
 
@@ -22,11 +22,11 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="
-	dev-python/netifaces[${PYTHON_USEDEP}]
+	dev-python/ifaddr[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
 	${RDEPEND}
 "
 
-DOCS="README.md"
+DOCS="README.rst"
