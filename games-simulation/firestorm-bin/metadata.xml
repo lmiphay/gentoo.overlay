@@ -6,8 +6,6 @@
 		<name>Paul Healy</name>
 	</maintainer>
 	<use>
-		<flag name="system-fontconfig">Use system fontconfig instead of the bundled one</flag>
-		<flag name="system-sdl">Use system SDL instead of the bundled one.</flag>
 		<flag name="voice">Unsupported incomplete voice support</flag>
 	</use>
 </pkgmetadata>
