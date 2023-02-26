@@ -14,7 +14,7 @@ MY_PV=$(ver_cut 1-3)
 MY_PV=${MY_PV//\./-}
 MY_P="Phoenix-Firestorm-Releasex64-${MY_PV}-${REVISION}"
 SRC_URI="
-	https://downloads.firestormviewer.org/preview/linux/${MY_P}.tar.xz
+	https://downloads.firestormviewer.org/linux/${MY_P}.tar.xz
 	http://3p.firestormviewer.org/freetype-2.4.4.180841832-linux64-180841832.tar.bz2
 "
 # https://downloads.firestormviewer.org/preview/linux/Phoenix-Firestorm-Betax64-6-6-5-68062.tar.xz
