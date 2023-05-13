@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9,10,11} )
+PYTHON_COMPAT=( python3_{10,11} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 bash-completion-r1 git-r3
