@@ -1,17 +1,16 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_9)
+PYTHON_COMPAT=(python3_11)
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit eutils distutils-r1 git-r3
 
 DESCRIPTION="A framework for building packages and for managing the dependencies"
-HOMEPAGE="https://bitbucket.org/lindenlab/autobuild/src/v3/"
-EGIT_REPO_URI="https://bitbucket.org/lindenlab/autobuild.git"
-EGIT_COMMIT="b15f569fca7bbfa8050a7723c32476eddcdf9ba9"
+HOMEPAGE="https://github.com/secondlife/autobuild"
+SRC_URI="https://github.com/secondlife/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
