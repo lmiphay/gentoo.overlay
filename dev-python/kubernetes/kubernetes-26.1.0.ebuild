@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_11 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
 DESCRIPTION="Kubernetes python client"
 HOMEPAGE="https://github.com/kubernetes-client/python"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-
+SRC_URI="https://github.com/kubernetes-client/python/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+         https://github.com/kubernetes-client/python/archive/refs/tags/v26.1.0.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
