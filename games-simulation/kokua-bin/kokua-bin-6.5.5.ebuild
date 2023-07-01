@@ -68,7 +68,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm lib/libpng12.so* lib/libSDL-1.2.so.0* || die
+	# rm lib/libpng12.so* lib/libSDL-1.2.so.0* || die
 	# shouldn't need to null RPATH with chrpath - but scanelf
 	# reports 'Security problem NULL DT_RPATH' otherwise
 	chrpath -r '' lib/lib32/libalut.so.0.0.0
