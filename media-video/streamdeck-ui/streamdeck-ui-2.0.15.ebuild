@@ -1,4 +1,4 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
 		dev-libs/hidapi
+		>=dev-python/cairocffi-1.6.0[${PYTHON_USEDEP}]
 		dev-python/filetype[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pynput[${PYTHON_USEDEP}]
