@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Kubernetes python client"
 HOMEPAGE="https://github.com/kubernetes-client/python"
 SRC_URI="https://github.com/kubernetes-client/python/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-         https://github.com/kubernetes-client/python/archive/refs/tags/v26.1.0.tar.gz
+#         https://github.com/kubernetes-client/python/archive/refs/tags/v26.1.0.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
