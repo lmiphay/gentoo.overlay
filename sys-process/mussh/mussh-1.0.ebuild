@@ -1,9 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-
-inherit eutils
+EAPI="8"
 
 DESCRIPTION="Execute a command over ssh on multiple hosts with one command"
 HOMEPAGE="http://mussh.sourceforge.net/"
