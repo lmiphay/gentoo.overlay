@@ -1,9 +1,7 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit eutils
+EAPI=8
 
 DESCRIPTION="Automatation for common tasks around gentoo server upkeep"
 HOMEPAGE="https://github.com/lmiphay/gentoo-oam"
