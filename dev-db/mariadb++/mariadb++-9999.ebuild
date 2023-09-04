@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # fixme: add back in bzr support for the code checkout
 #inherit eutils multilib bzr
-inherit eutils multilib
+inherit multilib
 
 DESCRIPTION="A C++ client library for the MariaDB and MySQL databases"
 HOMEPAGE="https://launchpad.net/mariadb++"
