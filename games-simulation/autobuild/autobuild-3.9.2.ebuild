@@ -1,12 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=(python3_11)
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit eutils distutils-r1 git-r3
+inherit distutils-r1 git-r3
 
 DESCRIPTION="A framework for building packages and for managing the dependencies"
 HOMEPAGE="https://github.com/secondlife/autobuild"
