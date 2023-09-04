@@ -1,12 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=(python3_{10,11})
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit eutils distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Utility modules used from Linden Lab"
 HOMEPAGE="https://github.com/secondlife/python-llbase"
