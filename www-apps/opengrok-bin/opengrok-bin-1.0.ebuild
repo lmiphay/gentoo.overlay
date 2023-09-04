@@ -1,12 +1,10 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_PN="${PN/-bin/}"
 MY_P="${MY_PN}-${PV}"
-
-inherit eutils user
 
 DESCRIPTION="Fast source code search and cross reference engine"
 HOMEPAGE="http://opengrok.github.io/OpenGrok/"
