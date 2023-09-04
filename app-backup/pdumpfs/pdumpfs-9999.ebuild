@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-inherit eutils git-r3
+inherit git-r3
 
 DESCRIPTION="a daily backup system similar to Plan9's dumpfs"
 HOMEPAGE="https://github.com/lmiphay/pdumpfs"
