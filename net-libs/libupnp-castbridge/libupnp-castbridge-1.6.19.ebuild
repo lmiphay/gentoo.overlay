@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit eutils flag-o-matic autotools
+inherit flag-o-matic autotools
 
 DESCRIPTION="UPnP Dev Kit with patches for castbridge"
 HOMEPAGE="http://pupnp.sourceforge.net/"
