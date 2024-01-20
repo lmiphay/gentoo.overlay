@@ -30,7 +30,7 @@ DEPEND="
 	dev-util/patchutils
 "
 RDEPEND="
-	sys-devel/gdb
+	dev-debug/gdb
 "
 
 src_unpack() {
