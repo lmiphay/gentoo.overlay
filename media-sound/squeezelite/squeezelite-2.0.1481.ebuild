@@ -88,6 +88,7 @@ src_install() {
 	dobin squeezelite
 	dobin ${FILESDIR}/pasqueezelite
 	dodoc LICENSE.txt
+	doman "doc/${PN}.1"
 
 	newconfd "${FILESDIR}/${PN}.conf.d" "${PN}"
 	newinitd "${FILESDIR}/${PN}.init.d" "${PN}"
