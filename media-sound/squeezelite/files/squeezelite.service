@@ -1,0 +1,12 @@
+[Unit]
+Description=Lightweight headless Squeezebox emulator
+After=network-online.target
+
+[Service]
+Type=simple
+User=squeezelite
+ExecStart=/usr/bin/squeezelite -o default -n %H
+
+[Install]
+WantedBy=multi-user.target
+
