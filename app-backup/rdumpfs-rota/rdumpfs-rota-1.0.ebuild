@@ -1,10 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
-
-inherit eutils
+EAPI=8
 
 DESCRIPTION="Wrapper around rdumpfs to automate daily/weekly/monthly backups"
 HOMEPAGE="https://github.com/lmiphay/rdumpfs-rota"
