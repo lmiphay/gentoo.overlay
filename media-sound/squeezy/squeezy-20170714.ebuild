@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
-inherit readme.gentoo-r1 eutils bash-completion-r1 git-r3
+inherit readme.gentoo-r1 bash-completion-r1 git-r3
 
 DESCRIPTION="command-line control of squeezebox network players via squeezeserver"
 HOMEPAGE="https://github.com/pssc/squeezy"
