@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI="6"
+EAPI="8"
 
-inherit eutils git-r3
+inherit git-r3
 
 DESCRIPTION="Squeezebox ShairPort2 Helper"
 HOMEPAGE="https://github.com/disaster123/shairport2_plugin"
