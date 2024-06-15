@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils versionator
+inherit versionator
 
 # check: https://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-SL/Linux64Bit/
 REVISION=57483
