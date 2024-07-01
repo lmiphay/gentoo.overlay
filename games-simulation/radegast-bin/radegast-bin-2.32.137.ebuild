@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit gnome2-utils eutils xdg desktop
+inherit gnome2-utils xdg desktop
 
 MY_PN="${PN/-bin/}"
 
