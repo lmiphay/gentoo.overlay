@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=6
+EAPI=8
 inherit git-r3
 
 DESCRIPTION="Leap second immunity verification programs"
@@ -27,4 +26,3 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.conf.d ${PN}
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 }
-
