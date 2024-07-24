@@ -41,7 +41,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "To enable and start the services do:"
-	elog "systemctl enable fake-hwclock-load.service fake-hwclock-save.service fake-hwclock-save.timer"
-	elog "systemctl start fake-hwclock-load.service fake-hwclock-save.service fake-hwclock-save.timer"
+	elog "To enable and start the services:"
+	elog ""
+	elog "systemctl enable --now fake-hwclock-load.service fake-hwclock-save.service fake-hwclock-save.timer"
 }
