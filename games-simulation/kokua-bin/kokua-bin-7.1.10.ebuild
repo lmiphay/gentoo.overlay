@@ -4,11 +4,12 @@
 EAPI=8
 
 # check: https://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-SL/Linux64Bit/
-REVISION=58088
+REVISION=59780
 
 DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://blog.kokuaviewer.org/"
 
+# https://bitbucket.org/kokua/downloads/downloads/Kokua_RLV_7_1_10_59780_x86_64.tar.xz
 MY_PV=$(ver_rs 1-2 '_')
 MY_P="Kokua_RLV_${MY_PV}_${REVISION}_x86_64"
 MY_PFT="Kokua_FTRLV_${MY_PV}_${REVISION}_x86_64"
