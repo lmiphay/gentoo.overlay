@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/plasma-containmentactions-customdesktopmenu-
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="
