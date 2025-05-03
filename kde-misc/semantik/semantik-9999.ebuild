@@ -1,10 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PY_SEMANTIK="3.10"
-PYTHON_COMPAT=( python3_10 )
+DISTUTILS_USE_PEP517=no
+PY_SEMANTIK="3.11"
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit ecm distutils-r1 git-r3
 
