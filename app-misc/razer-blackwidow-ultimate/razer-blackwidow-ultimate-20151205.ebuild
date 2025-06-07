@@ -1,9 +1,10 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_10 )
+DISTUTILS_USE_PEP517=no
+PYTHON_COMPAT=( python3_12 )
 
 inherit python-single-r1 git-r3
 
