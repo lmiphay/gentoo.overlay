@@ -1,9 +1,9 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_12 )
 DISTUTILS_USE_PEP517=poetry
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit distutils-r1
