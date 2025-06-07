@@ -1,14 +1,15 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{9..10} )
-inherit distutils-r1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_12 )
+inherit distutils-r1 pypi
 
 DESCRIPTION="Framework for fast, easy, and documented API development with Flask"
 HOMEPAGE="https://github.com/python-restx/flask-restx"
-SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/python-restx/flask-restx/archive/refs/tags/${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
