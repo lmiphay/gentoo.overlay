@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=(python3_11)
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=(python3_12)
 
 inherit distutils-r1
 
@@ -23,7 +24,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-datetime[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python3_12)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
