@@ -1,9 +1,10 @@
-# Copyright 1999-2023 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=(python3_10)
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=(python3_12)
 
 inherit distutils-r1
 
