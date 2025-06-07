@@ -1,17 +1,18 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{10,11} )
+EAPI=8
+PYTHON_COMPAT=( python3_12 )
 
-inherit distutils-r1
+DISTUTILS_USE_PEP517=setuptools
+inherit distutils-r1 pypi
 
 MY_PN="cidr_trie"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Store/search CIDR prefixes in a trie structure"
 HOMEPAGE="https://github.com/Figglewatts/cidr-trie https://pypi.org/project/cidr-trie/"
-SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url cidr-trie)"
 
 LICENSE="MIT"
 SLOT="0"
