@@ -1,13 +1,14 @@
-# Copyright 1999-2023 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=(python3_11)
+PYTHON_COMPAT=(python3_{12,13})
 
+DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi
 
-DESCRIPTION="igh-level interface and ctypes-based bindings for PulseAudio"
+DESCRIPTION="High-level interface and ctypes-based bindings for PulseAudio"
 HOMEPAGE="https://github.com/mk-fg/python-pulse-control"
 SRC_URI="$(pypi_sdist_url pulsectl)"
 
