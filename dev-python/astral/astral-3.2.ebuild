@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1
 
 DESCRIPTION="Calculations for the position of the sun and moon"
-HOMEPAGE=""
+HOMEPAGE="https://github.com/sffjunkie/astral"
 SRC_URI="https://github.com/sffjunkie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
