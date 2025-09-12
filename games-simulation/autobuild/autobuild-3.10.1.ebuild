@@ -1,16 +1,17 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=(python3_11)
-DISTUTILS_USE_SETUPTOOLS=rdepend
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=(python3_{11..13})
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="A framework for building packages and for managing the dependencies"
 HOMEPAGE="https://github.com/secondlife/autobuild"
-SRC_URI="https://github.com/secondlife/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+#SRC_URI="https://github.com/secondlife/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="$(pypi_sdist_url "${PN}" "${PV}")"
 
 LICENSE="MIT"
 SLOT="0"
@@ -28,3 +29,16 @@ DEPEND="
 "
 
 DOCS="README.md"
+
+EXCLUDE_TESTS='
+[options.packages.find]
+exclude =
+	tests
+	tests.*
+'
+
+src_prepare() {
+	sed -i -e "s:'tests':'test', 'tests.*':" setup.py
+	echo "$EXCLUDE_TESTS" >> setup.cfg
+	eapply_user
+}
