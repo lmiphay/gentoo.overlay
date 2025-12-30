@@ -19,7 +19,7 @@ IUSE="+ao +alsa +avahi +pulseaudio"
 DEPEND="
 	dev-libs/openssl
 	ao? ( media-libs/libao )
-	pulseaudio? ( media-sound/pulseaudio )
+	pulseaudio? ( media-libs/libpulse )
 	alsa? ( media-libs/alsa-lib )
 	avahi? ( net-dns/avahi )
 "
