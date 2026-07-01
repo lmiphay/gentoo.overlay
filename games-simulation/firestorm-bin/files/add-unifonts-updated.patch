@@ -1,0 +1,11 @@
+--- a/fonts/fonts.xml	2026-06-30 10:41:31.000000000 +0100
++++ b/fonts/fonts.xml	2026-07-01 15:56:45.100179438 +0100
+@@ -6,6 +6,8 @@
+       comment="default font files (global fallbacks)">
+     <file load_collection="true" font_weight="400">InterVariableFont.ttf</file>
+     <file size_delta="-0.5">DejaVuSans.ttf</file>
++    <file>/usr/share/fonts/unifont/unifont_upper.ttf</file>
++    <file>/usr/share/fonts/unifont/unifont.ttf</file>
+     <file functor="is_emoji_use_color">TwemojiSVG.ttf</file>
+     <file functor="is_emoji_use_bw">NotoEmoji-Regular.ttf</file>
+     <os name="Windows">
