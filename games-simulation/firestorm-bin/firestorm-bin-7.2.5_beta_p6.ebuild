@@ -5,27 +5,27 @@ EAPI=8
 
 inherit desktop font
 
+REVISION=81788
+
 DESCRIPTION="An open source metaverse viewer"
-HOMEPAGE="http://www.secondlife.com/"
+HOMEPAGE="http://www.firestormviewer.org/"
 
-MY_TAG="2365b9b2c-2026-04-16"
-
-MY_PV=$(ver_cut 1-4)
-MY_PV=${MY_PV//\./_}
-MY_P="Second_Life_Project_Lua_Editor_${MY_PV}_x86_64"
+MY_PV=$(ver_cut 1-3)
+MY_PV=${MY_PV//\./-}
+MY_P="Phoenix-Firestorm-Betax64_AVX2-${MY_PV}-${REVISION}"
 SRC_URI="
-	https://github.com/secondlife/viewer/releases/download/Second_Life_Project_Lua_Editor%${MY_TAG}/${MY_P}.tar.xz
+	https://downloads.firestormviewer.org/preview/linux/${MY_P}.tar.xz
 "
-# https://github.com/secondlife/viewer/releases/download/Second_Life_Project_Lua_Editor%2365b9b2c-2026-04-16/Second_Life_Project_Lua_Editor_26_1_1_24528939506_x86_64.tar.xz
-# https://github.com/secondlife/viewer/releases/download/Second_Life_Project_Lua_Editor%23f209affd-2026-03-30/Second_Life_Project_Lua_Editor_26_1_0_23768336784_x86_64.tar.xz
+# https://downloads.firestormviewer.org/preview/linux/Phoenix-Firestorm-Betax64_AVX2-7-1-11-76462.tar.xz
 
 RESTRICT="mirror"
 
 LICENSE="GPL-2-with-Linden-Lab-FLOSS-exception"
 SLOT="0"
 KEYWORDS="~amd64 -*"
+IUSE="voice"
 
-INST_DIR="opt/secondlife-lua-bin"
+INST_DIR="opt/firestorm-bin"
 QA_PREBUILT="${INST_DIR}/*"
 
 RDEPEND="
@@ -58,6 +58,7 @@ RDEPEND="
 	x11-libs/libXdmcp
 	x11-libs/libXext
 	x11-libs/libXinerama
+	voice? ( net-dns/libidn-compat )
 "
 DEPEND="${RDEPEND}
 	app-admin/chrpath
@@ -75,6 +76,8 @@ src_prepare() {
 	chrpath -r '' bin/dullahan_host
 	scanelf -Xr bin/dullahan_host
 
+	eapply "${FILESDIR}/add-unifonts-updated.patch"
+
 	eapply_user
 }
 
@@ -83,15 +86,15 @@ src_install() {
 
 	cp -a . "${D}/${INST_DIR}/" || die
 
-	dosym /${INST_DIR}/secondlife /usr/bin/secondlife-lua-bin
+	dosym /${INST_DIR}/firestorm /usr/bin/firestorm-bin
 
 	insinto /etc/revdep-rebuild
 	doins "${FILESDIR}"/70${PN}
 
-	make_desktop_entry secondlife-lua-bin "Secondlife Lua Project Viewer (bin)" /${INST_DIR}/secondlife_icon.png
+	make_desktop_entry firestorm-bin "Phoenix Firestorm Viewer (bin)" /${INST_DIR}/firestorm_icon.png
 
 	# a hardwired fallback font in LLWindowSDL::getDynamicFallbackFontList
-	#mkdir -p "${D}/usr/share/fonts/truetype/kochi/"
-	#dosym /usr/share/fonts/kochi-substitute/kochi-gothic-subst.ttf \
-	#	/usr/share/fonts/truetype/kochi/kochi-gothic.ttf
+	mkdir -p "${D}/usr/share/fonts/truetype/kochi/"
+	dosym /usr/share/fonts/kochi-substitute/kochi-gothic-subst.ttf \
+		/usr/share/fonts/truetype/kochi/kochi-gothic.ttf
 }

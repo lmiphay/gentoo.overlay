@@ -8,14 +8,16 @@ inherit desktop font
 DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://www.secondlife.com/"
 
-MY_TAG="238a22869-2026-07-17"
+MY_TAG="23e960123-26.4"
 
 MY_PV=$(ver_cut 1-4)
 MY_PV=${MY_PV//\./_}
-MY_P="Second_Life_Project_Lua_Editor_${MY_PV}_x86_64"
+MY_P="Second_Life_${MY_PV}_x86_64"
 SRC_URI="
-	https://github.com/secondlife/viewer/releases/download/Second_Life_Project_Lua_Editor%${MY_TAG}/${MY_P}.tar.xz
+	https://github.com/secondlife/viewer/releases/download/Second_Life_Release%${MY_TAG}/${MY_P}.tar.xz
 "
+# https://github.com/secondlife/viewer/releases/download/Second_Life_Release%2379b07e64-26.4/Second_Life_Project_Lua_Editor_26_4_0_33894281402_x86_64.tar.xz
+# https://github.com/secondlife/viewer/releases/download/Second_Life_Release%2379b07e64-26.4/Second_Life_26_4_0_33894281402_x86_64.tar.xz
 # https://github.com/secondlife/viewer/releases/download/Second_Life_Project_Lua_Editor%2365b9b2c-2026-04-16/Second_Life_Project_Lua_Editor_26_1_1_24528939506_x86_64.tar.xz
 # https://github.com/secondlife/viewer/releases/download/Second_Life_Project_Lua_Editor%23f209affd-2026-03-30/Second_Life_Project_Lua_Editor_26_1_0_23768336784_x86_64.tar.xz
 
