@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop font
 
-REVISION=81325
+REVISION=82930
 
 DESCRIPTION="An open source metaverse viewer"
 HOMEPAGE="http://www.firestormviewer.org/"
@@ -16,7 +16,7 @@ MY_P="Phoenix-Firestorm-Nightlyx64_AVX2-${MY_PV}-${REVISION}"
 SRC_URI="
 	https://downloads.firestormviewer.org/nightly/linux/${MY_P}.tar.xz
 "
-# https://downloads.firestormviewer.org/nightly/linux/Phoenix-Firestorm-Nightlyx64_AVX2-7-2-5-81304.tar.xz
+# https://downloads.firestormviewer.org/nightly/linux/Phoenix-Firestorm-Nightlyx64_AVX2-7-3-0-82884.tar.xz
 
 RESTRICT="mirror"
 
