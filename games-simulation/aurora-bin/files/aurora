@@ -2,4 +2,4 @@
 
 INST_DIR="/opt/aurora-bin"
 
-PATH="${INST_DIR}/bin:$PATH" exec "${INST_DIR}/aurora-viewer"
+PATH="${INST_DIR}/bin:$PATH" AURORA_PACKAGED=1 exec "${INST_DIR}/aurora-viewer"
